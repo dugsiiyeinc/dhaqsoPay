@@ -1,4 +1,4 @@
-# dhaqsoPay
+![dhaqsoPay Logo](.github/logo.png)
 
 **Test payments effortlessly, build confidently.**
 
