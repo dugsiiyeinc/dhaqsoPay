@@ -13,9 +13,9 @@ body{
 img{
     width: 100%;
 }
-.conatiner{
+.container{
     width: min(1200px, 90%);
-    margin-inline: auto;
+    margin:0 auto;
 }
 header{
     height: 4rem;
@@ -27,5 +27,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-     
+}
+.logo img{
+    width: 120px;
 }
