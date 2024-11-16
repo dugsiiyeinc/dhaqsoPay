@@ -27,7 +27,23 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom:10px ;
+    border-bottom: 1px solid #000;
 }
 .logo img{
-    width: 120px;
+    width: 150px;
+}
+.nav-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.nav-links a{
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover{
+    color:#2fa1c8;
 }
