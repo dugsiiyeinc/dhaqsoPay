@@ -24,3 +24,16 @@
     align-items:center;
     color:#222061;    
 }
+.feature .icon-title i{
+    font-size:2rem;
+}
+.feature p{
+    color:#777;
+}
+.feature a{
+    color:#222061;
+    font-weight:bold;
+}
+.feature a:hover{
+    color:#37c1f0;
+ }
