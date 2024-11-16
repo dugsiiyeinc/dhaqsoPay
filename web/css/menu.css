@@ -13,4 +13,13 @@ body{
 img{
     width: 100%;
 }
-
+.conatiner{
+    width: min(1200px, 90%);
+    margin-inline: auto;
+}
+header{
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
