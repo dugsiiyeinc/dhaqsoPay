@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.team {
+    background-color: rgb(204, 190, 190);
+    margin: 20px 0;
+    height: 110vh;
+}
+.info {
+    width: 50%;
+    margin: auto;
+    background-color: blue;
+    padding: 40px;
+}
