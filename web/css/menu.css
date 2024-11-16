@@ -23,3 +23,9 @@ header{
     justify-content: center;
     align-items: center;
 }
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     
+}
