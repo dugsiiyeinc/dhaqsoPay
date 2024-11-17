@@ -53,7 +53,14 @@ header{
 .humbergur{
     display: none;
 }
-
+.hero-section{
+    padding-inline:20px ;
+}
+.hero-content{
+    display: grid;
+    grid-template-columns: repeat(2,1);
+    gap: 1rem;
+}
 @media (max-width:768px){
     .menu{
      flex-direction: column;
