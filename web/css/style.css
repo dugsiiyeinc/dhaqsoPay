@@ -21,6 +21,32 @@
 .hero-content-left h1{
     font-size: 4rem;
 }
+
+.hero-buttons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.btn{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.hero-buttons .btn-get{
+    background-color: #222061;
+    color: #fff;
+}
+.hero-buttons .btn-call{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #222061;
+}
+.btn:hover{
+    background-color: #37c1f0;
+    color: #fff;
+}
 .active-users{
     display: flex;
     align-items: center;
