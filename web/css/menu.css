@@ -27,7 +27,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom:10px ;
+    padding:10px 20px;
     border-bottom: 1px solid #000;
 }
 .logo img{
@@ -40,10 +40,10 @@ header{
     gap: 1rem;
 }
 .nav-links a{
-    color: #000;
+    color: #777;
     font-size: 1.2rem;
 }
 
 .nav-links a:hover{
-    color:#2fa1c8;
+    color:#222061;
 }
