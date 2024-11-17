@@ -47,3 +47,7 @@ header{
 .nav-links a:hover{
     color:#222061;
 }
+
+.humbergur{
+    display: none;
+}
