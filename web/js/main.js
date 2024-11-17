@@ -4,5 +4,6 @@ const icons = document.querySelectorAll("i")
 
 
 humbergur.addEventListener('click', function(event){
+    const  isvible = navLinks.getAttribute('data-visible');
     
  })
