@@ -11,17 +11,55 @@
   <body>
     <header>
         <div class="container menu">
+          <div class="humbergur">
+            <i class="fa fa-bars" data-visible="true" ></i>
+            <i class="fa fa-close" data-visible="false" ></i>
+        </div>
             <div class="logo">
-                <a href="/"><img src="images/logo.png" alt="logo-img"></a>
+                <a href="/"><img src="assets/logo.png" alt="logo-img"></a>
             </div>
-            <nav class="nav-links">
+            <nav class="nav-links" data-visible="false">
                 <li><a href="/web/pages/about.html">About</a></li>
-                <li><a href="#">Api</a></li>
+                <li><a href="#">API</a></li>
             </nav>
         </div>
     </header>
     <!-- Main -->
      <main>
+      <!-- start hero section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-content-left">
+            <h4 class="hero-title">WELCOME TO DhaqsoPay</h4>
+            <h1 class="hero-desc">Making <strong style="background:#222061; padding:5px; color: #fff;">Digital</strong> Transactions Easier!</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+
+            <div class="hero-buttons">
+              <button class="btn btn-get">Get Started</button>
+              <button class="btn btn-call">Call Support</button>
+            </div>
+            <div class="active-users">
+              <div class="users-img">
+                <img src="assets/user1.jpg" alt="user1" class="users-img user1">
+                <img src="assets/user2.jpg" alt="user2" class="users-img user2">
+                <img src="assets/user3.jpg" alt="user3" class="users-img user3">
+                <img src="assets/user4.jpg" alt="user4" class="users-img user4">
+              </div>
+              <div class="activeUsers-number">
+                <h4 class="users-number">140K+</h4>
+                <p>Active Users</p>
+              </div>
+            </div>
+          </div>
+        
+         
+          <div class="hero-content-right">
+            <img src="assets/hero-img.png" alt="hero-img">
+          </div>
+        </div>
+      </section>
+      <!-- end hero section -->
       <!--  Features Section -->
      <section>
       <div class="container">
@@ -74,6 +112,8 @@
       </div>
      </section>
     </main>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
 
