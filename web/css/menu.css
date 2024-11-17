@@ -54,11 +54,15 @@ header{
     display: none;
 }
 .hero-section{
+    height: 100vh;
     padding-inline:20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .hero-content{
     display: grid;
-    grid-template-columns: repeat(2,1);
+    grid-template-columns: repeat(2,1fr);
     gap: 1rem;
 }
 .hero-content-left{
@@ -81,7 +85,15 @@ header{
     height: 44px;
     border-radius: 50%;
 }
-
+.hero-content-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-content-right img{
+    width: 350px;
+    height: 100%;
+}
 @media (max-width:768px){
     .menu{
      flex-direction: column;
