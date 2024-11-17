@@ -22,6 +22,8 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 .menu{
     display: flex;
@@ -54,8 +56,23 @@ header{
 
 @media (max-width:768px){
     .menu{
-    flex-direction: column;
-    border:none;
-    align-items: self-start;
+     flex-direction: column;
+     border:none;
+     align-items: self-start;
+     padding-top: 1.5rem;
+     height: 100%;
+    }
+    .logo{
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-links{
+        width: 100%;
+        flex-direction: column;
+        background-color: #222061;
+        margin-top: .8rem;
+        padding: 10px;
+        z-index: 11;
     }
 }
