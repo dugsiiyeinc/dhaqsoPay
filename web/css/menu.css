@@ -53,5 +53,9 @@ header{
 }
 
 @media (max-width:768px){
-    
+    .menu{
+    flex-direction: column;
+    border:none;
+    align-items: self-start;
+    }
 }
