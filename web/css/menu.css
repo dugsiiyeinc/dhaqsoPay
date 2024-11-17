@@ -67,6 +67,21 @@ header{
     gap: 2rem;
 }
 
+.active-users{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.active-users {
+    display: flex;
+    align-items: center;
+}
+.active-users .users-img img{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
 @media (max-width:768px){
     .menu{
      flex-direction: column;
