@@ -1,17 +1,135 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Sacramento&family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .team {
-    background-color: rgb(204, 190, 190);
+    background-color: rgba(247, 235, 235, 0.3);
     margin: 20px 0;
     height: 110vh;
 }
+
+
 .info {
-    width: 50%;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    width: 100%;
     margin: auto;
-    background-color: blue;
-    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+
+}
+
+.info .tm {
+    margin: outo;
+    margin-top: 5%;
+    text-align: center;
+    color: gray;
+    font-size: 20px;
+
+}
+
+.info .meet {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.info .lorem {
+    font-size: 1rem;
+    text-align: center;
+    color: gray;
+
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(4, 5fr);
+    gap: 7px;
+    margin: 60px;
+}
+
+.card .profile-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card .profile-card .photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.card .profile-card .photo {
+    width: 270px;
+    box-shadow: 10px 10px;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+.card .profile-card .des {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+.card .profile-card .des p {
+    color: gray;
+    text-align: center;
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100vh;
+}
+
+.footer .quad {
+    display: grid;
+    grid-template-columns: repeat(4, 5fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.footer .company .logo img {
+    width: 40%;
+    height: auto;
+}
+
+.footer .download {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.footer .download .app {
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+.footer .download img {
+    width: 10%;
+    margin: 10px;
+    border-radius: 5px;
 }
