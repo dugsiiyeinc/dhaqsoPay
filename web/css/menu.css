@@ -71,7 +71,7 @@ header{
     .nav-links{
         width: 100%;
         flex-direction: column;
-        background-color: #222061;
+        background-color: #f7f7f7;
         margin-top: .8rem;
         padding: 10px;
         z-index: 11;
