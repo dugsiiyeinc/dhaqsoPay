@@ -53,47 +53,7 @@ header{
 .humbergur{
     display: none;
 }
-.hero-section{
-    height: 100vh;
-    padding-inline:20px ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.hero-content{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 1rem;
-}
-.hero-content-left{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
 
-.active-users{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.active-users {
-    display: flex;
-    align-items: center;
-}
-.active-users .users-img img{
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-}
-.hero-content-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.hero-content-right img{
-    width: 350px;
-    height: 100%;
-}
 @media (max-width:768px){
     .menu{
      flex-direction: column;
