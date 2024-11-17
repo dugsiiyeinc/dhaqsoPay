@@ -59,6 +59,7 @@ header{
      flex-direction: column;
      border:none;
      align-items: self-start;
+     padding-inline:0 ;
      padding-top: 1.5rem;
      height: 100%;
     }
@@ -75,4 +76,19 @@ header{
         padding: 10px;
         z-index: 11;
     }
+    .humbergur{
+        display: block;
+        position: absolute;
+        right: 5%;
+    }
+    .humbergur i{
+        font-size: 2rem;
+        color: #222061;
+    }
+    .humbergur i[data-visible="true"]{
+        display: block;
+      }
+    .humbergur i[data-visible="false"]{
+        display: none;
+      }
 }
