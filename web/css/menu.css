@@ -61,6 +61,12 @@ header{
     grid-template-columns: repeat(2,1);
     gap: 1rem;
 }
+.hero-content-left{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 @media (max-width:768px){
     .menu{
      flex-direction: column;
