@@ -74,7 +74,12 @@ header{
         background-color: #f7f7f7;
         margin-top: .8rem;
         padding: 10px;
+        transform: translateY(0%);
+        transition: transform 0.5s ;
         z-index: 11;
+    }
+    .nav-links[data-visible="false"]{
+        transform: translateY(-1000%);
     }
     .humbergur{
         display: block;
@@ -87,7 +92,7 @@ header{
     }
     .humbergur i[data-visible="true"]{
         display: block;
-      }
+    }
     .humbergur i[data-visible="false"]{
         display: none;
       }
