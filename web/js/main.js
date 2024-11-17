@@ -9,6 +9,10 @@ humbergur.addEventListener('click', function(event){
         navLinks.setAttribute('data-visible','false');
          icons[0].setAttribute('data-visible','true');
          icons[1].setAttribute('data-visible','false')
+     }else{
+        navLinks.setAttribute('data-visible','true');
+         icons[0].setAttribute('data-visible','false');
+         icons[1].setAttribute('data-visible','true')
      }
     
  })
