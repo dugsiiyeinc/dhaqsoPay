@@ -194,8 +194,27 @@
 /* end mindful-design styley */
 
 /* start features section style */
-.features {
+#features{
+  width:100%;
   margin-top: 5rem;
+
+}
+ .container .section-title{
+  width:100%;
+  display:flex;
+  gap:10px;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:2rem;
+}
+.section-title h1{
+  text-transform:uppercase;
+  color:#37c1f0;
+}
+.section-title h3{
+   color:#222061;
+}
+.features {
   width: 100%;
   height: auto;
   display: flex;
