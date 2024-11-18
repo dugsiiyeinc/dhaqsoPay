@@ -1,7 +1,7 @@
 /* start hero section style */
 .hero-section {
   height: calc(100vh - 4rem);
-  background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.8)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.8)),
   url("https://cdn.corporatefinanceinstitute.com/assets/online-payment-companies.jpeg")center / cover no-repeat;
   color: #fff;
     
@@ -104,7 +104,7 @@
 .trusted-parteners{
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     gap: 2rem;
 }
 
@@ -116,14 +116,27 @@
 }
 
 .paretners-con{
+    width: 100%;
+    overflow: hidden; /* Hide overflow for smooth sliding */
+    position: relative;
+}
+.slider {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* gap: 1rem; */
-}
-.paretners-con img{
-    width: 120px;
-}
+    width: 100%;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+    gap: 2rem;
+  }
+  
+  .slider img {
+    width: 120px; /* Adjust the width of each image */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Add spacing between images */
+    flex-shrink: 0; /* Prevent images from shrinking */
+  }
+  
+  .partners-con:hover .slider {
+    animation-play-state: paused; /* Pause on hover */
+  }
 
 /* end trusted-parteners section style */
 

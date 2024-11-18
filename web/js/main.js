@@ -16,3 +16,5 @@ humbergur.addEventListener('click', function(event){
      }
     
  })
+
+ 
