@@ -249,7 +249,17 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
-  
+ }
+ .title-link .text{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+ }
+ .text h1{
+  color:#37c1f0;
+ }
+ .text h2{
+  color: #222061;
  }
 /*  end Why chooose us style */
 
