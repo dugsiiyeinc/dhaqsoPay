@@ -20,4 +20,6 @@ humbergur.addEventListener('click', function(event){
 
  //slider in parteners section
  const slider = document.querySelector('.slider');
+ let slideWidth = slider.children[0].offsetWidth + 20; // Width + margin
+let autoSlideInterval;
  
