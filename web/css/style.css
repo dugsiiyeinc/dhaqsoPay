@@ -150,6 +150,7 @@
 .mindeful-left{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
 }
 .mindeful-left h4{
@@ -159,6 +160,24 @@
 }
 .mindeful-left h2{
     font-size: 2.5rem;
+}
+
+.download-card{
+    display: flex;
+    align-items: center;
+    background-color: #222061;
+    padding: 8px 12px;
+    color: #fff;
+    gap: 10px;
+    border-radius: 8px;
+}
+.download-card img {
+    width: 50px;
+    border-radius: 50%;
+}
+.download-card .card-info{
+    display: flex;
+    flex-direction: column;
 }
 /* end mindful-design styley */
 
