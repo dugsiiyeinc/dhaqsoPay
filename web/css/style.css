@@ -342,6 +342,9 @@
 .cta .cta-image{
   width:50%;
   height:auto;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
 }
 .cta .cta-content{
   width:100%;
