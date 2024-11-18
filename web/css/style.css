@@ -101,6 +101,17 @@
 /* end hero section style */
 
 /* start trusted-parteners section style */
+.trusted-parteners{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.trusted-parteners h4{
+    font-size: 2rem;
+    text-align: center;
+}
 
 /* end trusted-parteners section style */
 
@@ -118,7 +129,7 @@
 .features .feature {
   width: 500px;
   height: 200px;
-  bakground-color: #fff;
+  background-color: #fff;
   box-shadow: 4px 4px 0px #37c1f0;
   display: flex;
   flex-direction: column;
