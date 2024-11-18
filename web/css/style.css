@@ -334,10 +334,19 @@
 /*  end Why chooose us style */
 
 /* start cta section style */
+#cta{
+  width:100%;
+  height:500px;
+  background-color:#37c1f0;
+  display:flex;
+}
 .container .cta{
   width:100%;
-  height:100vh;
+  height:auto;
   display:flex;
+  gap:4rem;
+  align-items:center;
+  justify-content:center;
 }
  .cta-image{
   width:50%;
@@ -347,8 +356,11 @@
   transition: background-image 1s ease-in-out;
 }
 .cta .cta-content{
-  width:100%;
+  width:50%;
   height:auto;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
 }
 /* end cta section style */
 @media (max-width: 768px) {
