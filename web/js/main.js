@@ -32,14 +32,20 @@ function startAutoSlide() {
 
 // Function to move to the next slide
 function slideNext() {
-    // Move the first image to the end
-    slider.style.transition = 'none'; // Disable transition for instant movement
-    slider.appendChild(slider.children[0]); // Move first image to the end
-    slider.style.transform = `translateX(0)`; // Reset position
-    slider.style.transition = 'transform 0.5s ease-in-out'; // Re-enable smooth sliding
-  
-    // Trigger slide animation to the next position
-    setTimeout(() => {
-      slider.style.transform = `translateX(${-slideWidth}px)`;
-    }, 0);
-  }
+  // Move the first image to the end
+  slider.style.transition = 'none'; // Disable transition for instant movement
+  slider.appendChild(slider.children[0]); // Move first image to the end
+  slider.style.transform = `translateX(0)`; // Reset position
+  slider.style.transition = 'transform 0.5s ease-in-out'; // Re-enable smooth sliding
+
+  // Trigger slide animation to the next position
+  setTimeout(() => {
+    slider.style.transform = `translateX(${-slideWidth}px)`;
+  }, 0);
+}
+
+// Function to handle when the user manually drags or swipes
+let isDragging = false,
+  startPos = 0,
+  currentTranslate = 0,
+  prevTranslate = 0;
