@@ -69,3 +69,11 @@ let isDragging = false,
   
     startAutoSlide();
   });
+
+ //add mousemove event to slider
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const currentPosition = e.pageX;
+    currentTranslate = prevTranslate + currentPosition - startPos;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+  });
