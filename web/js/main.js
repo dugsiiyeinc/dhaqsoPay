@@ -23,3 +23,9 @@ humbergur.addEventListener('click', function(event){
  let slideWidth = slider.children[0].offsetWidth + 20; // Width + margin
 let autoSlideInterval;
  
+// Start auto-slide
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      slideNext();
+    }, 3000);
+  }
