@@ -153,3 +153,64 @@ body{
     padding: 30px;
 }
 /* * Mobile device */
+@media only screen and (max-width:768px){
+    .container{
+        width: 90%;
+    }
+    .about-us h2 {
+        font-size: 2rem;
+    }
+    .about-raveli{
+        padding-inline: 10px;
+    }
+    .img-content{
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .boxs-content{
+        grid-template-columns: 1fr;
+    }
+    .images{
+        height: 400px;
+        order: 2;
+    }
+    .content {
+        order: 1;
+    }
+    .star{
+        width: 120px;
+        height: 120px;
+    }
+    .mobile-dev {
+        width: 120px;
+        height: 120px;
+        bottom: 100px;
+        right: -15px;
+    }
+}
+
+/* * Tablet device */
+
+@media only screen and (min-width: 769px) and  (max-width: 1024px) {
+    .img-content{
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .images{
+        height: 500px;
+        order: 2;
+    }
+    .content {
+        order: 1;
+    }
+    .star{
+        width: 200px;
+        height: 200px;
+    }
+    .mobile-dev {
+        width: 200px;
+        height: 200px;
+        bottom: 160px;
+        right: -10px;
+    }
+}
