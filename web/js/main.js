@@ -77,3 +77,17 @@ let isDragging = false,
     currentTranslate = prevTranslate + currentPosition - startPos;
     slider.style.transform = `translateX(${currentTranslate}px)`;
   });
+
+
+  // Function to move to the previous slide
+function slidePrevious() {
+    slider.style.transition = 'none'; // Disable transition for instant movement
+    slider.prepend(slider.children[slider.children.length - 1]); // Move last image to the front
+    slider.style.transform = `translateX(${-slideWidth}px)`; // Position the slider
+    slider.style.transition = 'transform 0.5s ease-in-out'; // Re-enable smooth sliding
+  
+    // Trigger slide animation to the original position
+    setTimeout(() => {
+      slider.style.transform = `translateX(0)`;
+    }, 0);
+  }
