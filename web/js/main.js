@@ -17,4 +17,7 @@ humbergur.addEventListener('click', function(event){
     
  })
 
+
+ //slider in parteners section
+ const slider = document.querySelector('.slider');
  
