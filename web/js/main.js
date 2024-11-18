@@ -91,3 +91,6 @@ function slidePrevious() {
       slider.style.transform = `translateX(0)`;
     }, 0);
   }
+
+  // Start the auto-slide
+startAutoSlide();
