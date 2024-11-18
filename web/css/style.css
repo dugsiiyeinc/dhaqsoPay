@@ -251,16 +251,30 @@
   align-items:center;
  }
  .title-link .text{
-  display:flex;
+   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:1rem;
  }
  .text h1{
   color:#37c1f0;
+  text-transform:uppercase;
  }
  .text h2{
   color: #222061;
  }
+ .title-link a{
+  color:#fff;
+  background-color:#222061;
+  padding:1rem 3rem;
+  border-radius:10px;
+  font-size:1.25rem;
+  transition:0.5s;
+ }
+ .title-link a:hover{
+  background-color:#37c1f0;
+
+ }
+
 /*  end Why chooose us style */
 
 @media (max-width: 768px) {
