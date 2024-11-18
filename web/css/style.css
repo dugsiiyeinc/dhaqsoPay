@@ -181,13 +181,13 @@
     display: flex;
     flex-direction: column;
 }
-.mindeful-qright{
+.mindeful-right{
     width: 50%;
     background-color: #222061;
     padding: 8px;
     border-radius:5px;
 }
-.mindeful-qright img{
+.mindeful-right img{
     width: 100%;
     height: 500px;
 }
@@ -258,5 +258,12 @@
   }
   .slider img{
     margin: 0;
+  }
+
+  .mindful-design{
+    flex-direction: column;
+  }
+  .mindeful-left ,.mindeful-right{
+    width: 100%;
   }
 }
