@@ -145,6 +145,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top:5rem;
+}
+.mindeful-left{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.mindeful-left h4{
+    color: #777;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.mindeful-left h2{
+    font-size: 2.5rem;
 }
 /* end mindful-design styley */
 
