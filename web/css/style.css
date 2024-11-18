@@ -124,13 +124,13 @@
     display: flex;
     width: 100%;
     transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
-    gap: 2rem;
+    gap: 1rem;
   }
   
   .slider img {
     width: 120px; /* Adjust the width of each image */
     height: auto; /* Maintain aspect ratio */
-    margin: 0 auto; /* Add spacing between images */
+    margin: 0 10px; /* Add spacing between images */
     flex-shrink: 0; /* Prevent images from shrinking */
   }
   
