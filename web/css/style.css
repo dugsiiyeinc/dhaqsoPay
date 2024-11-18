@@ -130,7 +130,7 @@
   .slider img {
     width: 120px; /* Adjust the width of each image */
     height: auto; /* Maintain aspect ratio */
-    margin: 0 10px; /* Add spacing between images */
+    margin: 0 20px; /* Add spacing between images */
     flex-shrink: 0; /* Prevent images from shrinking */
   }
   
@@ -202,5 +202,8 @@
   .hero-content-right img {
     width: 80%;
     height: 300px;
+  }
+  .slider img{
+    margin: 0;
   }
 }
