@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: 0;
-    text-decoration: none ;
+    text-decoration: none;
 }
 img {
     width: 100%;
@@ -12,7 +12,7 @@ body{
     font-family: "Space Grotesk", sans-serif;
 }
 .container {
-    width: min(90%, 1120px);
+    width: min(90%, 1110px);
     margin-inline: auto;
     
 }
@@ -58,9 +58,98 @@ body{
    border-radius: 20px;
     
 }
+/* *About Raveli style  */
+.about-raveli{
+    padding-block: 100px;
 
-@media only screen and (max-width:768px){
-    .about-us h2 {
-        font-size: 2rem;
-    }
 }
+.img-content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 7rem;
+}
+.images {
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: url('https://askproject.net/raveli/wp-content/uploads/sites/130/2023/02/happy-african-teenager-holding-cell-phone-using-mo-B6WZNZE-e1675420454910.jpg') center / cover no-repeat;
+    
+}
+.man-pic{
+    border-radius: inherit;
+    height: 100%;
+}
+.star{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 150px;
+    height: 150px;
+    /* font-size: 2rem; */
+}
+.mobile-dev {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 160px;
+    right: -50px;
+}
+
+.sub-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.sub-content h4{
+    color: #737373e2;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+.sub-content h2{
+    font-weight: bold;
+    font-size: 2rem;
+}
+.sub-content p {
+    color: #555;
+}
+.boxs-content {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.2rem;
+    margin-top: 40px;
+}
+.box{
+    background-color: #E7E8FE;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px #000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.box i {
+    color: #fff;
+    background-color: #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    align-content: center;
+    font-size: 1.1rem;
+}
+.black-box{
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #ffffff78;
+}
+.black-box i {
+    background-color: #fff;
+    color: #000;
+}
+.yellow-box{
+    background-color: #F1FF9D;
+    grid-column: 1/-1;
+    padding: 30px;
+}
+/* * Mobile device */
