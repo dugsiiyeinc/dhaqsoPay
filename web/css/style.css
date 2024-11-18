@@ -431,4 +431,23 @@
      .choices .choice{
       width:100%;
     }
+    /*  Cta responsive */
+    #cta{
+      width:100%;
+      height:auto;
+       
+    }
+    .container .cta{
+      width:100%;
+      height:auto;
+      flex-direction:column;
+      gap:2rem;
+    }
+     .cta-image{
+      width:100%;
+      height:500px;
+    }
+    .cta .cta-content{
+      width:100%;
+     }
 }
