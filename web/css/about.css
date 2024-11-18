@@ -7,7 +7,7 @@
 }
 
 .team {
-    background-color: rgba(247, 235, 235, 0.3);
+    background-color: rgba(255, 255, 227 ,0.6);
     margin: 20px 0;
     height: 110vh;
 }
@@ -94,37 +94,126 @@
 /* FOOTER */
 
 .footer {
-    background-color: black;
-    color: white;
+    background-color: rgb(10, 20, 51);
+    color: rgb(255, 255, 227);
     width: 100%;
     height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .footer .quad {
     display: grid;
-    grid-template-columns: repeat(4, 5fr);
+    grid-template-columns: repeat(4, 2fr);
     gap: 20px;
-    padding: 20px;
 }
 
-.footer .company .logo img {
-    width: 40%;
-    height: auto;
+.footer .quad .company {
+    margin-top: 30px;
+    margin-left: 60px;
 }
+
+.footer .quad .company .logo img {
+    width: 50%;
+    height: auto;
+    margin: 20px;
+    
+}
+
+.footer .quad .company p {
+    padding: 20px;
+    color: cadetblue;
+}
+
+.footer .quad .company .icons {
+    padding: 20px;
+
+}
+
+.footer .quad .company .icons i {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: rgb(55, 193, 240);
+    font-size: 1.5rem;
+}
+
+.footer .quad .company .icons i:hover {
+    color: #A6979C;
+}
+
+.footer .quad .contact {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.footer .quad .contact h4 {
+    margin: 10px;
+    font-size: 1.3rem;
+}
+
+.footer .quad .contact a {
+    color: cadetblue;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.footer .quad .explore {
+    margin-top: 30px;
+    display: flex;
+    
+}
+
+.footer .quad .explore h4 {
+    font-size: 1.3rem;
+}
+
+.footer .quad .support {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.footer .quad .support h4 {
+    font-size: 1.3rem;
+}
+
+.footer .quad .support span {
+    display: flex;
+    color: cadetblue;
+    cursor: pointer;
+}
+.footer .quad .support span:hover{
+    color: rgb(55, 193, 240);
+}
+
 
 .footer .download {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin: 20px;
+    height: 50%;
+    width: 100%;
+    margin-bottom: 0;
+}
+.footer .download h4, p{
+    padding: 10px;
+}
+.footer .download h4{
+    font-size: 1.5rem;
+}
+.footer .download p{
+    color: cadetblue;
 }
 
 .footer .download .app {
     display: flex;
     justify-content: center;
-    
     align-items: center;
 }
 
@@ -132,4 +221,37 @@
     width: 10%;
     margin: 10px;
     border-radius: 5px;
+    cursor: pointer;
+}
+.footer .download img:hover {
+    transition:  1s;
+}
+
+.footer .addition{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    margin: 20px;
+}
+
+.footer .addition span{
+    color: rgb(55, 193, 240);
+    cursor: pointer;
+}
+.footer .addition .rules{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-right: 10px;
+}
+.footer .addition .rules span{
+    color: rgb(255, 255, 227);
+    color: cadetblue;
+    cursor: pointer;
+}
+
+.footer .addition .rules span:hover {
+    color: rgb(55, 193, 240);
 }
