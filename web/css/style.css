@@ -237,6 +237,22 @@
 
 /* end features section style */
 
+/*  Start Why chooose us style */
+.container .why-choose-us{
+  width:100%;
+  height:auto;
+  display:flex;
+  margin-top:4rem;
+ }
+ .why-choose-us .title-link{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  
+ }
+/*  end Why chooose us style */
+
 @media (max-width: 768px) {
   .hero-content {
     width: 100%;
