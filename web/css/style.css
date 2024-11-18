@@ -1,3 +1,4 @@
+/* start hero section style */
 .hero-section {
   height: calc(100vh - 4rem);
   background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.8)),
@@ -22,6 +23,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   gap: 2rem;
 }
 .hero-content-left h4 {
@@ -96,7 +98,13 @@
   width: 300px;
   height: 100%;
 }
+/* end hero section style */
 
+/* start trusted-parteners section style */
+
+/* end trusted-parteners section style */
+
+/* start features section style */
 .features {
   margin-top: 5rem;
   width: 100%;
@@ -138,11 +146,9 @@
   color: #37c1f0;
 }
 
+/* end features section style */
+
 @media (max-width: 768px) {
-  .hero-section {
-    /* justify-content: flex-start;
-       align-items: flex-start; */
-  }
   .hero-content {
     width: 100%;
     flex-direction: column;
