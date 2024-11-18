@@ -140,6 +140,14 @@
 
 /* end trusted-parteners section style */
 
+/* start mindful-design styley */
+.mindful-design{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* end mindful-design styley */
+
 /* start features section style */
 .features {
   margin-top: 5rem;
