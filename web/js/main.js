@@ -49,3 +49,11 @@ let isDragging = false,
   startPos = 0,
   currentTranslate = 0,
   prevTranslate = 0;
+
+  //add event to slider
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startPos = e.pageX;
+    clearInterval(autoSlideInterval);
+  });
+  
