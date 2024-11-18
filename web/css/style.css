@@ -278,6 +278,7 @@
  .why-choose-us .choices{
   width:100%;
   display:flex;
+  gap:2rem;
  }
 .choices .choice{
   width:25%;
@@ -288,6 +289,17 @@
   border:1px solid #222061;
   padding:1rem;
   box-shadow: 0px 8px 24px  rgba(149, 157, 165, 0.2);
+}
+.choice .icon{
+  width:80px;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#222061;
+  color:#37c1f0;
+  border-radius:50%;
+  font-size:3rem;
 }
 /*  end Why chooose us style */
 
