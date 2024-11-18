@@ -242,6 +242,8 @@
   width:100%;
   height:auto;
   display:flex;
+  flex-direction:column;
+  gap:2rem;
   margin-top:4rem;
  }
  .why-choose-us .title-link{
@@ -272,7 +274,6 @@
  }
  .title-link a:hover{
   background-color:#37c1f0;
-
  }
 
 /*  end Why chooose us style */
