@@ -339,10 +339,10 @@
   height:100vh;
   display:flex;
 }
-.cta .cta-image{
+ .cta-image{
   width:50%;
-  height:auto;
-  background-size: cover;
+  height:500px;
+   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;
 }
