@@ -333,6 +333,21 @@
 }
 /*  end Why chooose us style */
 
+/* start cta section style */
+.container .cta{
+  width:100%;
+  height:100vh;
+  display:flex;
+}
+.cta .cta-image{
+  width:50%;
+  height:auto;
+}
+.cta .cta-content{
+  width:100%;
+  height:auto;
+}
+/* end cta section style */
 @media (max-width: 768px) {
   .hero-content {
     width: 100%;
