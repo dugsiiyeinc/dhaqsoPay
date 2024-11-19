@@ -384,6 +384,14 @@
   background-color:#222088;
 
  }
+ /*  Faq section style */
+ .container .faq-section-container{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-container:space-between;
+  align-items:center;
+ }
 
 /* end cta section style */
 @media (max-width: 768px) {
