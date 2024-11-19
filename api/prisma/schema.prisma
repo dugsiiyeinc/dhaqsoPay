@@ -8,12 +8,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId  
-  number    String   @unique                              
-  fullname  String                                 
-  balance   Float    @default(0.0)                         
-  pin       String                                           
-  status    Boolean  @default(false)                   
-  createdAt DateTime @default(now())                         
-  updatedAt DateTime @updatedAt                  
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId  // MongoDB ObjectId
+  number    String   @unique                                  // User's phone number
+  fullname  String                                           // Full name of the user
+  balance   Float    @default(0.0)                            // Balance with default 0.0
+  pin       String                                           // User's PIN
+  status    Boolean  @default(false)                          // Active or inactive status
+  createdAt DateTime @default(now())                         // Timestamp of record creation
+  updatedAt DateTime @updatedAt                              // Auto-updated timestamp
 }

@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "dhaqsoPay",
   "version": "0.0.0",
   "private": true,
   "main": "./src/app.js",
@@ -24,11 +24,12 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.13",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^6.2.13",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
-    "yonode": "^1.2.3",
     "nodemon": "^3.1.0",
-    "prisma": "^5.13.0"
+    "prisma": "^5.13.0",
+    "yonode": "^1.2.3"
   }
 }
