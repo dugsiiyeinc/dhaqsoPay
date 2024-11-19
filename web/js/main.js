@@ -132,3 +132,26 @@ const faqs = [
     answer: "It is open to students, developers, and teams who need a reliable environment for testing payment flows without relying on live APIs.",
   },
 ];
+
+const faqContainer = document.getElementById("faq-container");
+
+faqs.forEach((faq) => {
+  const faqItem = document.createElement("div");
+  faqItem.className = "faq-item";
+
+  const questionButton = document.createElement("button");
+  questionButton.className = "faq-question";
+  questionButton.innerHTML = `
+    ${faq.question}
+    <span class="toggle-icon">+</span>
+  `;
+  questionButton.onclick = () => toggleAnswer(questionButton);
+
+  const answerDiv = document.createElement("div");
+  answerDiv.className = "faq-answer";
+  answerDiv.textContent = faq.answer;
+
+  faqItem.appendChild(questionButton);
+  faqItem.appendChild(answerDiv);
+  faqContainer.appendChild(faqItem);
+});
