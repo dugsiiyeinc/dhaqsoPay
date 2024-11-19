@@ -135,6 +135,8 @@ const faqs = [
 
 const faqContainer = document.getElementById("faq-container");
 
+let currentVisibleAnswer = null;
+
 faqs.forEach((faq) => {
   const faqItem = document.createElement("div");
   faqItem.className = "faq-item";
@@ -155,3 +157,25 @@ faqs.forEach((faq) => {
   faqItem.appendChild(answerDiv);
   faqContainer.appendChild(faqItem);
 });
+function toggleAnswer(button) {
+  const answer = button.nextElementSibling;
+  const icon = button.querySelector(".toggle-icon");
+
+   if (currentVisibleAnswer && currentVisibleAnswer !== answer) {
+    currentVisibleAnswer.style.display = "none";
+    const currentIcon = currentVisibleAnswer.previousElementSibling.querySelector(".toggle-icon");
+    currentIcon.textContent = "+";
+  }
+
+  if (answer.style.display === "block") {
+    answer.style.display = "none";
+    icon.textContent = "+";
+    currentVisibleAnswer = null;
+  } else {
+    answer.style.display = "block";
+    icon.textContent = "−";
+    currentVisibleAnswer = answer;
+  }
+
+  button.classList.toggle("active");
+}
