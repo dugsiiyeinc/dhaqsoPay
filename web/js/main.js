@@ -112,3 +112,23 @@ function changeBackgroundImage() {
  setInterval(changeBackgroundImage, 5000);
 
  changeBackgroundImage();
+
+//  faqs
+const faqs = [
+  {
+    question: "What is the purpose of dhaqsoPay?",
+    answer: "dhaqsoPay provides a simple and reliable payment testing solution for students and developers to test systems safely before integrating with real payment APIs.",
+  },
+  {
+    question: "What features does dhaqsoPay offer?",
+    answer: "It offers mock payment APIs, a browser extension for direct testing, a sandbox environment for secure payment flow testing, and detailed logs for insights.",
+  },
+  {
+    question: "Is dhaqsoPay suitable for team projects?",
+    answer: "Yes, dhaqsoPay is designed to support both individual developers and teams, offering tools like mock APIs and a sandbox environment for collaborative testing.",
+  },
+  {
+    question: "Who can use dhaqsoPay?",
+    answer: "It is open to students, developers, and teams who need a reliable environment for testing payment flows without relying on live APIs.",
+  },
+];
