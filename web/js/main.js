@@ -112,3 +112,75 @@ function changeBackgroundImage() {
  setInterval(changeBackgroundImage, 5000);
 
  changeBackgroundImage();
+
+//  faqs
+const faqs = [
+  {
+    question: "What is the purpose of dhaqsoPay?",
+    answer: "dhaqsoPay provides a simple and reliable payment testing solution for students and developers to test systems safely before integrating with real payment APIs.",
+  },
+  {
+    question: "What features does dhaqsoPay offer?",
+    answer: "It offers mock payment APIs, a browser extension for direct testing, a sandbox environment for secure payment flow testing, and detailed logs for insights.",
+  },
+  {
+    question: "Is dhaqsoPay suitable for team projects?",
+    answer: "Yes, dhaqsoPay is designed to support both individual developers and teams, offering tools like mock APIs and a sandbox environment for collaborative testing.",
+  },
+  {
+    question: "Who can use dhaqsoPay?",
+    answer: "It is open to students, developers, and teams who need a reliable environment for testing payment flows without relying on live APIs.",
+  },
+];
+
+const faqContainer = document.getElementById("faq-container");
+const faqItemsWrapper = document.createElement("div");
+faqItemsWrapper.className = "faq-items";
+
+let currentVisibleAnswer = null;
+
+faqs.forEach((faq) => {
+  const faqItem = document.createElement("div");
+  faqItem.className = "faq-item";
+
+  const questionButton = document.createElement("button");
+  questionButton.className = "faq-question";
+  questionButton.innerHTML = `
+    ${faq.question}
+    <span class="toggle-icon">+</span>
+  `;
+  questionButton.onclick = () => toggleAnswer(questionButton);
+
+  const answerDiv = document.createElement("div");
+  answerDiv.className = "faq-answer";
+  answerDiv.textContent = faq.answer;
+
+  faqItem.appendChild(questionButton);
+  faqItem.appendChild(answerDiv);
+  faqItemsWrapper.appendChild(faqItem);
+});
+
+faqContainer.appendChild(faqItemsWrapper);
+
+function toggleAnswer(button) {
+  const answer = button.nextElementSibling;
+  const icon = button.querySelector(".toggle-icon");
+
+   if (currentVisibleAnswer && currentVisibleAnswer !== answer) {
+    currentVisibleAnswer.style.display = "none";
+    const currentIcon = currentVisibleAnswer.previousElementSibling.querySelector(".toggle-icon");
+    currentIcon.textContent = "+";
+  }
+
+  if (answer.style.display === "block") {
+    answer.style.display = "none";
+    icon.textContent = "+";
+    currentVisibleAnswer = null;
+  } else {
+    answer.style.display = "block";
+    icon.textContent = "−";
+    currentVisibleAnswer = answer;
+  }
+
+  button.classList.toggle("active");
+}
