@@ -389,10 +389,19 @@
   width:100%;
   height:100vh;
   display:flex;
-  justify-container:space-between;
-  align-items:center;
+   align-items:center;
+   gap:4rem;
+  margin-block:40px;
  }
-
+.image-container{
+  width:50%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#222061;
+  border-radius:20px;
+}
 /* end cta section style */
 @media (max-width: 768px) {
   .hero-content {
