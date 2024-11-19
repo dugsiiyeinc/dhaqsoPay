@@ -134,6 +134,8 @@ const faqs = [
 ];
 
 const faqContainer = document.getElementById("faq-container");
+const faqItemsWrapper = document.createElement("div");
+faqItemsWrapper.className = "faq-items";
 
 let currentVisibleAnswer = null;
 
@@ -155,8 +157,11 @@ faqs.forEach((faq) => {
 
   faqItem.appendChild(questionButton);
   faqItem.appendChild(answerDiv);
-  faqContainer.appendChild(faqItem);
+  faqItemsWrapper.appendChild(faqItem);
 });
+
+faqContainer.appendChild(faqItemsWrapper);
+
 function toggleAnswer(button) {
   const answer = button.nextElementSibling;
   const icon = button.querySelector(".toggle-icon");
