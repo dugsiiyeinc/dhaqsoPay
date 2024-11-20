@@ -3,7 +3,7 @@ const humbergur = document.querySelector(".humbergur")
 const icons = document.querySelectorAll("i")
 
 
-humbergur.addEventListener('click', function(event){
+humbergur && humbergur.addEventListener('click', function(event){
     const  isvible = navLinks.getAttribute('data-visible');
      if(isvible === "true"){
         navLinks.setAttribute('data-visible','false');
@@ -184,3 +184,5 @@ function toggleAnswer(button) {
 
   button.classList.toggle("active");
 }
+
+

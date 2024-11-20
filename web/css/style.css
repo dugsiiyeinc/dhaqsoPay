@@ -485,6 +485,9 @@ color:#37c1f0;
     width: 80%;
     height: 300px;
   }
+  .trusted-parteners h4{
+    font-size: 1.5rem;
+  }
   .slider img{
     margin: 0;
   }
