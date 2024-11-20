@@ -3,20 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
     <title>About</title>
   </head>
 
   <body>
+    <header>
+        <div class="container menu">
+          <div class="humbergur">
+            <i class="fa fa-bars" data-visible="true" ></i>
+            <i class="fa fa-close" data-visible="false" ></i>
+        </div>
+            <div class="logo">
+                <a href="/web/index.html"><img src="../assets/logo.png" alt="logo-img"></a>
+            </div>
+            <nav class="nav-links" data-visible="false">
+                <li><a href="/web/pages/about.html">About</a></li>
+                <li><a href="#">API</a></li>
+            </nav>
+        </div>
+    </header>
     <!-- * About  -->
     <div class="container about-us">
       <h2>About Us</h2>
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="/web/index.html">Home</a></li>
         <li class="dotted"></li>
         <li>About</li>
       </ul>

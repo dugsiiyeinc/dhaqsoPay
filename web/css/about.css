@@ -431,6 +431,33 @@ p {
 }
 
 
+
+
+/* * Tablet device */
+
+@media only screen and (min-width: 769px) and  (max-width: 1024px) {
+    .img-content{
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .images{
+        height: 500px;
+        order: 2;
+    }
+    .content {
+        order: 1;
+    }
+    .star{
+        width: 200px;
+        height: 200px;
+    }
+    .mobile-dev {
+        width: 200px;
+        height: 200px;
+        bottom: 160px;
+        right: -10px;
+    }
+}
 @media (max-width:769px) {
     .about-us h2 {
         font-size: 2rem;
@@ -458,7 +485,7 @@ p {
     }
     .mobile-dev {
         width: 120px;
-        height: 120px;
+        height: 200px;
         bottom: 100px;
         right: -15px;
     }
@@ -511,7 +538,7 @@ p {
 
     .footer .quad {
         display: flex;
-        /* flex-wrap: wrap; */
+        flex-wrap: wrap;
     }
 
     .footer .quad .compress {
@@ -555,33 +582,6 @@ p {
         width: 30%;
     }
 }
-
-/* * Tablet device */
-
-@media only screen and (min-width: 769px) and  (max-width: 1024px) {
-    .img-content{
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-    .images{
-        height: 500px;
-        order: 2;
-    }
-    .content {
-        order: 1;
-    }
-    .star{
-        width: 200px;
-        height: 200px;
-    }
-    .mobile-dev {
-        width: 200px;
-        height: 200px;
-        bottom: 160px;
-        right: -10px;
-    }
-}
-
 @media (max-width:426px) {
     .team {
         width: 100%;
