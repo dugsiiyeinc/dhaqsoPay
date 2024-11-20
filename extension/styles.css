@@ -9,64 +9,29 @@ body {
     font-family: Arial, sans-serif;
     color: #333;
     background-color: #f9f9f9;
-    width: 300px;
-    padding: 10px;
+     
 }
 
 /* Container for the popup content */
-.popup-container {
-    text-align: center;
+.Changepin-container {
+     
+    width: 316px;
+    height: 523px;
+    margin: 5px;
+    background-color: #212830;
+    border: 0.6px solid rgba(221, 226, 229, 0.5)
 }
 
-/* Header style */
-h1 {
-    font-size: 1.5em;
-    color: #0074D9; /* Customize to match the dhaqsoPay brand color */
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-/* Primary button style */
-.primary-button {
-    background-color: #0074D9;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.primary-button:hover {
-    background-color: #005bb5;
-}
-
-/* Response box for displaying results */
-.response {
+ 
+.logoimage{
+    width: 128px;
+    height: 128px;
+    align-items: center;
+    margin: auto;
     margin-top: 20px;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.85em;
-    color: #333;
-    text-align: left;
-    max-height: 100px;
-    overflow-y: auto;
 }
 
-/* Customize scrollbar for the response box */
-.response::-webkit-scrollbar {
-    width: 8px;
+.logoimage img{
+    width: 100%;
+    height: 100%;
 }
-
-.response::-webkit-scrollbar-thumb {
-    background-color: #0074D9;
-    border-radius: 5px;
-}
-
