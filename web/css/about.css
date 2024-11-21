@@ -70,7 +70,7 @@
     position: relative;
     border: 1px solid #000;
     border-radius: 10px;
-    background: url('https://askproject.net/raveli/wp-content/uploads/sites/130/2023/02/happy-african-teenager-holding-cell-phone-using-mo-B6WZNZE-e1675420454910.jpg') center / cover no-repeat;
+    background: url('/web/assets/man.jpg') center / cover no-repeat;
     
 }
 .man-pic{
@@ -459,8 +459,8 @@ p {
     }
     .mobile-dev {
         width: 200px;
-        height: 200px;
-        bottom: 160px;
+        height: 350px;
+        bottom: -25px;
         right: -10px;
     }
 }
@@ -491,8 +491,8 @@ p {
     }
     .mobile-dev {
         width: 120px;
-        height: 200px;
-        bottom: 100px;
+        height: 250px;
+        bottom: -15px;
         right: -15px;
     }
     .counters-div{
