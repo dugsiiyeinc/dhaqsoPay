@@ -1,5 +1,5 @@
 body{
-  background-color: rgba(255, 255, 227, 0.6);
+  background-color: #f0f0f0;
 }
 /* start hero section style */
 .hero-section {
@@ -289,7 +289,7 @@ body{
  .title-link a{
   color:#fff;
   background-color:#222061;
-  padding:1rem 3rem;
+  padding:10px 20px;
   border-radius:10px;
   font-size:1.25rem;
   transition:0.5s;
