@@ -36,7 +36,9 @@
 
     <script>
         const inputs = document.querySelectorAll('.pin-input input');
-        
+        const checkButton = document.querySelector("#check-button");
+        const errorMessage = document.querySelector(".error-message")
+
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 // Allow only numeric input
@@ -57,6 +59,24 @@
                     }
                 }
             });
+        });
+
+        checkButton.addEventListener("click", ()=>{
+            let isEmpty = false;
+            inputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    isEmpty = true;
+                }
+            });
+            
+            if (isEmpty) {
+                errorMessage.textContent = "Fill All the inputs"
+                errorMessage.style.display = "block"; 
+            } else {
+                errorMessage.style.display = "none";
+                
+                console.log("All inputs are filled!");
+            }
         });
 
     </script>
