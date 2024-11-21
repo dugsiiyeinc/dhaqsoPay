@@ -3,7 +3,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    
+    background-color: black;
 }
 
 .popup-overlay {
@@ -90,4 +90,9 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+.error-message {
+    color: #FF5151;
+    margin-left: 50px;
+    display: none;
 }

@@ -24,7 +24,7 @@
                     <input type="text" maxlength="1" />
                     <input type="text" maxlength="1" />
                 </div>
-                <!-- <span class="error-message">PIN galisay ma ahan mid jira</span> -->
+                <span class="error-message">PIN galisay ma ahan mid jira</span>
             </div>
     
             <!-- Footer -->
@@ -36,16 +36,21 @@
 
     <script>
         const inputs = document.querySelectorAll('.pin-input input');
-    
+        
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
-                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                // Allow only numeric input
+                const value = e.target.value.replace(/[^0-9]/g, ''); 
+                e.target.value = value;
+
+                // Automatically move to the next input if valid number is entered
+                if (value.length === 1 && index < inputs.length - 1) {
                     inputs[index + 1].focus();
                 }
             });
-    
-            
+
             input.addEventListener('keydown', (e) => {
+                // Handle Backspace behavior
                 if (e.key === 'Backspace' && input.value === '') {
                     if (index > 0) {
                         inputs[index - 1].focus();
@@ -53,6 +58,7 @@
                 }
             });
         });
+
     </script>
     
 </body>
