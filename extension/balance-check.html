@@ -33,12 +33,27 @@
             </div>
         </div>
     </div>
+    <div class="popup-overlay-balance" >
+        <div class="popup-balance">
+    
+            <!-- Body -->
+            <div class="popup-body">
+                <p>$500</p>
+            </div>
+    
+            <!-- Footer -->
+            <div class="popup-footer">
+                <button id="ok-button">Ok</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         const inputs = document.querySelectorAll('.pin-input input');
         const checkButton = document.querySelector("#check-button");
         const errorMessage = document.querySelector(".error-message")
-
+        const popupCheck = document.querySelector(".popup-overlay")
+        const popupBalance = document.querySelector(".popup-overlay-balance")
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 // Allow only numeric input
@@ -74,8 +89,8 @@
                 errorMessage.style.display = "block"; 
             } else {
                 errorMessage.style.display = "none";
-                
-                console.log("All inputs are filled!");
+                popupCheck.style.display ="none";
+                popupBalance.style.display ="flex"
             }
         });
 

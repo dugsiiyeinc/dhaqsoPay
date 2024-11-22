@@ -6,7 +6,7 @@ body {
     background-color: black;
 }
 
-.popup-overlay {
+.popup-overlay{
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -80,7 +80,7 @@ body {
     text-align: center;
 }
 
-#check-button {
+#check-button, #ok-button{
     width: calc(100% - 50px);
     padding: 10px;
     font-size: 24px;
@@ -95,4 +95,28 @@ body {
     color: #FF5151;
     margin-left: 50px;
     display: none;
+}
+
+.popup-overlay-balance {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(33, 40, 48, 0.7);
+        display: none;
+
+}
+.popup-balance {
+    width: 375px;
+    height: 260px;
+    background: #2A313C;
+    border-radius: 10px;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+}
+.popup-balance .popup-body {
+    margin-top: 80px;
 }
