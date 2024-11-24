@@ -8,6 +8,33 @@
 </head>
 <body>
     <div class="container">
+        <div class="auth">
+            <div class="logo">
+                <img src="./assets/fullLogo.png" class="fullLogo" alt="dhaqsoPay-logo">
+            </div>
+            <div class="greetings">
+                <p id="formGreting">Welcome back!</p>
+                <span id="formtitle">Login into your account</span>
+            </div>
+            <form id="authForm" class="AuthFormStyle signInForm">
+                <!-- phone Number -->
+                 <div class="FormInput">
+                    <img src="./icons/Call.svg" alt="phone-Icon">
+                    <span id="NumberPrefix">+252</span>
+                     <input type="text" id="UserPhoneNumber" class="InputNum" placeholder="Enter your number">
+                 </div>
+                 <!-- PIN -->
+                <div class="FormInput">
+                    <img src="./icons/Lock.svg" alt="phone-Icon">
+                    <input type="password" id="UserPhoneNumber" placeholder="Enter your PIN">
+                    <img src="./icons/Hide.svg" class="hide-showPIN" alt="hide-show">
+                </div>
+      
+                <button type="submit" id="authButton">Sign In</button>
+                <!-- authSwitch form -->
+                <p id="authSwitch">Don’t have an account? <a href="#" id="switchForm">Sign Up</a></p>
+            </form>
+        </div>
     </div>
 </body>
 </html>

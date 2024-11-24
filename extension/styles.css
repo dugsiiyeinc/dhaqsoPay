@@ -41,11 +41,11 @@ body{
 
 .getstartedBTN{
     border: 0.6px solid rgba(217, 217, 217, 0.3);
-    border-radius: 16px;
+    border-radius: 15px;
     padding: 1rem 0rem;
     background-color: #2A313C;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     color: #F5F5F5;
     margin-top: 2rem;
@@ -55,3 +55,102 @@ body{
     background-color: #212830;
     transition: background-color 0.3s ease-in-out;
 }
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;   
+}
+
+.greetings{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.6rem;
+    color: #F5F5F5;
+}
+.greetings p{
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+.greetings span{
+    color: #D9D9D9;
+    font-size: 0.875rem;
+}
+
+.AuthFormStyle{
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    text-align: center;
+}
+
+.AuthFormStyle.signInForm{
+    gap: 1.5rem;
+}
+
+.AuthFormStyle .FormInput{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #2A313C;
+    border: 0.6px solid rgba(217, 217, 217, 0.3);
+    border-radius: 15px;
+    padding-inline: 1rem;
+}
+
+.FormInput input{
+    flex: 1;
+    padding-block: 1rem;
+    background-color: transparent !important;
+    outline: none;
+    border: none !important;
+    color: #F5F5F5;
+    font-size: 0.9rem;
+}
+.FormInput input::placeholder{
+    color: #ABAFB1;
+    font-family: "Roboto", sans-serif;
+}
+.InputNum{
+    margin-left: -4px;
+}
+#NumberPrefix{
+    color: #ABAFB1;
+    font-size: 0.9rem;
+}
+.hide-showPIN{
+    cursor: pointer;
+}
+
+#authButton{
+    border: 0.6px solid rgba(217, 217, 217, 0.3);
+    border-radius: 15px;
+    padding-block: 1rem;
+    background-color: #2A313C;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    color: #F5F5F5;
+}
+#authButton:hover{
+    background-color: #212830;
+    transition: background-color 0.3s ease-in-out;
+}
+#authSwitch{
+    color: #8B8D97;
+    font-size: 0.9rem;
+    margin-top: 1.3rem;
+}
+
+#switchForm{
+    color: #5570F1;
+}
+#switchForm:hover{
+    color: #3f5df3;
+    transition: color, 0.3s ease-in-out;
+    text-decoration: underline;
+}   
+
+
