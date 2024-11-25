@@ -72,3 +72,19 @@ body {
   border-color: #4c96d7;
   box-shadow: 0 0 5px rgba(76, 150, 215, 0.5);
 }
+/* Button Styling */
+button {
+  width: 324px;
+  height: 62px;
+  border-radius: 1.2rem;
+  border: 1px solid #dde2e54d;
+  background-color: #2a313c;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #dde2e54d;
+}
