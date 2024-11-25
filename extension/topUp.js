@@ -48,3 +48,8 @@ function handleCheckButtonClick() {
     hideSuccessPopup(); // Hide success popup if there's an error
   }
 }
+
+// Function to validate the entered amount
+function isValidAmount(amount) {
+  return !isNaN(amount) && amount >= 5; // Amount should be a number and at least $5
+}
