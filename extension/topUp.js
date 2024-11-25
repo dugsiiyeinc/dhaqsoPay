@@ -28,5 +28,10 @@ const successPopup = document.querySelector("#success-popup");
 const successMessage = document.querySelector("#success-msg");
 const closePopupButton = document.querySelector("#close-popup");
 
+// Event listener for the Check button
+checkButton.addEventListener("click", handleCheckButtonClick);
+
+// Event listener for closing the success popup
+closePopupButton.addEventListener("click", closeSuccessPopup);
 
 
