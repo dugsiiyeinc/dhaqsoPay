@@ -88,3 +88,11 @@ button {
 button:hover {
   background-color: #dde2e54d;
 }
+
+/* Error Message */
+.error-message {
+  display: none;
+  color: #ff5252;
+  font-size: 1.2rem;
+  text-align: center;
+}
