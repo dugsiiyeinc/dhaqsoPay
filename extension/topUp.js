@@ -35,3 +35,16 @@ checkButton.addEventListener("click", handleCheckButtonClick);
 closePopupButton.addEventListener("click", closeSuccessPopup);
 
 
+// Function to handle Check button click
+function handleCheckButtonClick() {
+  const amount = parseFloat(amountInput.value); // Get the input value as a number
+
+  // Validate input: amount must be at least $5
+  if (isValidAmount(amount)) {
+    hideErrorMessage();  // Hide error message if the input is valid
+    displaySuccessPopup(amount); // Show success popup
+  } else {
+    displayErrorMessage(); // Show error message
+    hideSuccessPopup(); // Hide success popup if there's an error
+  }
+}
