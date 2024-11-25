@@ -19,3 +19,14 @@ app.innerHTML = `
     </div>
   </div>
 `;
+
+// Get references to the important DOM elements
+const checkButton = document.querySelector("#check-btn");
+const amountInput = document.querySelector("#amount");
+const errorMessage = document.querySelector("#error-msg");
+const successPopup = document.querySelector("#success-popup");
+const successMessage = document.querySelector("#success-msg");
+const closePopupButton = document.querySelector("#close-popup");
+
+
+
