@@ -13,7 +13,7 @@ body{
 
 .container{
     width: 361px;
-    height: 523px;
+    height: 533px;
     padding: 30px;
 }
 
@@ -24,7 +24,7 @@ body{
     gap: 2rem;
 }
 
-.logo{
+/* .logo{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@ body{
 }
 .logo .fullLogo{
     width: 90%;
-}
+} */
 
 .getstartedBTN{
     border: 0.6px solid rgba(217, 217, 217, 0.3);
@@ -59,9 +59,10 @@ body{
 .auth{
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;   
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 2rem;   
 }
-
 .greetings{
     display: flex;
     flex-direction: column;
@@ -89,7 +90,8 @@ body{
     gap: 1.5rem;
 }
 
-.AuthFormStyle .FormInput{
+.AuthFormStyle .FormInput, #username,
+#selectProvider{
     width: 100%;
     display: flex;
     align-items: center;
@@ -100,7 +102,7 @@ body{
     padding-inline: 1rem;
 }
 
-.FormInput input{
+.FormInput input, select{
     flex: 1;
     padding-block: 1rem;
     background-color: transparent !important;
@@ -153,4 +155,18 @@ body{
     text-decoration: underline;
 }   
 
+/* select your provider section */
+select option{
+    background-color: #2A313C;
+}
 
+#providerPrefix{
+    color: #ABAFB1;
+    font-size: 0.9rem;
+    margin-left: -8px;
+}
+
+#username,
+#selectProvider, #providerPrefix{
+    display: none;
+}

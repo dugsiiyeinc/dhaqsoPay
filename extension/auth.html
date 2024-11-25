@@ -9,25 +9,43 @@
 <body>
     <div class="container">
         <div class="auth">
-            <div class="logo">
+            <!-- <div class="logo singLogo">
                 <img src="./assets/fullLogo.png" class="fullLogo" alt="dhaqsoPay-logo">
-            </div>
+            </div> -->
             <div class="greetings">
                 <p id="formGreting">Welcome back!</p>
                 <span id="formtitle">Login into your account</span>
             </div>
-            <form id="authForm" class="AuthFormStyle signInForm">
+            <form id="authForm" class="AuthFormStyle">
+                <!-- fullNAME -->
+                <div id="username">
+                    <img src="./icons/Profile.svg" alt="phone-Icon">
+                    <input type="text" id="username"placeholder="Enter your full name">
+                </div>
+                <!-- providers -->
+                <div id="selectProvider">
+                    <img src="./icons/providers.svg" alt="providers">
+                    <select name="selectProvider" id="selectProvider">
+                        <option value="" selected>Select your provider</option>
+                        <option value="hormuud">Hormuud</option>
+                        <option value="somtel">Somtel</option>
+                        <option value="telesom">Telesom</option>
+                        <option value="golis">Golis</option>
+                        <option value="somnet">Somnet</option>
+                    </select>
+                </div>
                 <!-- phone Number -->
                  <div class="FormInput">
                     <img src="./icons/Call.svg" alt="phone-Icon">
                     <span id="NumberPrefix">+252</span>
+                    <span id="providerPrefix">61</span>
                      <input type="text" id="UserPhoneNumber" class="InputNum" placeholder="Enter your number">
                  </div>
                  <!-- PIN -->
                 <div class="FormInput">
                     <img src="./icons/Lock.svg" alt="phone-Icon">
                     <input type="password" id="UserPhoneNumber" placeholder="Enter your PIN">
-                    <img src="./icons/Hide.svg" class="hide-showPIN" alt="hide-show">
+                    <img src="./icons/Hide.svg" class="hide-showPIN" id="PIN" alt="hide-show">
                 </div>
       
                 <button type="submit" id="authButton">Sign In</button>
@@ -36,5 +54,7 @@
             </form>
         </div>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>

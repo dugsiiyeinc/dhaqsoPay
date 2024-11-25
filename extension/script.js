@@ -1,50 +1,42 @@
-// Function to save data locally using chrome.storage
-function saveData(key, value) {
-    chrome.storage.local.set({ [key]: value }, () => {
-        console.log(`Data saved locally: ${key} = ${value}`);
-    });
-}
+const username = document.querySelector('#username');
+const selectProvider = document.querySelector("#selectProvider");
+const providerPrefix = document.querySelector('providerPrefix');
+const UserphoneNumber = document.querySelector("#UserPhoneNumber");
+const PIN = document.querySelector("#PIN");
+const authSwitch = document.querySelector("#authSwitch");
+const switchForm = document.querySelector('#switchForm');
+const formGreting = document.querySelector('#formGreting');
+const formtitle = document.querySelector('#formtitle');
+const authForm = document.querySelector("#authForm");
+const auth = document.querySelector("#auth");
 
-// Function to retrieve data from local storage
-function getData(key, callback) {
-    chrome.storage.local.get([key], (result) => {
-        console.log(`Data retrieved locally: ${key} = ${result[key]}`);
-        callback(result[key]);
-    });
-}
+let isSignIn = true;
 
-// Function to fetch GitHub user data
-async function fetchGitHubUser(username) {
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        if (!response.ok) {
-            throw new Error('User not found');
-        }
-        const data = await response.json();
-        // Display the fetched username
-        document.getElementById('response').innerText = `Username: ${data.login}`;
-        // Save the last searched username
-        saveData('lastFetchedUser', data.login);
-    } catch (error) {
-        document.getElementById('response').innerText = 'Error: ' + error.message;
+document.body.addEventListener("click", (e) => {
+    if (e.target.id !== "switchForm") return ;
+    switchAuthForm()
+})
+
+function switchAuthForm() {
+    isSignIn = !isSignIn;
+    if (!isSignIn){
+        formGreting.textContent = "Get Started with dhaqsoPay";
+        formtitle.textContent = "Create your free account";
+        username.style.display = "flex";
+        selectProvider.display = "flex";
+        providerPrefix.style.display = "flex";
+        UserphoneNumber.value = "";
+        PIN.value = "";
+        authSwitch.textContent = `Already have an account? <a href="#" id="switchForm">Sign in</a>`;
+    }else{
+        formGreting.textContent = "Welcome back!";
+        formtitle.textContent = "Login to your account";
+        username.style.display = "none";
+        selectProvider.display = "none";
+        providerPrefix.style.display = "none";
+        UserphoneNumber.value = "";
+        PIN.value = "";
+        authSwitch.textContent = `Don’t have an account? <a href="#" id="switchForm">Sign Up</a>`;
+        auth.style.marginTop = "4rem";
     }
 }
-
-// Event listener for the "Search" button
-document.getElementById('search-user').addEventListener('click', () => {
-    const username = document.getElementById('username').value.trim();
-    if (username) {
-        fetchGitHubUser(username);
-    } else {
-        document.getElementById('response').innerText = 'Please enter a username';
-    }
-});
-
-// Retrieve and display the last saved user data on popup load
-window.onload = () => {
-    getData('lastFetchedUser', (lastFetchedUser) => {
-        if (lastFetchedUser) {
-            document.getElementById('response').innerText = `Last searched user: ${lastFetchedUser}`;
-        }
-    });
-};
