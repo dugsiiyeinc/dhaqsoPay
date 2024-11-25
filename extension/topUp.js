@@ -53,3 +53,15 @@ function handleCheckButtonClick() {
 function isValidAmount(amount) {
   return !isNaN(amount) && amount >= 5; // Amount should be a number and at least $5
 }
+
+
+// Function to show the success popup with the provided amount
+function displaySuccessPopup(amount) {
+  successMessage.textContent = `Waxaad ku guuleysatay inaad $${amount.toFixed(2)} ugu shubto akoonkaaga 6xxxxxxxx. Mahadsanid!`;
+  successPopup.style.display = "block";
+  successPopup.classList.add("show");
+}
+
+
+
+
