@@ -19,3 +19,15 @@ body {
   height: 100vh;
   line-height: 28.13px;
 }
+
+/* Container */
+.container {
+  width: 375px;
+  height: 394px;
+  padding: 20px;
+  background-color: #2a313c;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #dde2e54d;
+}
