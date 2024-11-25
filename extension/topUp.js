@@ -63,5 +63,30 @@ function displaySuccessPopup(amount) {
 }
 
 
+// Function to hide the success popup
+function hideSuccessPopup() {
+  successPopup.style.display = "none";
+  successPopup.classList.remove("show");
+}
+
+// Function to show the error message
+function displayErrorMessage() {
+  errorMessage.style.display = "block";
+}
+
+// Function to hide the error message
+function hideErrorMessage() {
+  errorMessage.style.display = "none";
+}
+
+// Function to close the success popup
+function closeSuccessPopup() {
+  hideSuccessPopup();
+}
+
+
+
+
+
 
 
