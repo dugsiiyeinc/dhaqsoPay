@@ -45,3 +45,30 @@ body {
   background-color: #dde2e54d;
   margin: 0 -20px 4rem -20px; 
 }
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group input {
+  width: 325px;
+  height: 62px;
+  padding: 10px;
+  border: 1px solid #dde2e54d;
+  border-radius: 1.2rem;
+  background-color: #2a313c;
+  color: #fff;
+  font-size: 1rem;
+}
+
+#amount::placeholder {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4c96d7;
+  box-shadow: 0 0 5px rgba(76, 150, 215, 0.5);
+}
