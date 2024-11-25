@@ -31,3 +31,17 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border: 1px solid #dde2e54d;
 }
+
+.container h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  margin-bottom: 0.8rem;
+}
+
+.divider {
+  width: calc(100% + 40px); 
+  height: 1px;
+  background-color: #dde2e54d;
+  margin: 0 -20px 4rem -20px; 
+}
