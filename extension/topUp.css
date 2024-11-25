@@ -96,3 +96,83 @@ button:hover {
   font-size: 1.2rem;
   text-align: center;
 }
+
+/* Success Popup */
+.success-popup {
+  width: 325px;
+  height: 330px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 12px;
+  background-color: #2a313c;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.success-popup .icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(221, 226, 229, 0.8); 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; 
+  color: #373535; 
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+.success-popup h2 {
+  font-size: 1.7rem;
+  margin-top: 3rem;
+}
+
+.success-popup p {
+  width: 302px;
+  height: 116px;
+  font-size: 1.2rem;
+  color: #cfd8e3;
+  font-weight: 400;
+  margin-top: 0.8rem;
+}
+
+.success-popup button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 1.2rem;
+  border: 1px solid #dde2e54d;
+  background-color: #2a313c;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.success-popup button:hover {
+  background-color: #dde2e54d;
+}
+
+/* Animation */
+.success-popup.show {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
