@@ -12,12 +12,12 @@
             <div class="popup-body">
                 <p>Ma hubtaa inaad $100 koorso kaga iibsanayso dugsiiye.com? Fadlan gali PIN-kaaga si aad u dhamaystirto.</p>
                 <div class="pin-input">
-                    <input type="text"  />
+                    <input type="text"  id="check_pin" maxlength="4"/>
                 </div>
                 <span class="error-message">PIN galisay ma ahan mid jira</span>
             </div>
             <div class="popup-footer">
-                <button id="ok-button">Enter</button>
+                <button id="enter-button">Enter</button>
             </div>
         </div>
     </div>
@@ -35,6 +35,20 @@
             </div>
         </div>
     </div>
+    <script>
+        const enterButton = document.querySelector("#enter-button")
+        const checkPin = document.querySelector("#check_pin")
+        const errorMessage = document.querySelector(".error-message")
+        const popupOverlayResponse = document.querySelector(".popup-overlay-response")
+        enterButton.addEventListener("click", ()=> {
+            if(checkPin.value.trim() == ""){
+                errorMessage.textContent = "Please enter your PIN"
+                errorMessage.style.display = "block"; 
+            }else {
+                popupOverlayResponse.style.display = "flex"
+            }
+        })
+    </script>
     
 </body>
 </html>

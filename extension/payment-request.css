@@ -56,7 +56,7 @@ body {
     text-align: center;
 }
 
-#ok-button{
+#ok-button, #enter-button{
     width: calc(100% - 50px);
     padding: 10px;
     font-size: 24px;
@@ -72,6 +72,7 @@ body {
     color: #FF5151;
     margin-left: 50px;
     display: none;
+    margin-top: 10px;
 }
 .popup-overlay-response {
     display: flex; 
@@ -83,6 +84,7 @@ body {
     top: 0;
     left: 0;
     background-color: rgba(33, 40, 48, 0.7);
+    display: none;
 
 }
 .popup-response {
