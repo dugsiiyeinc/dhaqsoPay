@@ -190,3 +190,56 @@ select option {
 .successMessage {
   color: #4f8a10;
 }
+
+
+/* dashboard */
+.d-logo{
+  width: 75%;
+  margin-top: 1rem;
+}
+
+.quickActions{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.quickActions .title{
+  font-size: 0.9rem;
+  color: #ABAFB1;
+}
+.quickActionsBtnS{
+  display: flex;
+  gap: 2rem;
+}
+
+.QuciAction{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.QuickIcon{
+  width: 43px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.QuickTitle{
+  color: #f5f5f5;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.QuickTitle.topup{
+  margin-left: 0.3rem;
+}
+
+.userDashboard{
+
+}
