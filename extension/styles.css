@@ -23,6 +23,20 @@ body {
   justify-content: space-between;
   gap: 2rem;
 }
+.logo{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.3rem;
+}
+.halfLogo{
+  width: 70%;
+}
+.fullLogo{
+  width: 90%;
+}
 .getstartedBTN {
   border: 0.6px solid rgba(217, 217, 217, 0.3);
   border-radius: 15px;
