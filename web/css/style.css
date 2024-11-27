@@ -53,7 +53,7 @@
   border: 2px solid #222061;
 }
 .btn:hover {
-  background-color: #222088;
+  background-color: #222070;
   color: #fff;
 }
 .active-users {
@@ -171,10 +171,14 @@
 .mindeful-left h4{
     color: #777;
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 .mindeful-left h2{
     font-size: 2.5rem;
+    font-weight: 500;
+}
+.mindeful-left p{
+  color: #777;
 }
 
 .download-card{
@@ -185,6 +189,10 @@
     color: #fff;
     gap: 10px;
     border-radius: 8px;
+    cursor: pointer;
+}
+.download-card:hover{
+  background-color: #222070;
 }
 .download-card img {
     width: 50px;
@@ -199,9 +207,13 @@
     background-color: #222061;
     padding: 8px;
     border-radius:5px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .mindeful-right img{
-    width: 100%;
+    width: 85%;
     height: 500px;
 }
 /* end mindful-design styley */
@@ -209,7 +221,7 @@
 /* start features section style */
 #features{
   width:100%;
-  margin-top: 5rem;
+  margin-top: 10rem;
 
 }
  .container .section-title{
@@ -496,13 +508,13 @@ color:#37c1f0;
     font-size: 1rem;
   }
   .hero-content-left h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   .hero-content-right{
     width: 100%;
   }
   .hero-content-right img {
-    width: 80%;
+    width: 100%;
   }
   .trusted-parteners h4{
     font-size: 1.5rem;
@@ -513,8 +525,12 @@ color:#37c1f0;
 
   .mindful-design{
     flex-direction: column;
+    gap: 5rem;
   }
   .mindeful-left ,.mindeful-right{
+    width: 100%;
+  }
+  .mindeful-right img{
     width: 100%;
   }
   /*  Why choose us responsive */
