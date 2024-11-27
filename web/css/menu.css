@@ -56,7 +56,7 @@ header{
 @media (max-width:768px){
     .menu{
      flex-direction: column;
-     border:none;
+     /* border:none; */
      align-items: self-start;
      padding-inline:0 ;
      padding-top: 1.5rem;
@@ -86,7 +86,7 @@ header{
         right: 5%;
     }
     .humbergur i{
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #222061;
     }
     .humbergur i[data-visible="true"]{
