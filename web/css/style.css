@@ -472,12 +472,16 @@ color:#37c1f0;
 }
 /* end cta section style */
 @media (max-width: 768px) {
+  .hero-section{
+    height: 100%;
+  }
   .hero-content {
     width: 100%;
     flex-direction: column;
     align-items: start;
   }
   .hero-content-left {
+    width: 100%;
     gap: 0.8rem;
   }
   .hero-content-left h4 {
@@ -486,10 +490,13 @@ color:#37c1f0;
   .hero-content-left h1 {
     font-size: 2.5rem;
   }
-  .hero-content-right img {
+  .hero-content-right{
+    width: 100%;
+  }
+  /* .hero-content-right img {
     width: 80%;
     height: 300px;
-  }
+  } */
   .trusted-parteners h4{
     font-size: 1.5rem;
   }
