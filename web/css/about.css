@@ -377,17 +377,14 @@
 
 }
 
-.footer .download h4,
-p {
-    padding: 10px;
-}
-
 .footer .download h4 {
     font-size: 1.5rem;
+    padding: 10px;
 }
 
 .footer .download p {
     color: cadetblue;
+    padding: 10px;
 }
 
 .footer .download .app {
