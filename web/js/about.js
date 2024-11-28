@@ -1,6 +1,7 @@
 //About js
 
 const counteEl = document.querySelectorAll('.couter-users')
+const counterUsersNum = document.querySelector('.couter-users-num')
 /**The reason i have use querySelectorAll to select all and also remember it works like array but not exactly array */
 
 let count = 0;
@@ -13,6 +14,7 @@ let updateCounter = setInterval(()=>{
     if(count < 140){
         count++ 
         counteEl[0].textContent = count
+        counterUsersNum.textContent = count
        
     }
     //* Total Download
