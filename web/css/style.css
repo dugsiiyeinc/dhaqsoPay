@@ -122,7 +122,7 @@
 }
 
 .trusted-parteners h4{
-    margin-top: 5rem;
+    margin-top: 10rem;
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
@@ -217,6 +217,36 @@
     height: 500px;
 }
 /* end mindful-design styley */
+
+/* start darkmode-section styles */
+.darkmode-section{
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.darkmode-header{
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+.darkmode-header h4{
+  font-size: 2rem;
+  font-weight: 400;
+  color: #777;
+}
+.darkmode-header h3{
+  font-size: 3rem;
+  font-weight: 500;
+}
+.darkmode-header p{
+  color: #777;
+}
+/* end darkmode-section styles */
 
 /* start features section style */
 #features{
@@ -533,6 +563,20 @@ color:#37c1f0;
   .mindeful-right img{
     width: 100%;
   }
+  /* darkmode */
+  .darkmode-header{
+    max-width: 100%;
+  }
+  .darkmode-header h4{
+    font-size: 1.5rem;
+  }
+  .darkmode-header h3{
+    font-size: 1.5rem;
+  }
+  .darkmode-header p{
+    font-size: .8rem;
+  }
+  /* darkmode */
   /*  Why choose us responsive */
   .why-choose-us .title-link{
     width:100%;
