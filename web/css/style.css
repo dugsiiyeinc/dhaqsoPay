@@ -220,7 +220,7 @@
 
 /* start darkmode-section styles */
 .darkmode-section{
-  margin-top: 10rem;
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,7 +232,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 .darkmode-header h4{
   font-size: 2rem;
@@ -246,6 +246,84 @@
 .darkmode-header p{
   color: #777;
 }
+.comparison-container {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  overflow: hidden;
+}
+.comparison-container:hover{
+  cursor: pointer;
+ .labels {
+  display: flex;
+ }
+}
+
+
+.comparison-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.comparison-container .dark-image {
+  opacity: 0;
+}
+
+.comparison-container .light-image {
+  opacity: 1;
+}
+
+.comparison-container .handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  background: #ffffff;
+  cursor: ew-resize;
+  z-index: 2;
+  transform: translateX(-50%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.labels {
+  position: absolute;
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+  top: 50%;
+  padding: 10px;
+  z-index: 3;
+}
+
+.labels span {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+/* .labels {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 50%;
+  z-index: 3;
+  padding-inline: 10px;
+}
+
+.labels span {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+} */
 /* end darkmode-section styles */
 
 /* start features section style */

@@ -186,3 +186,60 @@ function toggleAnswer(button) {
 }
 
 
+// darkmode section
+const container = document.querySelector('.comparison-container');
+        const handle = container.querySelector('.handle');
+        const lightImage = container.querySelector('.light-image');
+        const darkImage = container.querySelector('.dark-image');
+
+        let isDragg = false;
+
+        const updateMode = (x) => {
+            const rect = container.getBoundingClientRect();
+            let offsetX = Math.max(0, Math.min(x - rect.left, rect.width));
+            let percentage = (offsetX / rect.width) * 100;
+
+            // Move handle and update mode
+            handle.style.left = `${percentage}%`;
+
+            if (percentage < 50) {
+                lightImage.style.opacity = 1;
+                darkImage.style.opacity = 0;
+            }
+            else if (percentage == 50) {
+              lightImage.style.opacity = 1;
+              darkImage.style.opacity = 1;
+          }
+             else {
+                lightImage.style.opacity = 0;
+                darkImage.style.opacity = 1;
+            }
+        };
+
+        // Mouse events
+        container.addEventListener('mousedown', (e) => {
+            isDragg = true;
+            updateMode(e.clientX);
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragg) updateMode(e.clientX);
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragg = false;
+        });
+
+        // Touch events
+        container.addEventListener('touchstart', (e) => {
+            isDragg = true;
+            updateMode(e.touches[0].clientX);
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (isDragg) updateMode(e.touches[0].clientX);
+        });
+
+        container.addEventListener('touchend', () => {
+            isDragg = false;
+        });
