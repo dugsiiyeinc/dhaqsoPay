@@ -131,25 +131,19 @@
   outline: none !important;
 }
 
-.formContent-buttom {
-  margin-top: 50px;
+.changePin-success-button {
+  padding: 15px;
 }
 
-.formContent-buttom button {
+.changePin-success-button button {
   border-radius: 8px;
-  border: solid 0.6px rgba(221, 226, 229, 0.5);
-
+  border: 0.6px solid rgba(221, 226, 229, 0.5);
   color: #f4f6f8;
   height: 32px;
   background-color: #2a313c;
   outline: none !important;
   cursor: pointer;
-
-  width: 159px;
-
-}
-
-  text-decoration: none;
+  width: 259px;
 }
 
 body {
