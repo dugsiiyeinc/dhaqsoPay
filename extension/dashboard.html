@@ -49,7 +49,7 @@
                 <div class="Accontu-Info">
                     <div class="userInfo">
                         <img src="./icons/Profile.svg" alt="profile-icon" />
-                        <span id="UserNamedisPlay">Username</span>
+                        <span id="UserNamedisPlay"></span>
                     </div>
                 </div>
 
@@ -57,15 +57,15 @@
                 <div class="Accontu-Info">
                     <div class="userInfo">
                         <img src="./icons/Call.svg" alt="profile-icon" />
-                        <span id="UserNamedisPlay">+2526xxxxxx</span>
+                        <span id="UserNumberdisPlay"></span>
                     </div>
                 </div>
 
                 <!-- balance -->
-                <div class="Accontu-Info">
+                <div class="Accontu-Info AccountBalace">
                     <div class="userInfo">
                         <img src="./icons/fi_dollar-sign.svg" alt="profile-icon" />
-                        <span id="UserNamedisPlay">***</span>
+                        <span id="BalanceDisplay">***</span>
                         <img src="./icons/Hide.svg" class="hide-showPIN" id="togglePIN" alt="hide-show" />
                     </div>
                 </div>
@@ -77,6 +77,16 @@
             <a href="#">dhaqsoPay</a>
             <img src="./icons/Logout.svg" id="Logout" class="logoutICON" alt="">
           </footer>
+
+        <div id="logoutModal" class="logoutModal">
+            <div class="logoutModal-content">
+                <p>Are you sure you want to log out?</p>
+                <button id="confirmLogout" class="btn">Yes</button>
+                <button id="cancelLogout" class="btn">No</button>
+            </div>
+        </div>
     </div>
+
+    <script src="./dash.js"></script>
 </body>
 </html>
