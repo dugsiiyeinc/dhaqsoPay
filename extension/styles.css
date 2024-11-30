@@ -195,7 +195,6 @@ select option {
 /* dashboard */
 .d-logo{
   width: 75%;
-  margin-top: 1rem;
 }
 
 .quickActions, .dash-container{
@@ -274,4 +273,29 @@ select option {
 .hide-showPIN{
   position: absolute;
   right: 0;
+}
+
+/* footer */
+
+footer {
+  padding: 1rem;
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 15px;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer a {
+  color: #f5f5f5;
+  font-size: 1.1rem;
+}
+footer a:hover {
+  color: #3f5df3;
+  transition: color 0.3s ease-in-out;
+}
+footer img {
+  cursor: pointer;
 }
