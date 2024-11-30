@@ -1,9 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "dhaqsoPay",
+    "name": "topUp",
     "version": "0.0.0",
-    "description": "Test payments directly in your browser with dhaqsoPay.",
+    "description": "A top-up application with validation and dark mode.",
     "action": {
+        "default_popup": "topUp.html",
+
 
         "default_popup": "getstarted.html",
 
