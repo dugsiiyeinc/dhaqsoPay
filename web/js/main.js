@@ -188,12 +188,13 @@ function toggleAnswer(button) {
 
 // darkmode section
 const container = document.querySelector('.comparison-container');
-        const handle = container.querySelector('.handle');
+        const handle = container.querySelector('#handle');
         const lightImage = container.querySelector('.light-image');
         const darkImage = container.querySelector('.dark-image');
 
         let isDragg = false;
 
+        // darkOverlay.style.display = "none"
         const updateMode = (x) => {
             const rect = container.getBoundingClientRect();
             let offsetX = Math.max(0, Math.min(x - rect.left, rect.width));
@@ -206,26 +207,33 @@ const container = document.querySelector('.comparison-container');
             // Move handle and update mode
             // Move the slider
             handle.style.left = `${percentage}%`;
-    };
+      };
+          // Hide overlay on first interaction
+          const hideOverlay = () => {
+           overlay.style.display = "none"
+           console.log(overlay);
+           
+          };
 
         // Mouse events
         container.addEventListener('mousedown', (e) => {
             isDragg = true;
             updateMode(e.clientX);
+           
         });
 
         window.addEventListener('mousemove', (e) => {
             if (isDragg) updateMode(e.clientX);
+
         });
 
         window.addEventListener('mouseup', () => {
             isDragg = false;
         });
-
         // Touch events
         container.addEventListener('touchstart', (e) => {
             isDragg = true;
-            updateMode(e.touches[0].clientX);
+            updateMode(e.touches[0].clientX)
         });
 
         container.addEventListener('touchmove', (e) => {
@@ -234,4 +242,5 @@ const container = document.querySelector('.comparison-container');
 
         container.addEventListener('touchend', () => {
             isDragg = false;
+            
         });
