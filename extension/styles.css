@@ -160,6 +160,7 @@ body {
   width: 361px;
   height: 533px;
   padding: 30px;
+  position: relative;
 }
 
 .getstarted {
@@ -340,16 +341,15 @@ select option {
 /* dashboard */
 .d-logo{
   width: 75%;
-  margin-top: 1rem;
 }
 
-.quickActions{
+.quickActions, .dash-container{
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 0.5rem;
 }
-.quickActions .title{
+.title{
   font-size: 0.9rem;
   color: #ABAFB1;
 }
@@ -385,9 +385,107 @@ select option {
   margin-left: 0.3rem;
 }
 
+/* user dashboard section */
+.dash-container{
+  margin-top: 0.8rem;
+  gap: 0.7rem;
+}
 .userDashboard{
-
+  padding: 1.5rem 1rem;
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 15px;
+  padding-bottom: 1rem;
+}
+.Accontu-Info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 0.6px solid rgba(171, 175, 177, 0.5);
+  margin-bottom: 0.7rem;
+}
+.userInfo{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+.userInfo span{
+  font-size: 1rem;
+  color: #f5f5f5;
+  cursor: pointer;
 }
 
+.hide-showPIN{
+  position: absolute;
+  right: 0;
+}
 
+.Accontu-Info.AccountBalace{
+  border-bottom: none;
+}
+
+/* footer */
+
+footer {
+  padding: 1rem;
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 15px;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer a {
+  color: #f5f5f5;
+  font-size: 1.1rem;
+}
+footer a:hover {
+  color: #3f5df3;
+  transition: color 0.3s ease-in-out;
+}
+footer img {
+  cursor: pointer;
+}
+
+.logoutModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(33, 40, 48, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutModal-content {
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #f5f5f5;
+  font-size: 1rem;
+}
+
+.btn {
+  background-color: #2a313c;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  margin-top: 0.8rem;
+  margin-inline: 5px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #484f58; 
+  border: 0.6px solid rgba(217, 217, 217, 0.5);
+  transition: background-color 0.3s ease-in-out;
+}
 

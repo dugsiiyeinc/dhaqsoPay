@@ -170,6 +170,7 @@ function clearError() {
 const togglePIN = document.querySelector("#togglePIN");
 
 togglePIN.addEventListener("click", () => {
+  
   if (PIN.type === "password") {
     PIN.type = "text";
     togglePIN.src = "./icons/show.svg";

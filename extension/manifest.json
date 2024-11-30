@@ -4,8 +4,6 @@
     "version": "0.0.0",
     "description": "A top-up application with validation and dark mode.",
     "action": {
-        "default_popup": "topUp.html",
-
 
         "default_popup": "getstarted.html",
 
