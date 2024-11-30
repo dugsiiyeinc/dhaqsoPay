@@ -22,7 +22,7 @@ async function fetchGitHubUser(username) {
         }
         const data = await response.json();
         // Display the fetched username
-        document.getElementById('response').innerText = `Username: ${data.login}`;
+        document.getElementById('response').innerText = `Username la soo helay: ${data.login}`;
         // Save the last searched username
         saveData('lastFetchedUser', data.login);
     } catch (error) {
