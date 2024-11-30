@@ -199,22 +199,14 @@ const container = document.querySelector('.comparison-container');
             let offsetX = Math.max(0, Math.min(x - rect.left, rect.width));
             let percentage = (offsetX / rect.width) * 100;
 
-            // Move handle and update mode
-            handle.style.left = `${percentage}%`;
+                  // Adjust the clip-path for light and dark images
+            lightImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            darkImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
 
-            if (percentage < 50) {
-                lightImage.style.opacity = 1;
-                darkImage.style.opacity = 0;
-            }
-            else if (percentage == 50) {
-              lightImage.style.opacity = 1;
-              darkImage.style.opacity = 1;
-          }
-             else {
-                lightImage.style.opacity = 0;
-                darkImage.style.opacity = 1;
-            }
-        };
+            // Move handle and update mode
+            // Move the slider
+            handle.style.left = `${percentage}%`;
+    };
 
         // Mouse events
         container.addEventListener('mousedown', (e) => {
