@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    background-color: black;
+}
+.popup-overlay-request {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(33, 40, 48, 0.7);
+
+}
+.popup-request {
+    width: 375px;
+    height: 410px;
+    background: #2A313C;
+    border-radius: 10px;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+   
+}
+
+.popup-body p {
+    font-size: 24px;
+    color: #F5F5F5;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.pin-input input {
+    width: calc(100% - 100px);
+    margin: 45px 0 0 45px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+    border-radius: 8px;
+    background-color: transparent;
+    outline: none;
+    padding-left: 10px;
+    
+}
+
+.pin-input input::placeholder {
+    color: #ABAFB1;
+}
+
+.popup-footer {
+    padding: 20px;
+    text-align: center;
+}
+
+#ok-button, #enter-button{
+    width: calc(100% - 50px);
+    padding: 10px;
+    font-size: 24px;
+    background-color: transparent;
+    color: white;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+.error-message {
+    color: #FF5151;
+    margin-left: 50px;
+    display: none;
+    margin-top: 10px;
+}
+.popup-overlay-response {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(33, 40, 48, 0.7);
+    display: none;
+
+}
+.popup-response {
+    width: 375px;
+    height: 300px;
+    background: #2A313C;
+    border-radius: 10px;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+    position: relative;
+   
+}
+.response {
+    margin-top: 70px;
+}
+
+.popup-icon {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2A313C;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.6px solid rgba(221, 226, 229, 0.3);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.popup-icon .icon {
+    font-size: 24px;
+    color: white;
+}
+
