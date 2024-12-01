@@ -12,8 +12,8 @@
 .Changepin-success-container {
   font-family: Roboto, sans-serif;
 
-  width: 316px;
-  height: 523px;
+  width: 361px;
+  height: 533px;
   margin: 5px;
   background-color: rgba(33, 40, 48, 0.7);
   border: 0.6px solid rgba(221, 226, 229, 0.5);
@@ -23,8 +23,8 @@
 }
 
 .changePin-success-Popup-container {
-  width: 296px;
-  height: 223px;
+  width: 300px;
+  height: auto;
 
   margin: 5px;
   background-color: #2a313c;
@@ -77,7 +77,7 @@
   text-align: center;
 }
 
-
+  .changePin-success-Content {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -131,26 +131,21 @@
   outline: none !important;
 }
 
-.formContent-buttom {
-  margin-top: 50px;
+.changePin-success-button {
+  padding: 15px;
 }
 
-.formContent-buttom button {
+.changePin-success-button button {
   border-radius: 8px;
-  border: solid 0.6px rgba(221, 226, 229, 0.5);
-
+  border: 0.6px solid rgba(221, 226, 229, 0.5);
   color: #f4f6f8;
   height: 32px;
   background-color: #2a313c;
   outline: none !important;
   cursor: pointer;
-
-  width: 159px;
-
+  width: 259px;
 }
 
-  text-decoration: none;
-}
 body {
   font-family: "Roboto", sans-serif;
   background-color: #212830;
@@ -489,3 +484,99 @@ footer img {
   transition: background-color 0.3s ease-in-out;
 }
 
+ /* change pin css */
+  /* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the popup content */
+.Changepin-container {
+  font-family: Roboto;
+  width: 361px;
+  height: 533px;
+  margin: 5px;
+  background-color: rgba(33, 40, 48, 0.7);
+  border: 0.6px solid rgba(221, 226, 229, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.changePin-Popup-container {
+  width: 300px;
+  height: auto;
+  margin: 5px;
+  background-color: #2a313c;
+  border: 0.6px solid rgba(221, 226, 229, 0.5);
+  border-radius: 15px;
+}
+
+.changePin-title-container {
+  margin-top: 20px;
+  border-bottom: solid 1px rgba(221, 226, 229, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#changePin-title {
+  font-size: 24px;
+  color: #f5f5f5;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.changePin-Content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#changePinForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f5f5f5;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.formContent-top {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.formContent-top input {
+  align-items: center;
+  border-radius: 8px;
+  border: solid 0.6px rgba(221, 226, 229, 0.5);
+  color: #f4f6f8;
+  padding-left: 5px;
+  height: 32px;
+  width: 159px;
+  background-color: #2a313c;
+  outline: none !important;
+}
+
+.formContent-buttom {
+  margin-top: 50px;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.formContent-buttom button {
+  border-radius: 8px;
+  border: solid 0.6px rgba(221, 226, 229, 0.5);
+  color: #f4f6f8;
+  height: 32px;
+  background-color: #2a313c;
+  outline: none !important;
+  cursor: pointer;
+  width: 159px;
+}
+
+ /* end change pin css */
