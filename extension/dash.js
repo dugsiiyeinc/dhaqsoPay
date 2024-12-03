@@ -30,3 +30,10 @@ confirmLogout.addEventListener("click", () => {
 cancelLogout.addEventListener("click", () => {
   document.getElementById("logoutModal").style.display = "none";
 });
+
+// navigate to change pin Screen when clicked change pin icon
+const lockIcon = document.querySelector(".lock-icon");
+
+lockIcon.addEventListener('click', function() {
+  window.location.href = "./changepin.html";
+});

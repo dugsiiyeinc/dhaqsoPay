@@ -3,9 +3,12 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    background-color: black;
+    background-color: #212830;
 }
-
+.container {
+    width: 361px;
+    height: 533px;
+}
 .popup-overlay{
     display: flex; 
     justify-content: center;
@@ -19,8 +22,8 @@ body {
 }
 
 .popup {
-    width: 375px;
-    height: 394px;
+    width: 300px;
+    height:auto;
     background: #2A313C;
     border-radius: 10px;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
@@ -34,7 +37,7 @@ body {
 .popup-header h2 {
     font-size: 24px;
     font-weight: 700;
-    color: white;
+    color: #F5F5F5;
 }
 
 .popup-header hr {
@@ -60,11 +63,11 @@ body {
 }
 
 .pin-input input {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     text-align: center;
     font-size: 20px;
-    color: white;
+    color: #F5F5F5;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
     border-radius: 8px;
     background-color: transparent;
@@ -81,17 +84,18 @@ body {
 }
 
 #check-button, #ok-button{
-    width: calc(100% - 50px);
+    width: calc(100% - 30px);
     padding: 10px;
     font-size: 24px;
     background-color: transparent;
-    color: white;
+    color: #F5F5F5;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .error-message {
+    font-size: 20px;
     color: #FF5151;
     margin-left: 50px;
     display: none;
@@ -111,8 +115,8 @@ body {
 
 }
 .popup-balance {
-    width: 375px;
-    height: 260px;
+    width: 300px;
+    height: auto;
     background: #2A313C;
     border-radius: 10px;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
