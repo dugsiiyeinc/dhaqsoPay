@@ -4,148 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-}
-
-/* Container for the popup content */
-
-.Changepin-success-container {
-  font-family: Roboto, sans-serif;
-
-  width: 361px;
-  height: 533px;
-  margin: 5px;
-  background-color: rgba(33, 40, 48, 0.7);
-  border: 0.6px solid rgba(221, 226, 229, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.changePin-success-Popup-container {
-  width: 300px;
-  height: auto;
-
-  margin: 5px;
-  background-color: #2a313c;
-  border: 0.6px solid rgba(221, 226, 229, 0.5);
-  border-radius: 15px;
-}
-
-
-.changePin-title-success-container {
-  background-color: rgba(33, 40, 48, 1);
-  margin: -15px auto 0;
-  border: 1px solid rgba(221, 226, 229, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.icon-tick {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid white;
-  color: white;
-  border-radius: 8px
-}
-
-.icon-tick i {
-  font-size: 17px;
-  color: #f5f5f5;
-}
-
-
-.changePin-title-container {
-  margin-top: 20px;
-  border-bottom: solid 1px rgba(221, 226, 229, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#changePin-title {
-  font-size: 24px;
-  color: #f5f5f5;
-  padding-bottom: 20px;
-  text-align: center;
-}
-
-  .changePin-success-Content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-
-#changePin-success-text {
-
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #f5f5f5;
-
-  padding: 15px;
-}
-
- 
-
-.formContent-top p {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 28.13px;
-  text-decoration-skip-ink: none;
-}
-
-.changePin-success-button {
-  padding: 15px;
-}
-
-.changePin-success-button button {
-  border-radius: 8px;
-  border: 0.6px solid rgba(221, 226, 229, 0.5);
-
-}
-
-.formContent-top {
-  display: flex;
-  gap: 15px;
-  flex-direction: column;
-}
-
-.formContent-top input {
-  border-radius: 8px;
-  border: solid 0.6px rgba(221, 226, 229, 0.5);
-  color: #f4f6f8;
-  padding-left: 5px;
-  height: 32px;
-  width: 159px;
-  background-color: #2a313c;
-  outline: none !important;
-}
-
-.changePin-success-button {
-  padding: 15px;
-}
-
-.changePin-success-button button {
-  border-radius: 8px;
-  border: 0.6px solid rgba(221, 226, 229, 0.5);
-  color: #f4f6f8;
-  height: 32px;
-  background-color: #2a313c;
-  outline: none !important;
-  cursor: pointer;
-  width: 259px;
-}
-
+  
 body {
   font-family: "Roboto", sans-serif;
   background-color: #212830;
@@ -412,9 +271,10 @@ select option {
   cursor: pointer;
 }
 
-.hide-showPIN{
+.hide-showPIN-dash{
+  cursor: pointer;
   position: absolute;
-  right: 0;
+  right:0;
 }
 
 .Accontu-Info.AccountBalace{
@@ -484,19 +344,7 @@ footer img {
   transition: background-color 0.3s ease-in-out;
 }
 
- /* change pin css */
-  /* Reset some default browser styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Container for the popup content */
-.Changepin-container {
-  font-family: Roboto;
-  width: 361px;
-  height: 533px;
   margin: 5px;
   background-color: rgba(33, 40, 48, 0.7);
   border: 0.6px solid rgba(221, 226, 229, 0.5);
@@ -505,15 +353,14 @@ footer img {
   align-items: center;
 }
 
-.changePin-Popup-container {
-  width: 300px;
-  height: auto;
+
   margin: 5px;
   background-color: #2a313c;
   border: 0.6px solid rgba(221, 226, 229, 0.5);
   border-radius: 15px;
 }
 
+n
 .changePin-title-container {
   margin-top: 20px;
   border-bottom: solid 1px rgba(221, 226, 229, 0.5);
@@ -529,19 +376,13 @@ footer img {
   text-align: center;
 }
 
-.changePin-Content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-#changePinForm {
+
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #f5f5f5;
-  margin-bottom: 20px;
-  justify-content: center;
+
 }
 
 .formContent-top {
@@ -551,7 +392,6 @@ footer img {
 }
 
 .formContent-top input {
-  align-items: center;
   border-radius: 8px;
   border: solid 0.6px rgba(221, 226, 229, 0.5);
   color: #f4f6f8;
@@ -564,19 +404,15 @@ footer img {
 
 .formContent-buttom {
   margin-top: 50px;
-  align-items: center !important;
-  justify-content: center;
 }
 
 .formContent-buttom button {
   border-radius: 8px;
   border: solid 0.6px rgba(221, 226, 229, 0.5);
+
   color: #f4f6f8;
   height: 32px;
   background-color: #2a313c;
   outline: none !important;
   cursor: pointer;
   width: 159px;
-}
-
- /* end change pin css */
