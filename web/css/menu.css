@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -7,14 +8,14 @@
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Space Grotesk", sans-serif;
 }
 
 img{
     width: 100%;
 }
 .container{
-    width: min(1200px, 90%);
+    width: min(1110px, 90%);
     margin:0 auto;
 }
 header{
@@ -22,15 +23,13 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 .menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline:20px;
-    /* border-bottom: 1px solid #000; */
+    padding:20px;
+    border-bottom: 1px solid #000;
 }
 .logo img{
     width: 150px;
@@ -57,7 +56,7 @@ header{
 @media (max-width:768px){
     .menu{
      flex-direction: column;
-     border:none;
+     /* border:none; */
      align-items: self-start;
      padding-inline:0 ;
      padding-top: 1.5rem;
@@ -87,7 +86,7 @@ header{
         right: 5%;
     }
     .humbergur i{
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #222061;
     }
     .humbergur i[data-visible="true"]{
