@@ -3,7 +3,11 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    background-color: black;
+    background-color: #212830;
+}
+.container {
+    width: 361px;
+    height: 533px;
 }
 .popup-overlay-request {
     display: flex; 
@@ -18,8 +22,8 @@ body {
 
 }
 .popup-request {
-    width: 375px;
-    height: 410px;
+    width: 300px;
+    height: auto;
     background: #2A313C;
     border-radius: 10px;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
@@ -27,18 +31,18 @@ body {
 }
 
 .popup-body p {
-    font-size: 24px;
+    font-size: 19px;
     color: #F5F5F5;
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .pin-input input {
-    width: calc(100% - 100px);
-    margin: 45px 0 0 45px;
+    width: calc(100% - 80px);
+    margin: 30px 0 0 30px;
     height: 50px;
     font-size: 20px;
-    color: white;
+    color: #F5F5F5;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
     border-radius: 8px;
     background-color: transparent;
@@ -57,11 +61,11 @@ body {
 }
 
 #ok-button, #enter-button{
-    width: calc(100% - 50px);
+    width: calc(100% - 22px);
     padding: 10px;
     font-size: 24px;
     background-color: transparent;
-    color: white;
+    color: #F5F5F5;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
     border-radius: 8px;
     cursor: pointer;
@@ -72,7 +76,8 @@ body {
     color: #FF5151;
     margin-left: 50px;
     display: none;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 20px;
 }
 .popup-overlay-response {
     display: flex; 
@@ -88,8 +93,8 @@ body {
 
 }
 .popup-response {
-    width: 375px;
-    height: 300px;
+    width: 300px;
+    height: auto;
     background: #2A313C;
     border-radius: 10px;
     border: 0.6px solid rgba(221, 226, 229, 0.3);
@@ -106,8 +111,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: #2A313C;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -119,6 +124,9 @@ body {
 
 .popup-icon .icon {
     font-size: 24px;
-    color: white;
+    color: #F5F5F5;
+    padding: 2px 5px;
+    border-radius: 10px;
+    border: 0.6px solid rgba(255, 255, 255, 0.7);
 }
 

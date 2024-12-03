@@ -5,50 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extension</title>
     <link rel="stylesheet" href="payment-request.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="popup-overlay-request" >
-        <div class="popup-request">
-            <div class="popup-body">
-                <p>Ma hubtaa inaad $100 koorso kaga iibsanayso dugsiiye.com? Fadlan gali PIN-kaaga si aad u dhamaystirto.</p>
-                <div class="pin-input">
-                    <input type="text"  id="check_pin" maxlength="4"/>
+    <div class="container">
+        <div class="popup-overlay-request" >
+            <div class="popup-request">
+                <div class="popup-body">
+                    <p >Ma hubtaa inaad $100 koorso kaga iibsanayso dugsiiye.com? Fadlan gali PIN-kaaga si aad u dhamaystirto.</p>
+                    <div class="pin-input">
+                        <input type="text"  id="check_pin" maxlength="4"/>
+                    </div>
+                    <span class="error-message">PIN galisay ma ahan mid jira</span>
                 </div>
-                <span class="error-message">PIN galisay ma ahan mid jira</span>
+                <div class="popup-footer">
+                    <button id="enter-button">Enter</button>
+                </div>
             </div>
-            <div class="popup-footer">
-                <button id="enter-button">Enter</button>
+        </div>
+        <!-- Response  -->
+        <div class="popup-overlay-response" >
+            <div class="popup-response">
+                <div class="popup-icon">
+                    <span class="icon"><i class="fa-solid fa-check"></i></span> 
+                </div>
+                <div class="popup-body response">
+                    <p>$100 ayaad u wareejisay 061xxxxxx, Tar: 15/11/24 5:18:38, Haraagaagu waa $500.</p>
+                </div>
+                <div class="popup-footer">
+                    <button id="ok-button">Ok</button>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Response  -->
-    <div class="popup-overlay-response" >
-        <div class="popup-response">
-            <div class="popup-icon">
-                <span class="icon">✔</span> 
-            </div>
-            <div class="popup-body response">
-                <p>$100 ayaad u wareejisay 061xxxxxx, Tar: 15/11/24 5:18:38, Haraagaagu waa $500.</p>
-            </div>
-            <div class="popup-footer">
-                <button id="ok-button">Ok</button>
-            </div>
-        </div>
-    </div>
-    <script>
-        const enterButton = document.querySelector("#enter-button")
-        const checkPin = document.querySelector("#check_pin")
-        const errorMessage = document.querySelector(".error-message")
-        const popupOverlayResponse = document.querySelector(".popup-overlay-response")
-        enterButton.addEventListener("click", ()=> {
-            if(checkPin.value.trim() == ""){
-                errorMessage.textContent = "Please enter your PIN"
-                errorMessage.style.display = "block"; 
-            }else {
-                popupOverlayResponse.style.display = "flex"
-            }
-        })
-    </script>
+   <script src="payment.js"></script>
     
 </body>
 </html>
