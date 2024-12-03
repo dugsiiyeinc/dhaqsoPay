@@ -1,57 +1,52 @@
-// import the packages
-import express from "express";
-import chalk from "chalk";
-import helmet from "helmet";
-import cors from "cors";
-import morgan from "morgan";
-import rateLimit from "express-rate-limit";
-import compression from "compression";
-import cookieParser from "cookie-parser";
+import express from 'express';
+import http from 'http';
+import { WebSocketServer } from 'ws';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import authRoutes from './routes/auth.js';
+import paymentRoutes from './routes/payment.js';
 
-// import your files
-import { port } from "./config/initialConfig.js";
-import helloWorldRouter from "./routes/helloWorldRoutes.js";
+dotenv.config();
 
-// Initializing the app
 const app = express();
-app.use(cookieParser());
-// Essential security headers with Helmet
-app.use(helmet());
+app.use(bodyParser.json());
 
-// Enable CORS with default settings
-app.use(cors());
+// HTTP Server
+const server = http.createServer(app);
 
-// Logger middleware for development environment
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+// WebSocket Server
+const wss = new WebSocketServer({ server });
 
-app.use(compression()); // Compress all routes
+// Track active WebSocket clients (extension users)
+export const activeClients = new Map();
 
-// Rate limiting to prevent brute-force attacks
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-});
-app.use(limiter);
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    const message = JSON.parse(data);
+    // Track user connections
+    if (message.type === 'REGISTER') {
+      activeClients.set(message.number, ws);
+      console.log(`Registered client for number: ${message.number}`);
+    }
 
-// Built-in middleware for parsing JSON
-app.use(express.json());
+    // Handle confirmation response from the user
+    if (message.type === 'CONFIRM_PAYMENT') {
+      const { number, pin, success } = message;
+      ws.emit('payment-response', { number, pin, success });
+    }
+  });
 
-// Use your routes here
-app.use("/api/helloworld", helloWorldRouter);
-
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error(chalk.red(err.stack));
-  res.status(err.status || 500).json({
-    message: err.message || "Internal Server Error",
-    error: {},
+  ws.on('close', () => {
+    console.log('Client disconnected.');
   });
 });
 
+// API Routes
+app.use('/api', paymentRoutes);
+app.use('/api/auth', authRoutes);
 
-
-app.listen(port, () => {
-  console.log(`${chalk.green.bold("Server")} is listening on port ${port}`);
+// Start the server
+const PORT = process.env.PORT || 8000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
