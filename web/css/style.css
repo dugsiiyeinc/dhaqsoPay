@@ -299,14 +299,15 @@
  .title-link .text{
    display:flex;
   flex-direction:column;
-  gap:1rem;
+  gap:10px;
  }
  .text h1{
   color:#37c1f0;
   text-transform:uppercase;
  }
- .text h2{
-  color: #222061;
+ .text p{
+  font-size:1.25rem;
+   color: #222061;
  }
  .title-link a{
   color:#fff;
@@ -459,7 +460,7 @@ color:#37c1f0;
   box-shadow: 4px 4px 0px #37c1f0;
 }
 .faq-items .faq-item {
-    border-bottom: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
    border-radius: 5px;
    }
 .faq-question {
@@ -481,7 +482,7 @@ color:#37c1f0;
   padding: 15px;
    font-size: 1.25rem;
   border-top: 1px solid #ddd;
- }
+  }
 .toggle-icon {
   font-size: 1.25rem;
   transition: 0.5s;
