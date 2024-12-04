@@ -95,6 +95,26 @@ function slidePrevious() {
   // Start the auto-slide
 startAutoSlide();
 
+// Video-popup
+const playButton = document.getElementById('playButton');
+const videoPopup = document.getElementById('videoPopup');
+const closeButton = document.getElementById('closeButton');
+
+playButton.addEventListener('click', () => {
+  videoPopup.style.display = 'flex';
+});
+
+ closeButton.addEventListener('click', () => {
+  videoPopup.style.display = 'none';
+});
+
+ window.addEventListener('click', (e) => {
+  if (e.target === videoPopup) {
+    videoPopup.style.display = 'none';
+  }
+});
+
+
 //  faqs
 const faqs = [
   {
