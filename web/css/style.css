@@ -569,6 +569,10 @@ color:#37c1f0;
   .mindeful-right img{
     width: 100%;
   }
+  /* Features */
+  .features .feature {
+    height:auto; 
+  }
   /*  Why choose us responsive */
   .why-choose-us .title-link{
     width:100%;
