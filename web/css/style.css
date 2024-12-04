@@ -451,22 +451,24 @@
   height:100vh;
   display:flex;
    align-items:center;
-   gap:4rem;
+   gap:2rem;
   margin-block:40px;
-  padding:20px 0;
+  padding:40px 0;
  }
-.image-container{
-  width:50%;
+.faq-image-container{
+  width:80%;
   height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   background-color:#222061;
+  border:2px solid #37c1f0;
   border-radius:20px;
+   position:relative;
+
 }
 .faq-image{
-  width:500px;
-  height:500px;
+  position:absolute;
+  left:18%;
+   width:auto;
+  height:100vh;
 }
 .faq-image img{
   width:100%;
