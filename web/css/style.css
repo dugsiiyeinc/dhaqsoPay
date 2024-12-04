@@ -412,6 +412,8 @@
  .cta-image{
   width:50%;
   height:500px;
+  background-image: url('https://askproject.net/raveli/wp-content/uploads/sites/130/2023/02/side-view-of-asian-millennial-girl-in-headphones-v-SQ3PSL2.jpg');
+  background-repeat:no-repeat;
    background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;

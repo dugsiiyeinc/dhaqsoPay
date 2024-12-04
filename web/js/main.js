@@ -95,24 +95,6 @@ function slidePrevious() {
   // Start the auto-slide
 startAutoSlide();
 
-//  Cta images
-const images = [
- 
-'./assets/cta-image1.png',
-'./assets/cta-image2.png',
-'./assets/cta-image3.png'
- ];
-
-let currentIndex = 0;
-
-function changeBackgroundImage() {
-  document.querySelector('.cta-image').style.backgroundImage = `url(${images[currentIndex]})`;
-  currentIndex = (currentIndex + 1) % images.length;
-}
- setInterval(changeBackgroundImage, 5000);
-
- changeBackgroundImage();
-
 //  faqs
 const faqs = [
   {
