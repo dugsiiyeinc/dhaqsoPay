@@ -99,18 +99,23 @@ startAutoSlide();
 const playButton = document.getElementById('playButton');
 const videoPopup = document.getElementById('videoPopup');
 const closeButton = document.getElementById('closeButton');
+const videoIframe = videoPopup.querySelector('iframe');
 
 playButton.addEventListener('click', () => {
   videoPopup.style.display = 'flex';
 });
 
- closeButton.addEventListener('click', () => {
+const closePopup = () => {
   videoPopup.style.display = 'none';
-});
+   videoIframe.src = videoIframe.src;
+}
+
+closeButton.addEventListener('click', closePopup);
 
  window.addEventListener('click', (e) => {
   if (e.target === videoPopup) {
-    videoPopup.style.display = 'none';
+     closePopup();
+
   }
 });
 
