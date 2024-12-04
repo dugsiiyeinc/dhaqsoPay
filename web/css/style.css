@@ -680,5 +680,15 @@ color:#37c1f0;
     .faqs {
        margin-top:5rem;
     }
+    /* features */
+    .features {
+      width: 100%;
+      height: auto;
+    }
+    .features .feature {
+      width: 300px;
+      height: auto;
+      
+    }
    
 }
