@@ -413,6 +413,26 @@
   background-repeat:no-repeat;
    background-size: cover;
   background-position: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+ }
+ .cta-image .play-btn{
+  background-color:#fff;
+  padding: 30px;
+  border:1px solid #220661;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  box-shadow: 4px 2px 0px #000;
+
+ }
+ .cta-image .play-btn:hover{
+  background-color:#37c1f0;
+
+ }
+ .cta-image .play-btn .fa-play{
+  font-size:1.5rem;
  }
 .cta .cta-content{
   width:50%;
