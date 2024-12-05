@@ -119,7 +119,9 @@ closeButton.addEventListener('click', closePopup);
   }
 });
 
-//  faqs
+
+
+ //  faqs
 const faqs = [
   {
     question: "What is the purpose of dhaqsoPay?",
