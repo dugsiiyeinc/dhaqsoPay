@@ -95,6 +95,30 @@ function slidePrevious() {
   // Start the auto-slide
 startAutoSlide();
 
+// Video-popup
+const playButton = document.getElementById('playButton');
+const videoPopup = document.getElementById('videoPopup');
+const closeButton = document.getElementById('closeButton');
+const videoIframe = videoPopup.querySelector('iframe');
+
+playButton.addEventListener('click', () => {
+  videoPopup.style.display = 'flex';
+});
+
+const closePopup = () => {
+  videoPopup.style.display = 'none';
+   videoIframe.src = videoIframe.src;
+}
+
+closeButton.addEventListener('click', closePopup);
+
+ window.addEventListener('click', (e) => {
+  if (e.target === videoPopup) {
+     closePopup();
+
+  }
+});
+
 //  faqs
 const faqs = [
   {
@@ -168,3 +192,61 @@ function toggleAnswer(button) {
 }
 
 
+// darkmode section
+const container = document.querySelector('.comparison-container');
+        const handle = container.querySelector('#handle');
+        const lightImage = container.querySelector('.light-image');
+        const darkImage = container.querySelector('.dark-image');
+
+        let isDragg = false;
+
+        // darkOverlay.style.display = "none"
+        const updateMode = (x) => {
+            const rect = container.getBoundingClientRect();
+            let offsetX = Math.max(0, Math.min(x - rect.left, rect.width));
+            let percentage = (offsetX / rect.width) * 100;
+
+                  // Adjust the clip-path for light and dark images
+            lightImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            darkImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+
+            // Move handle and update mode
+            // Move the slider
+            handle.style.left = `${percentage}%`;
+      };
+          // Hide overlay on first interaction
+          const hideOverlay = () => {
+           overlay.style.display = "none"
+           console.log(overlay);
+           
+          };
+
+        // Mouse events
+        container.addEventListener('mousedown', (e) => {
+            isDragg = true;
+            updateMode(e.clientX);
+           
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragg) updateMode(e.clientX);
+
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragg = false;
+        });
+        // Touch events
+        container.addEventListener('touchstart', (e) => {
+            isDragg = true;
+            updateMode(e.touches[0].clientX)
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (isDragg) updateMode(e.touches[0].clientX);
+        });
+
+        container.addEventListener('touchend', () => {
+            isDragg = false;
+            
+        });
