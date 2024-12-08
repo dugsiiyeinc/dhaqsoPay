@@ -31,9 +31,46 @@ cancelLogout.addEventListener("click", () => {
   document.getElementById("logoutModal").style.display = "none";
 });
 
-// navigate to change pin Screen when clicked change pin icon
-const lockIcon = document.querySelector(".lock-icon");
+// // navigate to change pin Screen when clicked change pin ico
 
-lockIcon.addEventListener('click', function() {
-  window.location.href = "./changepin.html";
+// modal
+const modal = document.querySelector(".modal");
+const modalTitle = document.querySelector("#modalTitle");
+const modalMessage = document.querySelector("#modalMessage");
+const modalInput = document.querySelector("#modalInput");
+const modalForm = document.querySelector("#modalForm");
+const errorMessage = document.querySelector("#errorMessage");
+
+// change PIN
+const changePIN = document.querySelector("#changePIN");
+
+changePIN.addEventListener("click", () => {
+  modal.style.display = "flex";
+  modalTitle.textContent = "Change PIN";
+  modalInput.type = "password";
+  modalInput.placeholder = "Fadlan gali PIN-kaaga"
+})
+
+modalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if(modalInput.value)
+  if (modalInput.value.length !== 4) {
+     showError("PIN must be exactly 4 digits long");
+     return;
+  }else{
+    window.location.href = "/dashboard.html"
+  }
 });
+
+
+function showError(message) {
+  errorMessage.textContent = message;
+  errorMessage.style.display = "block";
+}
+
+// close modal
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};

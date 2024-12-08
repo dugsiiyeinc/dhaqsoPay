@@ -181,7 +181,6 @@ select option {
 
 .error-message,
 .successMessage {
-  /* color: #ff5151; */
   color: #D8000C;
   margin-top: -5px;
   display: block;
@@ -218,6 +217,7 @@ select option {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+  /* cursor: pointer; */
 }
 
 .QuickIcon{
@@ -354,7 +354,7 @@ footer img {
   left: 0;
   top: 0;
   background-color: rgb(33, 40, 48, 0.6);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -367,7 +367,7 @@ footer img {
   border: 0.6px solid rgba(217, 217, 217, 0.3);
   border-radius: 15px;
 }
-.modalTitle{
+.topModalContent{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,7 +380,7 @@ footer img {
 .modal-body{
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
   padding: 1.5rem;
   font-size: 1rem;
   color: #f5f5f5;
@@ -393,11 +393,16 @@ button {
   width: 100%;
   padding: 1rem;
   border-radius: 15px;
-  margin-top: 1rem;
   color: #f5f5f5;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
 }
 
 .modal-contentBox button {
   cursor: pointer;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.error-message.modalErrorMessage{
+  margin-top: 0.5rem;
 }

@@ -23,6 +23,7 @@
                     </div>
                     <span class="QuickTitle">Check <br> Balance</span>
                 </div>
+                
                 <!-- topup -->
                 <div class="QuciAction">
                     <div class="QuickIcon" id="topUp">
@@ -32,9 +33,9 @@
                 </div>
 
                 <!-- change PIN -->
-                <div class="QuciAction" id="changePIN">
-                    <div class="QuickIcon">
-                        <img src="./icons/Lock.svg" alt="Lock Icon" class="lock-icon">
+                <div class="QuciAction">
+                    <div class="QuickIcon" id="changePIN">
+                        <img src="./icons/Lock.svg" alt="lock-icon" id="changePIN" />
                     </div>
                     <span class="QuickTitle">Change <br> PIN</span>
                 </div>
@@ -86,17 +87,17 @@
             </div>
         </div>
 
-        <!-- modals -->
-         <!-- change PIN -->
+        <!-- modal -->
         <div class="modal">
             <div class="modal-contentBox">
-                <div class="modalTitle">
-                    <p id="modalTitleText"></p>
+                <div class="topModalContent">
+                    <p id="modalTitle"></p>
                 </div>
                 <div class="modal-body">
                     <span id="modalMessage"></span>
-                    <form modalForm>
+                    <form id="modalForm">
                         <input type="text" id="modalInput">
+                        <span id="errorMessage" class="error-message modalErrorMessage"></span>
                         <button type="submit">Enter</button>
                     </form>
                 </div>
@@ -105,6 +106,5 @@
     </div>
 
     <script src="./dash.js"></script>
-     <script src="/extension/change-pin.js"></script>
 </body>
 </html>
