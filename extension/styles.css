@@ -384,6 +384,7 @@ footer img {
   padding: 1.5rem;
   font-size: 1rem;
   color: #f5f5f5;
+  text-align: center;
 }
 
 .modal-contentBox input,
@@ -405,4 +406,28 @@ button {
 
 .error-message.modalErrorMessage{
   margin-top: 0.5rem;
+}
+
+.pin-input {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pin-input input {
+  width: 45px;
+  height: 45px;
+  /* padding: 0.8rem; */
+  text-align: center;
+  font-size: 1rem;
+  color: #F5F5F5;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  border-radius: 8px;
+  background-color: transparent;
+  outline: none;
+}
+
+.pin-input input::placeholder {
+  color: #ABAFB1;
 }
