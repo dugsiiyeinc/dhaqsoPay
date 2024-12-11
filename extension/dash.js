@@ -40,6 +40,7 @@ const modalForm = document.querySelector("#modalForm");
 const errorMessage = document.querySelector("#errorMessage");
 const inputs = document.querySelectorAll(".pin-input input");
 const PINInputs = document.querySelector(".pin-input");
+const SubmitBtn = document.querySelector("#SubmitBtn");
 
 
 inputs.forEach((input, index) => {
@@ -64,17 +65,29 @@ inputs.forEach((input, index) => {
   });
 });
 
+function resetModal() {
+  inputs.forEach((input) => (input.style.display = ""));
+  modalInput.style.display = "";
+  SubmitBtn.style.display = "block";
+  errorMessage.style.display = "none";
+}
+
+let currentAction = "";
 
 // Check Balance
 
 const CheckBalanceBTN = document.querySelector("#checkBalance");
 
 CheckBalanceBTN.addEventListener("click", () => {
-  console.log('btn checkBalance clicked');
+  resetModal();
+  currentAction = "checkBalance";
   modal.style.display = "flex";
   modalTitle.textContent = "Check Balance";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
   modalInput.style.display = "none";
+  PINInputs.style.display = "flex";
+  SubmitBtn.textContent = "Check";
+  clearInputs();
 });
 
 // topup
@@ -82,58 +95,134 @@ CheckBalanceBTN.addEventListener("click", () => {
 const topupBTN = document.querySelector("#topUp");
 
 topupBTN.addEventListener("click", () => {
+  resetModal();
+  currentAction = "topUp";
   modal.style.display = "flex";
   modalTitle.textContent = "Top Up";
-  modalInput.placeholder = "$ 0.00";
+  modalMessage.textContent = "Fadlan gali lacagta aad rabto inaad ku shubto.";
+  modalInput.style.display = "block";
+  modalInput.placeholder = "$ 0.00"
   PINInputs.style.display = "none";
-})
+  SubmitBtn.textContent = "Submit";
+  clearInputs();
+});
 
 
 // change PIN
 const changePIN = document.querySelector("#changePIN");
 
 changePIN.addEventListener("click", () => {
+  resetModal();
+  currentAction = "changePIN";
   modal.style.display = "flex";
   modalTitle.textContent = "Change PIN";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
-  modalInput.style.display = "none"
-})
-
-modalForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-   let isEmpty = false;
-    inputs.forEach(input => {
-        if (input.value.trim() === "") {
-            isEmpty = true;
-        }
-    });
-    if (isEmpty) {
-        showError("Fill All the inputs");
-        return
-    }if (modalInput.value.trim() === "" && modalInput.value.trim < 5) {
-
-    }else{
-    modalMessage.textContent = "Fadlan Gali PIN-kaaga Cusub";
-    inputs.forEach(input => {
-    input.value = ''
-     })
-    }
-
-    if (modalInput.value.trim < 5){
-      showError('Wax ka yar $5 laguma shubi karo!')
-    }
+  modalInput.style.display = "none";
+  PINInputs.style.display = "flex";
+  SubmitBtn.textContent = "Enter";
+  clearInputs();
 });
 
+// Form Submit Handler
+modalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (currentAction === "checkBalance") {
+    handleCheckBalance();
+  } else if (currentAction === "topUp") {
+    handleTopUp();
+  } else if (currentAction === "changePIN") {
+    handleChangePIN();
+  }
+});
+
+
+let balance = 300;
+function handleCheckBalance() {
+  const enteredPIN = getEnteredPIN();
+
+  if (enteredPIN !== "1234") {
+    showError("PIN-ka aad soo gelisay waa khalad.");
+    return;
+  }
+
+  modalMessage.textContent = `Haraagaagu waa $${balance}`;
+  SubmitBtn.style.display = "none";
+  PINInputs.style.display = "none";
+  errorMessage.style.display = "none";
+}
+
+
+function handleTopUp() {
+  const amount = parseFloat(modalInput.value.trim());
+  if (isNaN(amount) || amount < 5) {
+    showError("Wax ka yar $5 laguma shubi karo!");
+    return;
+  }else{
+    balance += amount;
+    modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${balance}`;
+    SubmitBtn.style.display = "none";
+    modalInput.style.display = "none";
+    errorMessage.style.display = "none";
+  }
+}
+
+let oldPIN = "1234"; 
+let newPIN = ""; 
+let changeStep = 1; 
+
+function handleChangePIN() {
+  const enteredPIN = getEnteredPIN();
+
+  if (changeStep === 1) {
+    if (enteredPIN !== oldPIN) {
+      showError("PIN-ka aad gelisay waa khalad.");
+      return;
+    }
+    changeStep = 2; 
+    modalMessage.textContent = "Fadlan gali PIN-kaaga cusub.";
+    clearInputs();
+  } else if (changeStep === 2) {
+    if (!newPIN) {
+      newPIN = enteredPIN; 
+      modalMessage.textContent = "Fadlan ku celi PIN-kaaga cusub.";
+      clearInputs();
+    } else if (newPIN !== enteredPIN) {
+      showError("PIN-kii hore iyo kan cusub iskuma eka.");
+      return
+    } else {
+      oldPIN = newPIN;
+      modalMessage.textContent = "Waad ku guulaysatay inaad badasho PIN-kaaga.";
+      errorMessage.style.display = "none";
+      PINInputs.style.display = "none";
+      SubmitBtn.style.display = "none";
+      changeStep = 1;
+      newPIN = ""; 
+    }
+  }
+}
+
+
+// Utility Functions
+function clearInputs() {
+  inputs.forEach((input) => (input.value = ""));
+  modalInput.value = "";
+}
+
+function getEnteredPIN() {
+  return Array.from(inputs).map((input) => input.value).join("");
+}
 
 function showError(message) {
   errorMessage.textContent = message;
   errorMessage.style.display = "block";
 }
 
-// close modal
+// Close Modal
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     modal.style.display = "none";
-    errorMessage.style.display = "none";
+    changeStep = 1;
+    resetModal();
   }
 };
