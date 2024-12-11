@@ -39,6 +39,7 @@ const modalInput = document.querySelector("#modalInput");
 const modalForm = document.querySelector("#modalForm");
 const errorMessage = document.querySelector("#errorMessage");
 const inputs = document.querySelectorAll(".pin-input input");
+const PINInputs = document.querySelector(".pin-input");
 
 
 inputs.forEach((input, index) => {
@@ -66,14 +67,27 @@ inputs.forEach((input, index) => {
 
 // Check Balance
 
-const CheckBalanceBTN = document.getElementById("checkBalance");
+const CheckBalanceBTN = document.querySelector("#checkBalance");
 
 CheckBalanceBTN.addEventListener("click", () => {
   console.log('btn checkBalance clicked');
   modal.style.display = "flex";
   modalTitle.textContent = "Check Balance";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalInput.style.display = "none";
 });
+
+// topup
+
+const topupBTN = document.querySelector("#topUp");
+
+topupBTN.addEventListener("click", () => {
+  modal.style.display = "flex";
+  modalTitle.textContent = "Top Up";
+  modalInput.placeholder = "$ 0.00";
+  PINInputs.style.display = "none";
+})
+
 
 // change PIN
 const changePIN = document.querySelector("#changePIN");
@@ -82,6 +96,7 @@ changePIN.addEventListener("click", () => {
   modal.style.display = "flex";
   modalTitle.textContent = "Change PIN";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalInput.style.display = "none"
 })
 
 modalForm.addEventListener("submit", (event) => {
@@ -95,12 +110,18 @@ modalForm.addEventListener("submit", (event) => {
     if (isEmpty) {
         showError("Fill All the inputs");
         return
+    }if (modalInput.value.trim() === "" && modalInput.value.trim < 5) {
+
     }else{
-     modalMessage.textContent = "Fadlan Gali PIN-kaaga Cusub";
-     inputs.forEach(input => {
-      input.value = ''
+    modalMessage.textContent = "Fadlan Gali PIN-kaaga Cusub";
+    inputs.forEach(input => {
+    input.value = ''
      })
-  }
+    }
+
+    if (modalInput.value.trim < 5){
+      showError('Wax ka yar $5 laguma shubi karo!')
+    }
 });
 
 
