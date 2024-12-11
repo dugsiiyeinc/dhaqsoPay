@@ -19,22 +19,23 @@
                 <!--  check Balance -->
                 <div class="QuciAction">
                     <div class="QuickIcon" id="checkBalance">
-                    <img src="./icons/show.svg"  alt="">
+                    <img src="./icons/show.svg" id="checkBalance" alt="">
                     </div>
                     <span class="QuickTitle">Check <br> Balance</span>
                 </div>
+                
                 <!-- topup -->
                 <div class="QuciAction">
                     <div class="QuickIcon" id="topUp">
-                        <img src="./icons/topup.svg" alt="">
+                        <img src="./icons/topup.svg" id="topUp" alt="">
                     </div>
                     <span class="QuickTitle topup">Topup</span>
                 </div>
 
                 <!-- change PIN -->
-                <div class="QuciAction" id="changePIN">
-                    <div class="QuickIcon">
-                        <img src="./icons/Lock.svg" alt="Lock Icon" class="lock-icon">
+                <div class="QuciAction">
+                    <div class="QuickIcon" id="changePIN">
+                        <img src="./icons/Lock.svg" alt="lock-icon" id="changePIN" />
                     </div>
                     <span class="QuickTitle">Change <br> PIN</span>
                 </div>
@@ -85,9 +86,31 @@
                 <button id="cancelLogout" class="btn">No</button>
             </div>
         </div>
+
+        <!-- modal -->
+        <div class="modal">
+            <div class="modal-contentBox">
+                <div class="topModalContent">
+                    <p id="modalTitle"></p>
+                </div>
+                <div class="modal-body">
+                    <span id="modalMessage"></span>
+                    <form id="modalForm">
+                        <input type="text" id="modalInput">
+                        <div class="pin-input">
+                            <input type="text" maxlength="1" />
+                            <input type="text" maxlength="1" />
+                            <input type="text" maxlength="1" />
+                            <input type="text" maxlength="1" />
+                        </div>
+                        <span id="errorMessage" class="error-message modalErrorMessage"></span>
+                        <button type="submit" id="SubmitBtn">Enter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="./dash.js"></script>
-     <script src="/extension/change-pin.js"></script>
 </body>
 </html>
