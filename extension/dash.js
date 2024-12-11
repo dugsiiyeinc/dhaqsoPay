@@ -31,8 +31,6 @@ cancelLogout.addEventListener("click", () => {
   document.getElementById("logoutModal").style.display = "none";
 });
 
-// // navigate to change pin Screen when clicked change pin ico
-
 // modal
 const modal = document.querySelector(".modal");
 const modalTitle = document.querySelector("#modalTitle");
@@ -65,6 +63,17 @@ inputs.forEach((input, index) => {
   });
 });
 
+
+// Check Balance
+
+const CheckBalanceBTN = document.getElementById("checkBalance");
+
+CheckBalanceBTN.addEventListener("click", () => {
+  console.log('btn checkBalance clicked');
+  modal.style.display = "flex";
+  modalTitle.textContent = "Check Balance";
+  modalMessage.textContent = "Fadlan gali PIN-kaaga";
+});
 
 // change PIN
 const changePIN = document.querySelector("#changePIN");
