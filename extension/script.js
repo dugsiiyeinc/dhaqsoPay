@@ -62,6 +62,17 @@ selectProvider.addEventListener("change", () => {
   updatePrefix(selectedProvider);
 });
 
+
+PIN.addEventListener("input", () => {
+
+  PIN.value = PIN.value.replace(/\D/g, "");
+
+  if (PIN.value.length === 4) {
+    clearError();
+  }
+});
+
+
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
   clearError();
