@@ -95,25 +95,33 @@ function slidePrevious() {
   // Start the auto-slide
 startAutoSlide();
 
-//  Cta images
-const images = [
- 
-'./assets/cta-image1.png',
-'./assets/cta-image2.png',
-'./assets/cta-image3.png'
- ];
+// Video-popup
+const playButton = document.getElementById('playButton');
+const videoPopup = document.getElementById('videoPopup');
+const closeButton = document.getElementById('closeButton');
+const videoIframe = videoPopup.querySelector('iframe');
 
-let currentIndex = 0;
+playButton.addEventListener('click', () => {
+  videoPopup.style.display = 'flex';
+});
 
-function changeBackgroundImage() {
-  document.querySelector('.cta-image').style.backgroundImage = `url(${images[currentIndex]})`;
-  currentIndex = (currentIndex + 1) % images.length;
+const closePopup = () => {
+  videoPopup.style.display = 'none';
+   videoIframe.src = videoIframe.src;
 }
- setInterval(changeBackgroundImage, 5000);
 
- changeBackgroundImage();
+closeButton.addEventListener('click', closePopup);
 
-//  faqs
+ window.addEventListener('click', (e) => {
+  if (e.target === videoPopup) {
+     closePopup();
+
+  }
+});
+
+
+
+ //  faqs
 const faqs = [
   {
     question: "What is the purpose of dhaqsoPay?",
