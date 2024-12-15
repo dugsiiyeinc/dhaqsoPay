@@ -42,7 +42,6 @@ const inputs = document.querySelectorAll(".pin-input input");
 const PINInputs = document.querySelector(".pin-input");
 const SubmitBtn = document.querySelector("#SubmitBtn");
 
-
 inputs.forEach((input, index) => {
   input.addEventListener("input", (e) => {
     // Allow only numeric input
@@ -101,12 +100,11 @@ topupBTN.addEventListener("click", () => {
   modalTitle.textContent = "Top Up";
   modalMessage.textContent = "Fadlan gali lacagta aad rabto inaad ku shubto.";
   modalInput.style.display = "block";
-  modalInput.placeholder = "$ 0.00"
+  modalInput.placeholder = "$ 0.00";
   PINInputs.style.display = "none";
   SubmitBtn.textContent = "Submit";
   clearInputs();
 });
-
 
 // change PIN
 const changePIN = document.querySelector("#changePIN");
@@ -136,12 +134,17 @@ modalForm.addEventListener("submit", (event) => {
   }
 });
 
-
 let balance = 300;
 function handleCheckBalance() {
   const enteredPIN = getEnteredPIN();
 
-  if (enteredPIN !== "1234") {
+  if (enteredPIN === ""){
+    showError("Fadlan gali PIN-kaaga");
+    return;
+  } if (enteredPIN.trim().length !== 4){
+    showError("PIN-ka kama yaraan karo 4 numbers");
+    return
+  } if(enteredPIN !== "1234") {
     showError("PIN-ka aad soo gelisay waa khalad.");
     return;
   }
@@ -152,54 +155,71 @@ function handleCheckBalance() {
   errorMessage.style.display = "none";
 }
 
-
 function handleTopUp() {
   const amount = parseFloat(modalInput.value.trim());
-  if (isNaN(amount) || amount < 5) {
+  if (isNaN(amount)) {
+    showError("Fadlan gali kaliya tiro sax ah!");
+    return;
+  }if (amount < 5) {
     showError("Wax ka yar $5 laguma shubi karo!");
     return;
-  }else{
-    balance += amount;
-    modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${balance}`;
-    SubmitBtn.style.display = "none";
-    modalInput.style.display = "none";
-    errorMessage.style.display = "none";
+  }if (amount > 100000000) {
+    showError("Lacagta ugu badan ee lagu shubi karo waa $100,000,000!");
+    return;
   }
+
+  balance += amount;
+  modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${balance}`;
+  SubmitBtn.style.display = "none";
+  modalInput.style.display = "none";
+  errorMessage.style.display = "none";
 }
 
-let oldPIN = "1234"; 
-let newPIN = ""; 
-let changeStep = 1; 
 
+let newPIN = "";
+let changeStep = 1;
+
+// Handle PIN change process
 function handleChangePIN() {
   const enteredPIN = getEnteredPIN();
 
-  if (changeStep === 1) {
-    if (enteredPIN !== oldPIN) {
-      showError("PIN-ka aad gelisay waa khalad.");
-      return;
-    }
-    changeStep = 2; 
-    modalMessage.textContent = "Fadlan gali PIN-kaaga cusub.";
-    clearInputs();
-  } else if (changeStep === 2) {
-    if (!newPIN) {
-      newPIN = enteredPIN; 
-      modalMessage.textContent = "Fadlan ku celi PIN-kaaga cusub.";
+  chrome.storage.local.get("onlineUser", (result) => {
+    const onlineUser = JSON.parse(result.onlineUser || "{}");
+
+    if (changeStep === 1) {
+      if (enteredPIN !== onlineUser.PIN) {
+        showError("PIN-ka aad gelisay waa khalad.");
+        return;
+      }
+      changeStep = 2;
+      modalMessage.textContent = "Fadlan gali PIN-kaaga cusub.";
       clearInputs();
-    } else if (newPIN !== enteredPIN) {
-      showError("PIN-kii hore iyo kan cusub iskuma eka.");
-      return
-    } else {
-      oldPIN = newPIN;
-      modalMessage.textContent = "Waad ku guulaysatay inaad badasho PIN-kaaga.";
-      errorMessage.style.display = "none";
-      PINInputs.style.display = "none";
-      SubmitBtn.style.display = "none";
-      changeStep = 1;
-      newPIN = ""; 
+    } else if (changeStep === 2) {
+      if (!newPIN) {
+        newPIN = enteredPIN;
+        modalMessage.textContent = "Fadlan ku celi PIN-kaaga cusub.";
+        clearInputs();
+      } else if (newPIN !== enteredPIN) {
+        showError("PIN-kii hore iyo kan cusub iskuma eka.");
+        return;
+      } else {
+        // Update the online user's PIN
+        onlineUser.PIN = newPIN;
+        chrome.storage.local.set(
+          { onlineUser: JSON.stringify(onlineUser) },
+          () => {
+            modalMessage.textContent =
+              "Waad ku guulaysatay inaad badasho PIN-kaaga.";
+            errorMessage.style.display = "none";
+            PINInputs.style.display = "none";
+            SubmitBtn.style.display = "none";
+            changeStep = 1;
+            newPIN = "";
+          }
+        );
+      }
     }
-  }
+  });
 }
 
 
@@ -210,7 +230,9 @@ function clearInputs() {
 }
 
 function getEnteredPIN() {
-  return Array.from(inputs).map((input) => input.value).join("");
+  return Array.from(inputs)
+    .map((input) => input.value)
+    .join("");
 }
 
 function showError(message) {
