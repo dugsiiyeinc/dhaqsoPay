@@ -97,6 +97,7 @@ CheckBalanceEyeToggle.addEventListener("click", () => {
   modal.style.display = "flex";
   modalTitle.textContent = "Check Balance";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalMessage.style.textAlign = "center";
   modalInput.style.display = "none";
   PINInputs.style.display = "flex";
   SubmitBtn.textContent = "Check";
@@ -113,6 +114,7 @@ topupBTN.addEventListener("click", () => {
   modal.style.display = "flex";
   modalTitle.textContent = "Top Up";
   modalMessage.textContent = "Fadlan gali lacagta aad rabto inaad ku shubto.";
+  modalMessage.style.textAlign = "center";
   modalInput.style.display = "block";
   modalInput.placeholder = "$ 0.00";
   PINInputs.style.display = "none";
@@ -129,6 +131,7 @@ changePIN.addEventListener("click", () => {
   modal.style.display = "flex";
   modalTitle.textContent = "Change PIN";
   modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalMessage.style.textAlign = "center";
   modalInput.style.display = "none";
   PINInputs.style.display = "flex";
   SubmitBtn.textContent = "Enter";
@@ -145,6 +148,8 @@ modalForm.addEventListener("submit", (event) => {
     handleTopUp();
   } else if (currentAction === "changePIN") {
     handleChangePIN();
+  } else if ( currentAction === "purchase"){
+    handlePurchase(purchaseAmount, purchaseReceiver);
   }
 });
 
@@ -271,6 +276,92 @@ function handleChangePIN() {
         );
       }
     }
+  });
+}
+
+// purchase
+function showPurchaseConfirmation(amount, platform) {
+  const topModalContent = document.querySelector(".topModalContent");
+  currentAction = "purchase";
+  modal.style.display = "flex";
+  modalInput.style.display = "flex";
+  modalInput.placeholder = 'Fadlan gali PIN-kaaga'
+  modalMessage.textContent = `Ma hubtaa inaad $${amount} wax kaga iibsato ${platform}? Fadlan gali PIN-kaaga si aad u dhammaystirto.`;
+  modalMessage.style.textAlign = "left";
+  PINInputs.style.display = "none";
+  topModalContent.style.display = "none";
+}
+
+const purchaseAmount = 100;
+const purchaseReceiver = 'dugsiiye.com'
+
+document.addEventListener("DOMContentLoaded", showPurchaseConfirmation(purchaseAmount, purchaseReceiver));
+
+// function to handle purchase request
+function handlePurchase(amount, platform) {
+  const enteredPIN = modalInput.value.trim();
+
+  if (enteredPIN === "") {
+    showError("Fadlan gali PIN-kaaga.");
+    return;
+  }
+  // Check if the entered PIN consists only of numbers
+  if (!/^\d+$/.test(enteredPIN)) {
+    showError("Fadlan gali lambar PIN oo kaliya.");
+    return;
+  }
+
+  if (enteredPIN.trim().length !== 4) {
+    showError("PIN-ka waa inuu ahaadaa 4 lambar.");
+    return;
+  }
+
+  chrome.storage.local.get("onlineUser", (result) => {
+    const onlineUser = JSON.parse(result.onlineUser || "{}");
+
+    if (enteredPIN !== onlineUser.PIN) {
+      showError("PIN-ka aad soo gelisay waa khalad.");
+      return;
+    }
+
+    if (onlineUser.balance < amount) {
+      modalMessage.textContent = "Waan ka xunnahay haraagaga kuma filna.";
+      modalInput.style.display = "none";
+      SubmitBtn.style.display = "none";
+      errorMessage.style.display = "none";
+      return;
+    }
+
+    onlineUser.balance -= amount;
+
+    // Get the current date and time for the transaction
+    const transactionTime = new Date().toLocaleString();
+
+    // Save the updated user balance
+    chrome.storage.local.get(["users"], (result) => {
+      const users = JSON.parse(result.users || "[]");
+
+      const updatedUsers = users.map((user) => {
+        if (user.name === onlineUser.name) {
+          user.balance = onlineUser.balance;
+        }
+        return user;
+      });
+
+      chrome.storage.local.set(
+        {
+          users: JSON.stringify(updatedUsers),
+          onlineUser: JSON.stringify(onlineUser),
+        },
+        () => {
+          // Show the success message
+          modalMessage.textContent = `Waxaad $${amount} u wareejisay ${platform}, Taariikhda: ${transactionTime}, Haraagaaga waa $${onlineUser.balance}.`;
+          SubmitBtn.style.display = "none";
+          modalInput.style.display = "none";
+          errorMessage.style.display = "none";
+        }
+      );
+    });
   });
 }
 
