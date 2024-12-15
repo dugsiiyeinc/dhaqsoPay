@@ -13,12 +13,12 @@ function displayUserAccount() {
   });
 }
 
+const LogoutModal = document.getElementById("logoutModal");
 const logoutBtn = document.getElementById("Logout");
 const confirmLogout = document.getElementById("confirmLogout");
 const cancelLogout = document.getElementById("cancelLogout");
 logoutBtn.addEventListener("click", () => {
-  const modal = document.getElementById("logoutModal");
-  modal.style.display = "flex";
+  LogoutModal.style.display = "flex";
 });
 
 confirmLogout.addEventListener("click", () => {
@@ -355,7 +355,7 @@ function handlePurchase(amount, platform) {
         },
         () => {
           // Show the success message
-          modalMessage.textContent = `Waxaad $${amount} u wareejisay ${platform}, Taariikhda: ${transactionTime}, Haraagaaga waa $${onlineUser.balance}.`;
+          handleSuccessMessage(amount, platform, onlineUser.balance);
           SubmitBtn.style.display = "none";
           modalInput.style.display = "none";
           errorMessage.style.display = "none";
@@ -363,6 +363,16 @@ function handlePurchase(amount, platform) {
       );
     });
   });
+}
+
+function handleSuccessMessage(amount, platform, newBalance) {
+  const successPopup = document.querySelector(".success-popup");
+  const successMessage = document.querySelector("#successMessage");
+
+  // Set the success message content
+  successMessage.textContent = `Waxaad $${amount} u wareejisay ${platform}, Taariikhda: ${new Date().toLocaleString()}, Haraagaaga waa $${newBalance}.`;
+
+  successPopup.classList.add("show");
 }
 
 
@@ -386,9 +396,13 @@ function showError(message) {
 
 // Close Modal
 window.onclick = function (event) {
+  const successPopup = document.querySelector(".success-popup");
   if (event.target === modal) {
     modal.style.display = "none";
     changeStep = 1;
+    successPopup.classList.remove("show");
     resetModal();
-  }
+  }if (event.target === LogoutModal){
+    LogoutModal.style.display = "none";
+  } 
 };
