@@ -1,9 +1,9 @@
 
 /* start hero section style */
 .hero-section {
-  margin-top: 1rem;
+  margin-top: 2rem;
   height:100vh;    
-  padding-block:20px ;
+  /* padding-block:20px ; */
   display: flex;
   justify-content: start;
     align-items: center;
@@ -12,7 +12,7 @@
   height: 100%;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   gap: 3rem;
 }
 .hero-content-left {
@@ -28,6 +28,7 @@
 }
 .hero-content-left h1 {
   font-size: 3rem;
+  line-height: 4rem;
   /* font-weight: 500; */
 }
 
@@ -91,25 +92,25 @@
   font-size: 1rem;
   color: #777;
 }
-.hero-content-right {
+/* .hero-content-right {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .hero-content-right {
   width: 50%;
   background-color: #222061;
   border-radius: 10px;
-  height: 600px;
+  height: 100%;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: left;
+
 }
 
 .hero-content-right img {
   padding-top: 40px;
-  width: 70%;
-  height: 600px;
+  width: 80%;
+  height: 100%;
 }
 /* end hero section style */
 
@@ -594,6 +595,23 @@ color:#37c1f0;
   border-radius:50%;
 }
 /* end cta section style */
+/* @media(min-width: 1444px){
+  .container{
+    width: 100%;
+  }
+  .hero-content-right img{
+    width: 100%;
+  }
+  .hero-content-left {
+    width: 50%;
+    gap: 2rem;
+  }
+  .hero-content-left h1{
+    font-size: 4rem;
+    line-height: 6rem;
+  }
+
+} */
 @media(max-width: 992px){
   /* faq */
   .container .faq-section-container{
@@ -675,6 +693,9 @@ color:#37c1f0;
   /* Features */
   .features {
     grid-template-columns: 1fr ;
+  }
+  .features .feature {
+    max-width: 100%;
   }
   
   /*  Why choose us responsive */
