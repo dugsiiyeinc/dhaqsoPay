@@ -89,6 +89,20 @@ CheckBalanceBTN.addEventListener("click", () => {
   clearInputs();
 });
 
+const CheckBalanceEyeToggle = document.querySelector("#CheckBalanceEyeToggle");
+
+CheckBalanceEyeToggle.addEventListener("click", () => {
+  resetModal();
+  currentAction = "checkBalance";
+  modal.style.display = "flex";
+  modalTitle.textContent = "Check Balance";
+  modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalInput.style.display = "none";
+  PINInputs.style.display = "flex";
+  SubmitBtn.textContent = "Check";
+  clearInputs();
+});
+
 // topup
 
 const topupBTN = document.querySelector("#topUp");
