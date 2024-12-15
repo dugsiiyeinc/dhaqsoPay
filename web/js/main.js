@@ -194,8 +194,7 @@ function toggleAnswer(button) {
 }
 
 
-// darkmode section
-const container = document.querySelector('.comparison-container');
+
         const handle = container.querySelector('#handle');
         const lightImage = container.querySelector('.light-image');
         const darkImage = container.querySelector('.dark-image');
