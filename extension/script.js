@@ -82,6 +82,7 @@ authForm.addEventListener("submit", (e) => {
     userName: !isSignIn ? username.value : undefined,
     userphoneNumber: phoneNumber,
     PIN: PIN.value,
+    balance: 0
   };
 
   if (isSignIn) {

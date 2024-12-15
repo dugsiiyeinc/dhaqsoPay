@@ -148,45 +148,70 @@ modalForm.addEventListener("submit", (event) => {
   }
 });
 
-let balance = 300;
 function handleCheckBalance() {
   const enteredPIN = getEnteredPIN();
 
-  if (enteredPIN === ""){
-    showError("Fadlan gali PIN-kaaga");
-    return;
-  } if (enteredPIN.trim().length !== 4){
-    showError("PIN-ka kama yaraan karo 4 numbers");
-    return
-  } if(enteredPIN !== "1234") {
-    showError("PIN-ka aad soo gelisay waa khalad.");
+  if (enteredPIN === "") {
+    showError("Fadlan gali PIN-kaaga.");
     return;
   }
+  if (enteredPIN.trim().length !== 4) {
+    showError("PIN-ka waa inuu ahaadaa 4 lambar.");
+    return;
+  }
+  chrome.storage.local.get("onlineUser", (result) => {
+    const onlineUser = JSON.parse(result.onlineUser || "{}");
+    if (enteredPIN !== onlineUser.PIN) {
+      showError("PIN-ka aad soo gelisay waa khalad.");
+      return;
+    }
 
-  modalMessage.textContent = `Haraagaagu waa $${balance}`;
-  SubmitBtn.style.display = "none";
-  PINInputs.style.display = "none";
-  errorMessage.style.display = "none";
+    const balance = onlineUser.balance || 0;
+    modalMessage.textContent = `Haraagaagu waa $${balance}`;
+    SubmitBtn.style.display = "none";
+    PINInputs.style.display = "none";
+    errorMessage.style.display = "none";
+  });
 }
 
 function handleTopUp() {
   const amount = parseFloat(modalInput.value.trim());
+
   if (isNaN(amount)) {
     showError("Fadlan gali kaliya tiro sax ah!");
     return;
-  }if (amount < 5) {
+  }
+  if (amount < 5) {
     showError("Wax ka yar $5 laguma shubi karo!");
     return;
-  }if (amount > 100000000) {
+  }
+  if (amount > 100000000) {
     showError("Lacagta ugu badan ee lagu shubi karo waa $100,000,000!");
     return;
   }
 
-  balance += amount;
-  modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${balance}`;
-  SubmitBtn.style.display = "none";
-  modalInput.style.display = "none";
-  errorMessage.style.display = "none";
+  chrome.storage.local.get(["users", "onlineUser"], (result) => {
+    const users = JSON.parse(result.users || "[]");
+    const onlineUser = JSON.parse(result.onlineUser || "{}");
+
+    const updatedUsers = users.map((user) => {
+      if (user.name === onlineUser.name && user.PIN === onlineUser.PIN) {
+        user.balance = (user.balance || 0) + amount; 
+        onlineUser.balance = user.balance;
+      }
+      return user;
+    });
+
+    chrome.storage.local.set({
+      users: JSON.stringify(updatedUsers),
+      onlineUser: JSON.stringify(onlineUser),
+    });
+
+    modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${onlineUser.balance}`;
+    SubmitBtn.style.display = "none";
+    modalInput.style.display = "none";
+    errorMessage.style.display = "none";
+  });
 }
 
 
@@ -197,7 +222,8 @@ let changeStep = 1;
 function handleChangePIN() {
   const enteredPIN = getEnteredPIN();
 
-  chrome.storage.local.get("onlineUser", (result) => {
+  chrome.storage.local.get(["users", "onlineUser"], (result) => {
+    const users = JSON.parse(result.users || "[]"); 
     const onlineUser = JSON.parse(result.onlineUser || "{}");
 
     if (changeStep === 1) {
@@ -219,8 +245,20 @@ function handleChangePIN() {
       } else {
         // Update the online user's PIN
         onlineUser.PIN = newPIN;
+
+        const updatedUsers = users.map((user) => {
+          if (user.name === onlineUser.name) {
+            user.PIN = newPIN;
+          }
+          return user;
+        });
+
+        // Save updated users and onlineUser back to storage
         chrome.storage.local.set(
-          { onlineUser: JSON.stringify(onlineUser) },
+          {
+            users: JSON.stringify(updatedUsers),
+            onlineUser: JSON.stringify(onlineUser),
+          },
           () => {
             modalMessage.textContent =
               "Waad ku guulaysatay inaad badasho PIN-kaaga.";
@@ -235,6 +273,7 @@ function handleChangePIN() {
     }
   });
 }
+
 
 
 // Utility Functions
