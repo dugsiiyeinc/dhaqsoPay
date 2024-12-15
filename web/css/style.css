@@ -156,6 +156,7 @@
 
 /* start mindful-design styley */
 .mindful-design{
+  padding-top: 4rem;
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
@@ -755,7 +756,7 @@ color:#37c1f0;
       height: 50vh;
       height: auto;
     }
-    
+
     .faq-image {
       position: relative;
       left:0;
@@ -768,7 +769,12 @@ color:#37c1f0;
       height: auto;
       display: block;
     }
-  
+    .faq-question {
+      font-size: 1rem;
+    }
+    .faq-items{
+      padding: 0px;
+    }
    
 }
 

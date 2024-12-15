@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-block: 100px;
+    padding-top: 100px;
     gap: 0.5rem;
     border-bottom: 1px solid #000;
 }
@@ -57,7 +57,7 @@
 }
 /* *About Raveli style  */
 .about-raveli{
-    padding-block: 100px;
+    padding-top: 100px;
 
 }
 .img-content{
@@ -266,106 +266,54 @@
 
 .footer {
     background-color: rgb(10, 20, 51);
-    color: rgb(255, 255, 227);
+    color: #fff;
     width: 100%;
     /* height: 100vh; */
-    padding: 3%;
-    font-family: "Space Grotesk", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    padding-block: 3rem;
 }
 
 .footer .quad {
-    display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    gap: 20px;
+   display: flex;
+   justify-content: space-around;
+   /* align-items: center; */
+   flex-wrap: wrap;
+   gap: 2rem;
+    
+}
+.compress img{
+    width: 150px;
 }
 
-.footer .quad .compress {
-    width: 100%;
-    padding: 30px;
-    display: flex;
-    height: fit-content;
-    flex-direction: column;
-}
-
-.footer .quad .compress img {
-    width: 60%;
-    padding-top: 20px;
-}
-
-.footer .quad .compress p {
-    padding: 30px 0;
-    color: cadetblue;
-}
-
-.footer .quad .compress .icons i {
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    color: rgb(55, 193, 240);
-    font-size: 1.5rem;
-}
-
-.footer .quad .compress .icons i:hover {
-    color: #A6979C;
-}
-
-
-.footer .quad .contact {
-    padding: 30px;
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.footer .quad .contact h4 {
-    padding: 20px;
-    font-size: 1.3rem;
-}
-
-.footer .quad .contact a {
-    color: cadetblue;
-    padding: 20px;
-    cursor: pointer;
-}
-
-.footer .quad .explore {
-    padding: 48px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.footer .quad .explore h4 {
-    font-size: 1.3rem;
-    padding: 20px;
-}
-
-.footer .quad .support {
-    padding: 30px;
+.foot-card{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1rem;
 }
-
-.footer .quad .support h4 {
-    font-size: 1.3rem;
-    padding: 20px;
-}
-
-.footer .quad .support span {
-    display: flex;
+.foot-card p{
+    width: 80%;
+    font-size: 1rem;
     color: cadetblue;
     cursor: pointer;
-    padding: 20px;
 }
-
-.footer .quad .support span:hover {
-    color: rgb(55, 193, 240);
+.foot-card .icons{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
-
+.foot-card .icons i{
+    font-size: 1.2rem;
+    
+}
+.foot-text{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: cadetblue;
+    cursor: pointer;
+}
+.foot-text a:hover, .foot-text  span:hover, .foot-card p:hover{
+    color:#37c1f0;
+}
 
 .footer .download {
     display: flex;
@@ -373,63 +321,60 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 5%;
+    padding-block: 4rem;
+    gap: 1rem;
 
 }
 
 .footer .download h4 {
     font-size: 1.5rem;
-    padding: 10px;
 }
 
 .footer .download p {
     color: cadetblue;
-    padding: 10px;
+    text-align: center;
+    padding-inline: 10px;
+}
+.footer .download p:hover{
+    color: #37c1f0;
 }
 
 .footer .download .app {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
-.footer .download img {
-    width: 20%;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 30px;
-}
+.footer .download .app .download-card {
+    background-color: #06174a;
+    width: 50%;
 
-.footer .download img:hover {
-    transition: 1s;
+}
+.footer .download .app .download-card:hover{
+    background-color: #051b5e;
 }
 
 .footer .addition {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    font-size: 1rem;
-}
-
-.footer .addition span {
-    color: rgb(55, 193, 240);
-    cursor: pointer;
+    padding-top: 20px;
 }
 
 .footer .addition .rules {
     display: flex;
-    justify-content: space-between;
-    gap: 40px;
+    align-items: center;
+    gap: 2rem;
 }
 
-.footer .addition .rules span {
-    color: rgb(255, 255, 227);
-    color: cadetblue;
+.footer .addition .rules span,a {
+    /* color: rgb(255, 255, 227); */
+    color: #5f9ea0;
     cursor: pointer;
 }
 
-.footer .addition .rules span:hover {
+.footer .addition .rules span:hover,a:hover {
     color: rgb(55, 193, 240);
 }
 
@@ -538,52 +483,22 @@
     .footer {
         width: 100%;
     }
-
     .footer .quad {
-        display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
+   
+    .footer .download .app .download-card {
+       
+        padding: 8px;
+     }
+     .footer .download .app .download-card .card-info span {
+        font-size: 10px;
 
-    .footer .quad .compress {
-        flex-grow: 2;
-        /* flex-wrap: wrap; */
-    }
-
-    .footer .quad .contact {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .quad .explore {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .quad .support {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .download {
-        width: 100%;
-        padding: 30px;
-
-    }
-
-    .footer .download h4 {
-        font-size: 0.9rem;
-    }
-
-    .footer .download p {
-        font-size: 0.8em;
-    }
-
-    .footer .download img {
-        width: 30%;
-    }
+     }
+     .footer .addition{
+        flex-direction: column;
+        gap: 1rem;
+     }
 }
 @media (max-width:426px) {
     .team {
@@ -610,72 +525,13 @@
         width: 100%;
     }
 
-    .footer .quad {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-
-    }
-
-    .footer .quad .contact {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .quad .explore {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .quad .support {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    .footer .download {
-        width: 100%;
-        padding: 10px;
-        margin: 20px 0;
-    }
-
-    .footer .download h4 {
-        font-size: 1.2rem;
-        padding: 10px;
-    }
-
-    .footer .download p {
-        padding: 20px 0;
-        font-size: 0.8em;
-    }
-
     #apple {
         width: 43%;
 
     }
 
-    .footer .download .app img {
-        width: 45%;
-        padding: 20px;
-    }
 
-    .footer .addition {
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-    }
+    
 
-    .footer .addition .coppyright {
-        width: 100%;
-        padding-left: 50px;
-    }
-
-    .footer .addition .rules {
-        justify-content: space-between;
-        width: 100%;
-        padding: 10px;
-    }
+   
 }
