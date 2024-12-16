@@ -8,7 +8,7 @@ function displayUserAccount() {
       document.getElementById("UserNumberdisPlay").textContent =
         user.userphoneNumber || "+2526xxxxxx";
     } else {
-      window.location.href = "./auth.html";
+      window.location.href = "./getstarted.html";
     }
   });
 }
