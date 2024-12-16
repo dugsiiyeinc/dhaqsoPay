@@ -25,24 +25,53 @@ selectProvider.addEventListener("input", clearError);
 PIN.addEventListener("input", clearError);
 UserPhoneNumber.addEventListener("input", clearError);
 
+const updatePrefix = (provider) => {
+  let prefix = "";
+
+  // Assign prefix based on provider
+  switch (provider) {
+    case "hormuud":
+      prefix = "61";
+      break;
+    case "somtel":
+      prefix = "62";
+      break;
+    case "telesom":
+      prefix = "63";
+      break;
+    case "golis":
+      prefix = "09";
+      break;
+    case "somnet":
+      prefix = "68";
+      break;
+    default:
+      prefix = "";
+      break;
+  }
+  providerPrefix.textContent = prefix;
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const defaultProvider = selectProvider.value;
+  updatePrefix(defaultProvider); 
+});
+
 selectProvider.addEventListener("change", () => {
-  const selectedtedProvider = selectProvider.value;
-  if (selectedtedProvider === "hormuud") {
-    providerPrefix.textContent = "61";
-  } else if (selectedtedProvider === "somtel") {
-    providerPrefix.textContent = "62";
-  } else if (selectedtedProvider === "telesom") {
-    providerPrefix.textContent = "63";
-  } else if (selectedtedProvider === "golis") {
-    providerPrefix.textContent = "09";
-  } else if (selectedtedProvider === "somnet") {
-    providerPrefix.textContent = "68";
-  } else {
-    showError("Please select a provider");
-    providerPrefix.textContent = "";
-    return;
+  const selectedProvider = selectProvider.value;
+  updatePrefix(selectedProvider);
+});
+
+
+PIN.addEventListener("input", () => {
+
+  PIN.value = PIN.value.replace(/\D/g, "");
+
+  if (PIN.value.length === 4) {
+    clearError();
   }
 });
+
 
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -53,6 +82,7 @@ authForm.addEventListener("submit", (e) => {
     userName: !isSignIn ? username.value : undefined,
     userphoneNumber: phoneNumber,
     PIN: PIN.value,
+    balance: 0
   };
 
   if (isSignIn) {

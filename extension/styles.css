@@ -116,6 +116,12 @@ select {
   font-family: "Roboto", sans-serif;
 }
 
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-text-fill-color: #f5f5f5 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #212830 inset !important;
+  box-shadow: 0 0 0px 1000px #2a313c inset !important;
+}
 .InputNum {
   margin-left: -4px;
 }
@@ -269,7 +275,7 @@ select option {
 }
 .userInfo span{
   font-size: 1rem;
-  color: #f5f5f5;
+  color: #d9d9d9;
   cursor: pointer;
 }
 
@@ -330,11 +336,15 @@ footer img {
   font-size: 1rem;
 }
 
+.logoutBTNS{
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 .btn {
   background-color: #2a313c;
   border: 0.6px solid rgba(217, 217, 217, 0.3);
-  margin-top: 0.8rem;
-  margin-inline: 5px;
+  margin-top: 1rem;
   border-radius: 10px;
   padding: 10px 20px;
   color: #f5f5f5;
@@ -401,7 +411,13 @@ button {
 
 .modal-contentBox button {
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+
+#modalMessage{
+  line-height: 1.3rem;
+  font-size: 1rem;
+  color: #f5f5f5;
 }
 
 .error-message.modalErrorMessage{
@@ -430,4 +446,64 @@ button {
 
 .pin-input input::placeholder {
   color: #ABAFB1;
+}
+
+
+/* Animation for Success Popup */
+.success-popup {
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2a313c;
+  padding: 1.5rem 1rem;
+  border-radius: 15px;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  text-align: center;
+  z-index: 1000;
+}
+
+.success-popup.show {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.success-popup .icon {
+  width: 50px;
+  height: 50px;
+  background-color: #2a313c;
+  border-radius: 50%;
+  border: 0.6px solid rgba(217, 217, 217, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
+.success-popup .icon img{
+  width: 70%;
+}
+.success-popup p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  color: #f5f5f5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
