@@ -90,18 +90,27 @@ CheckBalanceBTN.addEventListener("click", () => {
 });
 
 const CheckBalanceEyeToggle = document.querySelector("#CheckBalanceEyeToggle");
+const BalanceDisplay = document.querySelector("#BalanceDisplay");
+
+let isBalanceVisible = false; // Track if the balance is currently visible
 
 CheckBalanceEyeToggle.addEventListener("click", () => {
-  resetModal();
-  currentAction = "checkBalance";
-  modal.style.display = "flex";
-  modalTitle.textContent = "Check Balance";
-  modalMessage.textContent = "Fadlan gali PIN-kaaga";
-  modalMessage.style.textAlign = "center";
-  modalInput.style.display = "none";
-  PINInputs.style.display = "flex";
-  SubmitBtn.textContent = "Check";
-  clearInputs();
+  if (!isBalanceVisible) {
+    resetModal();
+    currentAction = "checkBalanceEyeToggle";
+    modal.style.display = "flex";
+    modalTitle.textContent = "Check Balance";
+    modalMessage.textContent = "Fadlan gali PIN-kaaga";
+    modalMessage.style.textAlign = "center";
+    modalInput.style.display = "none";
+    PINInputs.style.display = "flex";
+    SubmitBtn.textContent = "Check";
+    clearInputs();
+  } else {
+    BalanceDisplay.textContent = "***";
+    CheckBalanceEyeToggle.src = "./icons/Hide.svg";
+    isBalanceVisible = false;
+  }
 });
 
 // topup
@@ -150,6 +159,8 @@ modalForm.addEventListener("submit", (event) => {
     handleChangePIN();
   } else if ( currentAction === "purchase"){
     handlePurchase(purchaseAmount, purchaseReceiver);
+  }else if ( currentAction = "checkBalanceEyeToggle"){
+    handleCheckBalanceEyeToggle();
   }
 });
 
@@ -176,6 +187,34 @@ function handleCheckBalance() {
     SubmitBtn.style.display = "none";
     PINInputs.style.display = "none";
     errorMessage.style.display = "none";
+  });
+}
+
+// handleCheckPINEyeToggle
+
+function handleCheckBalanceEyeToggle() {
+  const enteredPIN = getEnteredPIN();
+
+  if (enteredPIN === "") {
+    showError("Please enter your PIN.");
+    return;
+  }
+  if (enteredPIN.trim().length !== 4) {
+    showError("The PIN must be 4 digits.");
+    return;
+  }
+  chrome.storage.local.get("onlineUser", (result) => {
+    const onlineUser = JSON.parse(result.onlineUser || "{}");
+    if (enteredPIN !== onlineUser.PIN) {
+      showError("The PIN you entered is incorrect.");
+      return;
+    }
+
+    const balance = onlineUser.balance || 0;
+    modal.style.display = "none";
+    document.getElementById("BalanceDisplay").textContent = balance;
+    CheckBalanceEyeToggle.src = "./icons/show.svg";
+    isBalanceVisible = true;
   });
 }
 
