@@ -70,8 +70,9 @@
     position: relative;
     border: 1px solid #000;
     border-radius: 10px;
-    background: url('/web/assets/man.jpg') center / cover no-repeat;
-    
+    background: url('/web/assets/shiine2.jpg') center / cover no-repeat;
+    height: 650px;
+
 }
 .man-pic{
     border-radius: inherit;
@@ -377,7 +378,7 @@
         gap: 4rem;
     }
     .images{
-        height: 500px;
+        height: 1100px;
         order: 2;
     }
     .content {
@@ -409,7 +410,7 @@
         grid-template-columns: 1fr;
     }
     .images{
-        height: 400px;
+        height: 700px;
         order: 2;
     }
     .content {
