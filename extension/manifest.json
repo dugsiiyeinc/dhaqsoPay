@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "topUp",
+    "name": "dhaqsoPay",
     "version": "0.0.0",
-    "description": "A top-up application with validation and dark mode.",
+    "description": "Test payments effortlessly, build confidently.",
     "action": {
 
         "default_popup": "dashboard.html",
