@@ -218,18 +218,29 @@ CheckBalanceBTN.addEventListener("click", () => {
 });
 
 const CheckBalanceEyeToggle = document.querySelector("#CheckBalanceEyeToggle");
+const BalanceDisplay = document.querySelector("#BalanceDisplay");
+
+let isBalanceVisible = false; // Track if the balance is currently visible
 
 CheckBalanceEyeToggle.addEventListener("click", () => {
-  resetModal();
-  currentAction = "checkBalance";
-  modal.style.display = "flex";
-  modalTitle.textContent = "Check Balance";
-  modalMessage.textContent = "Fadlan gali pin-kaaga";
-  modalMessage.style.textAlign = "center";
-  modalInput.style.display = "none";
-  pinInputs.style.display = "flex";
-  SubmitBtn.textContent = "Check";
-  clearInputs();
+  if (!isBalanceVisible) {
+    // If balance is hidden, show the modal to check the PIN
+    resetModal();
+    currentAction = "checkBalanceEyeToggle";
+    modal.style.display = "flex";
+    modalTitle.textContent = "Check Balance";
+    modalMessage.textContent = "Fadlan gali PIN-kaaga";
+    modalMessage.style.textAlign = "center";
+    modalInput.style.display = "none";
+    PINInputs.style.display = "flex";
+    SubmitBtn.textContent = "Check";
+    clearInputs();
+  } else {
+    // If balance is visible, hide the balance and reset the state
+    BalanceDisplay.textContent = "***";
+    CheckBalanceEyeToggle.src = "./icons/Hide.svg";
+    isBalanceVisible = false;
+  }
 });
 
 // topup
@@ -277,6 +288,8 @@ modalForm.addEventListener("submit", (event) => {
     handleChangePin();
   } else if (currentAction === "purchase") {
     handlePurchase();
+  } else if (currentAction === "checkBalanceEyeToggle"){
+    handleCheckBalanceEyeToggle();
   }
 });
 
@@ -305,6 +318,41 @@ function handleCheckBalance() {
     errorMessage.style.display = "none";
   });
 }
+
+
+function handleCheckBalanceEyeToggle() {
+  const enteredPIN = getenteredPin();
+
+  if (!isBalanceVisible) {
+    if (enteredPIN === "") {
+      showError("Fadlan gali pin-kaaga.");
+      return;
+    }
+    if (enteredPIN.trim().length !== 4) {
+      showError("pin-ka waa inuu ahaadaa 4 lambar.");
+      return;
+    }
+    chrome.storage.local.get("onlineUser", (result) => {
+      const onlineUser = JSON.parse(result.onlineUser || "{}");
+      if (enteredPIN !== onlineUser.PIN) {
+        showError("pin-ka aad soo gelisay waa khalad.");
+        return;
+      }
+
+      const balance = onlineUser.balance || 0;
+      modal.style.display = "none";
+      BalanceDisplay.textContent = balance; 
+      CheckBalanceEyeToggle.src = "./icons/show.svg";
+      isBalanceVisible = true;
+    });
+  } else {
+    // If balance is visible, hide it
+    BalanceDisplay.textContent = "***";
+    CheckBalanceEyeToggle.src = "./icons/Hide.svg"; 
+    isBalanceVisible = false;
+  }
+}
+
 
 function handleTopUp() {
   const amount = parseFloat(modalInput.value.trim());
