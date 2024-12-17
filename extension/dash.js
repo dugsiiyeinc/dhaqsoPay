@@ -1,16 +1,145 @@
 document.addEventListener("DOMContentLoaded", displayUserAccount);
+
 function displayUserAccount() {
   chrome.storage.local.get("onlineUser", (result) => {
     if (result.onlineUser) {
       const user = JSON.parse(result.onlineUser);
-      document.getElementById("UserNamedisPlay").textContent =
-        user.userName || "Username";
-      document.getElementById("UserNumberdisPlay").textContent =
-        user.userphoneNumber || "+2526xxxxxx";
+      document.getElementById("fullnameDisplay").textContent =
+        user.fullname || "fullname";
+      document.getElementById("numberDisplay").textContent =
+        user.number || "+2526xxxxxx";
+
+      // Initialize WebSocket via background.js
+      chrome.runtime.sendMessage(
+        { type: "INIT_WEBSOCKET", number: user.number },
+        (response) => {
+          if (response.success) console.log("WebSocket initialized.");
+        }
+      );
+
+      // Fetch pending requests (if any)
+      chrome.runtime.sendMessage(
+        { type: "GET_PENDING_PAYMENT" },
+        (response) => {
+          if (response.pendingRequest) {
+            showPurchaseConfirmation(
+              response.pendingRequest.amount,
+              response.pendingRequest.platform
+            );
+          }
+        }
+      );
     } else {
       window.location.href = "./getstarted.html";
     }
   });
+}
+
+// Listen for messages from background.js
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "CONFIRM_PAYMENT") {
+    const { amount, platform } = message.data;
+    showPurchaseConfirmation(amount, platform);
+  } else if (message.type === "PAYMENT_RESPONSE") {
+    handlePaymentResponse(message.data);
+  }
+});
+
+// Handle payment responses from WebSocket
+function handlePaymentResponse(response) {
+  console.log(response);
+  if (response.error) {
+    // Error case: Timeout, insufficient balance, incorrect pin, or cancellation
+    modalMessage.textContent = response.error;
+    modalInput.style.display = "none";
+    SubmitBtn.textContent = "OK";
+    SubmitBtn.addEventListener("click", resetModalUI);
+    clearInputs();
+  } else if (response.message) {
+    // Success case: Show success popup
+    const newBalance = response.newBalance;
+    const amount = response.amount;
+    const platform = response.platform;
+
+    handleSuccessMessage(amount, platform, newBalance);
+    resetModalUI();
+    clearInputs();
+    chrome.storage.local.get("onlineUser", (result) => {
+      const user = JSON.parse(result.onlineUser || "{}");
+      user.balance = newBalance;
+      console.log(user);
+    });
+  }
+}
+
+// Show purchase confirmation modal
+function showPurchaseConfirmation(amount, platform) {
+  const topModalContent = document.querySelector(".topModalContent");
+  currentAction = "purchase";
+  modal.style.display = "flex";
+  modalInput.style.display = "flex";
+  modalInput.placeholder = "Fadlan gali pin-kaaga";
+  modalMessage.textContent = `Ma hubtaa inaad $${amount} wax kaga iibsato ${platform}? Fadlan gali pin-kaaga si aad u dhammaystirto.`;
+  modalMessage.style.textAlign = "left";
+  pinInputs.style.display = "none";
+  topModalContent.style.display = "none";
+}
+
+// Handle purchase confirmation
+function handlePurchase() {
+  const enteredPin = modalInput.value;
+  if (!enteredPin || enteredPin.length !== 4) {
+    showError("pin-ka waa inuu ahaadaa 4 lambar.");
+    return;
+  }
+
+  chrome.storage.local.get("onlineUser", (result) => {
+    const user = JSON.parse(result.onlineUser || "{}");
+    if (enteredPin !== user.pin) {
+      showError("pin-ka aad soo gelisay waa khalad.");
+      return;
+    }
+
+    // Send payment confirmation to background.js
+    chrome.runtime.sendMessage({
+      type: "CONFIRM_PAYMENT",
+      data: {
+        type: "CONFIRM_PAYMENT",
+        success: true,
+        pin: enteredPin,
+        number: user.number,
+      },
+    });
+  });
+}
+
+// Handle success message
+function handleSuccessMessage(amount, platform, newBalance) {
+  modal.style.display = "none";
+  const successPopup = document.querySelector(".success-popup");
+  const successMessage = document.querySelector("#successMessage");
+
+  successMessage.textContent = `Waxaad $${amount} u wareejisay ${platform}. Haraagaaga cusub waa $${newBalance}.`;
+  successPopup.classList.add("show");
+}
+
+// Display error message
+function showErrorMessage(message) {
+  errorMessage.textContent = message;
+  errorMessage.style.display = "block";
+}
+
+// Reset modal UI
+function resetModalUI() {
+  SubmitBtn.disabled = true;
+  pinInputs.style.display = "none";
+  modal.style.display = "none";
+}
+
+// Utility to clear inputs
+function clearInputs() {
+  inputs.forEach((input) => (input.value = ""));
+  console.log(inputs);
 }
 
 const LogoutModal = document.getElementById("logoutModal");
@@ -39,7 +168,7 @@ const modalInput = document.querySelector("#modalInput");
 const modalForm = document.querySelector("#modalForm");
 const errorMessage = document.querySelector("#errorMessage");
 const inputs = document.querySelectorAll(".pin-input input");
-const PINInputs = document.querySelector(".pin-input");
+const pinInputs = document.querySelector(".pin-input");
 const SubmitBtn = document.querySelector("#SubmitBtn");
 
 inputs.forEach((input, index) => {
@@ -73,44 +202,34 @@ function resetModal() {
 
 let currentAction = "";
 
-// Check Balance
+// Check BalancehandlePurchaseConfirmation
 
 const CheckBalanceBTN = document.querySelector("#checkBalance");
 
 CheckBalanceBTN.addEventListener("click", () => {
-  resetModal();
   currentAction = "checkBalance";
   modal.style.display = "flex";
   modalTitle.textContent = "Check Balance";
-  modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalMessage.textContent = "Fadlan gali pin-kaaga";
   modalInput.style.display = "none";
-  PINInputs.style.display = "flex";
+  pinInputs.style.display = "flex";
   SubmitBtn.textContent = "Check";
   clearInputs();
 });
 
 const CheckBalanceEyeToggle = document.querySelector("#CheckBalanceEyeToggle");
-const BalanceDisplay = document.querySelector("#BalanceDisplay");
-
-let isBalanceVisible = false; // Track if the balance is currently visible
 
 CheckBalanceEyeToggle.addEventListener("click", () => {
-  if (!isBalanceVisible) {
-    resetModal();
-    currentAction = "checkBalanceEyeToggle";
-    modal.style.display = "flex";
-    modalTitle.textContent = "Check Balance";
-    modalMessage.textContent = "Fadlan gali PIN-kaaga";
-    modalMessage.style.textAlign = "center";
-    modalInput.style.display = "none";
-    PINInputs.style.display = "flex";
-    SubmitBtn.textContent = "Check";
-    clearInputs();
-  } else {
-    BalanceDisplay.textContent = "***";
-    CheckBalanceEyeToggle.src = "./icons/Hide.svg";
-    isBalanceVisible = false;
-  }
+  resetModal();
+  currentAction = "checkBalance";
+  modal.style.display = "flex";
+  modalTitle.textContent = "Check Balance";
+  modalMessage.textContent = "Fadlan gali pin-kaaga";
+  modalMessage.style.textAlign = "center";
+  modalInput.style.display = "none";
+  pinInputs.style.display = "flex";
+  SubmitBtn.textContent = "Check";
+  clearInputs();
 });
 
 // topup
@@ -118,7 +237,6 @@ CheckBalanceEyeToggle.addEventListener("click", () => {
 const topupBTN = document.querySelector("#topUp");
 
 topupBTN.addEventListener("click", () => {
-  resetModal();
   currentAction = "topUp";
   modal.style.display = "flex";
   modalTitle.textContent = "Top Up";
@@ -126,23 +244,23 @@ topupBTN.addEventListener("click", () => {
   modalMessage.style.textAlign = "center";
   modalInput.style.display = "block";
   modalInput.placeholder = "$ 0.00";
-  PINInputs.style.display = "none";
+  pinInputs.style.display = "none";
   SubmitBtn.textContent = "Submit";
   clearInputs();
 });
 
-// change PIN
-const changePIN = document.querySelector("#changePIN");
+// change pin
+const changePin = document.querySelector("#changePin");
 
-changePIN.addEventListener("click", () => {
+changePin.addEventListener("click", () => {
   resetModal();
-  currentAction = "changePIN";
+  currentAction = "changePin";
   modal.style.display = "flex";
-  modalTitle.textContent = "Change PIN";
-  modalMessage.textContent = "Fadlan gali PIN-kaaga";
+  modalTitle.textContent = "Change pin";
+  modalMessage.textContent = "Fadlan gali pin-kaaga";
   modalMessage.style.textAlign = "center";
   modalInput.style.display = "none";
-  PINInputs.style.display = "flex";
+  pinInputs.style.display = "flex";
   SubmitBtn.textContent = "Enter";
   clearInputs();
 });
@@ -155,66 +273,36 @@ modalForm.addEventListener("submit", (event) => {
     handleCheckBalance();
   } else if (currentAction === "topUp") {
     handleTopUp();
-  } else if (currentAction === "changePIN") {
-    handleChangePIN();
-  } else if ( currentAction === "purchase"){
-    handlePurchase(purchaseAmount, purchaseReceiver);
-  }else if ( currentAction = "checkBalanceEyeToggle"){
-    handleCheckBalanceEyeToggle();
+  } else if (currentAction === "changePin") {
+    handleChangePin();
+  } else if (currentAction === "purchase") {
+    handlePurchase();
   }
 });
 
 function handleCheckBalance() {
-  const enteredPIN = getEnteredPIN();
+  const enteredPin = getenteredPin();
 
-  if (enteredPIN === "") {
-    showError("Fadlan gali PIN-kaaga.");
+  if (enteredPin === "") {
+    showError("Fadlan gali pin-kaaga.");
     return;
   }
-  if (enteredPIN.trim().length !== 4) {
-    showError("PIN-ka waa inuu ahaadaa 4 lambar.");
+  if (enteredPin.trim().length !== 4) {
+    showError("pin-ka waa inuu ahaadaa 4 lambar.");
     return;
   }
   chrome.storage.local.get("onlineUser", (result) => {
     const onlineUser = JSON.parse(result.onlineUser || "{}");
-    if (enteredPIN !== onlineUser.PIN) {
-      showError("PIN-ka aad soo gelisay waa khalad.");
+    if (enteredPin !== onlineUser.pin) {
+      showError("pin-ka aad soo gelisay waa khalad.");
       return;
     }
 
     const balance = onlineUser.balance || 0;
     modalMessage.textContent = `Haraagaagu waa $${balance}`;
     SubmitBtn.style.display = "none";
-    PINInputs.style.display = "none";
+    pinInputs.style.display = "none";
     errorMessage.style.display = "none";
-  });
-}
-
-// handleCheckPINEyeToggle
-
-function handleCheckBalanceEyeToggle() {
-  const enteredPIN = getEnteredPIN();
-
-  if (enteredPIN === "") {
-    showError("Please enter your PIN.");
-    return;
-  }
-  if (enteredPIN.trim().length !== 4) {
-    showError("The PIN must be 4 digits.");
-    return;
-  }
-  chrome.storage.local.get("onlineUser", (result) => {
-    const onlineUser = JSON.parse(result.onlineUser || "{}");
-    if (enteredPIN !== onlineUser.PIN) {
-      showError("The PIN you entered is incorrect.");
-      return;
-    }
-
-    const balance = onlineUser.balance || 0;
-    modal.style.display = "none";
-    document.getElementById("BalanceDisplay").textContent = balance;
-    CheckBalanceEyeToggle.src = "./icons/show.svg";
-    isBalanceVisible = true;
   });
 }
 
@@ -229,88 +317,127 @@ function handleTopUp() {
     showError("Wax ka yar $5 laguma shubi karo!");
     return;
   }
-  if (amount > 100000000) {
-    showError("Lacagta ugu badan ee lagu shubi karo waa $100,000,000!");
+  if (amount > 1000000) {
+    showError("Lacagta ugu badan ee lagu shubi karo waa $1,000,000!");
     return;
   }
 
-  chrome.storage.local.get(["users", "onlineUser"], (result) => {
-    const users = JSON.parse(result.users || "[]");
+  // Get online user
+  chrome.storage.local.get("onlineUser", async (result) => {
     const onlineUser = JSON.parse(result.onlineUser || "{}");
+    console.log(onlineUser);
 
-    const updatedUsers = users.map((user) => {
-      if (user.name === onlineUser.name && user.PIN === onlineUser.PIN) {
-        user.balance = (user.balance || 0) + amount; 
-        onlineUser.balance = user.balance;
+    if (!onlineUser.number) {
+      showError("Macluumaadka isticmaalaha lama helin.");
+      return;
+    }
+
+    // Update local storage balance
+    onlineUser.balance = (onlineUser.balance || 0) + amount;
+
+    chrome.storage.local.set(
+      { onlineUser: JSON.stringify(onlineUser) },
+      async () => {
+        console.log(onlineUser.number);
+
+        try {
+          // Send balance update to the server
+          const response = await fetch(
+            "http://localhost:8000/api/increase-balance",
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ number: onlineUser.number, amount }),
+            }
+          );
+
+          console.log("response", response);
+          const data = await response.json();
+          console.log(data);
+
+          if (response.ok) {
+            SubmitBtn.style.display = "none";
+            modalInput.style.display = "none";
+            errorMessage.style.display = "none";
+            modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${onlineUser.balance}`;
+          } else {
+            showError(data.error || "Server error occurred.");
+          }
+        } catch (error) {
+          console.error("Server error:", error);
+          showError("Failed to sync with server. Please try again.");
+        }
       }
-      return user;
-    });
-
-    chrome.storage.local.set({
-      users: JSON.stringify(updatedUsers),
-      onlineUser: JSON.stringify(onlineUser),
-    });
-
-    modalMessage.textContent = `Waxaad ku shubatay $${amount}. Haraagaaga cusub waa $${onlineUser.balance}`;
-    SubmitBtn.style.display = "none";
-    modalInput.style.display = "none";
-    errorMessage.style.display = "none";
+    );
   });
 }
 
-
-let newPIN = "";
+let newPin = "";
 let changeStep = 1;
 
-// Handle PIN change process
-function handleChangePIN() {
-  const enteredPIN = getEnteredPIN();
+function handleChangePin() {
+  const enteredPin = getenteredPin();
 
-  chrome.storage.local.get(["users", "onlineUser"], (result) => {
-    const users = JSON.parse(result.users || "[]"); 
+  chrome.storage.local.get("onlineUser", async (result) => {
     const onlineUser = JSON.parse(result.onlineUser || "{}");
 
     if (changeStep === 1) {
-      if (enteredPIN !== onlineUser.PIN) {
-        showError("PIN-ka aad gelisay waa khalad.");
+      if (enteredPin !== onlineUser.pin) {
+        console.log(enteredPin, onlineUser);
+        showError("pin-ka aad gelisay waa khalad.");
         return;
       }
       changeStep = 2;
-      modalMessage.textContent = "Fadlan gali PIN-kaaga cusub.";
+      modalMessage.textContent = "Fadlan gali pin-kaaga cusub.";
       clearInputs();
     } else if (changeStep === 2) {
-      if (!newPIN) {
-        newPIN = enteredPIN;
-        modalMessage.textContent = "Fadlan ku celi PIN-kaaga cusub.";
+      if (!newPin) {
+        newPin = enteredPin;
+        modalMessage.textContent = "Fadlan ku celi pin-kaaga cusub.";
         clearInputs();
-      } else if (newPIN !== enteredPIN) {
-        showError("PIN-kii hore iyo kan cusub iskuma eka.");
+      } else if (newPin !== enteredPin) {
+        showError("pin-kii hore iyo kan cusub iskuma eka.");
         return;
       } else {
-        // Update the online user's PIN
-        onlineUser.PIN = newPIN;
+        oldPin = onlineUser.pin;
+        // Update local storage
+        onlineUser.pin = newPin;
 
-        const updatedUsers = users.map((user) => {
-          if (user.name === onlineUser.name) {
-            user.PIN = newPIN;
-          }
-          return user;
-        });
-
-        // Save updated users and onlineUser back to storage
         chrome.storage.local.set(
-          {
-            users: JSON.stringify(updatedUsers),
-            onlineUser: JSON.stringify(onlineUser),
-          },
-          () => {
-            modalMessage.textContent =
-              "Waad ku guulaysatay inaad badasho PIN-kaaga.";
+          { onlineUser: JSON.stringify(onlineUser) },
+          async () => {
+            try {
+              // Send PIN update to the server
+              const response = await fetch(
+                "http://localhost:8000/api/change-pin",
+                {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    number: onlineUser.number,
+                    oldPin,
+                    newPin,
+                  }),
+                }
+              );
+
+              const data = await response.json();
+              if (response.ok) {
+                modalMessage.textContent =
+                  "Waad ku guulaysatay inaad badasho pin-kaaga.";
+              } else {
+                showError(data.error || "Server error occurred.");
+              }
+            } catch (error) {
+              console.error("Server error:", error);
+              showError("Failed to sync with server. Please try again.");
+            }
+
             errorMessage.style.display = "none";
-            PINInputs.style.display = "none";
+            pinInputs.style.display = "none";
             SubmitBtn.style.display = "none";
             changeStep = 1;
-            newPIN = "";
+            newPin = "";
           }
         );
       }
@@ -318,111 +445,13 @@ function handleChangePIN() {
   });
 }
 
-// purchase
-function showPurchaseConfirmation(amount, platform) {
-  const topModalContent = document.querySelector(".topModalContent");
-  currentAction = "purchase";
-  modal.style.display = "flex";
-  modalInput.style.display = "flex";
-  modalInput.placeholder = 'Fadlan gali PIN-kaaga'
-  modalMessage.textContent = `Ma hubtaa inaad $${amount} wax kaga iibsato ${platform}? Fadlan gali PIN-kaaga si aad u dhammaystirto.`;
-  modalMessage.style.textAlign = "left";
-  PINInputs.style.display = "none";
-  topModalContent.style.display = "none";
-}
-
-const purchaseAmount = 100;
-const purchaseReceiver = 'dugsiiye.com'
-
-document.addEventListener("DOMContentLoaded", showPurchaseConfirmation(purchaseAmount, purchaseReceiver));
-
-// function to handle purchase request
-function handlePurchase(amount, platform) {
-  const enteredPIN = modalInput.value.trim();
-
-  if (enteredPIN === "") {
-    showError("Fadlan gali PIN-kaaga.");
-    return;
-  }
-  // Check if the entered PIN consists only of numbers
-  if (!/^\d+$/.test(enteredPIN)) {
-    showError("Fadlan gali lambar PIN oo kaliya.");
-    return;
-  }
-
-  if (enteredPIN.trim().length !== 4) {
-    showError("PIN-ka waa inuu ahaadaa 4 lambar.");
-    return;
-  }
-
-  chrome.storage.local.get("onlineUser", (result) => {
-    const onlineUser = JSON.parse(result.onlineUser || "{}");
-
-    if (enteredPIN !== onlineUser.PIN) {
-      showError("PIN-ka aad soo gelisay waa khalad.");
-      return;
-    }
-
-    if (onlineUser.balance < amount) {
-      modalMessage.textContent = "Waan ka xunnahay haraagaga kuma filna.";
-      modalInput.style.display = "none";
-      SubmitBtn.style.display = "none";
-      errorMessage.style.display = "none";
-      return;
-    }
-
-    onlineUser.balance -= amount;
-
-    // Get the current date and time for the transaction
-    const transactionTime = new Date().toLocaleString();
-
-    // Save the updated user balance
-    chrome.storage.local.get(["users"], (result) => {
-      const users = JSON.parse(result.users || "[]");
-
-      const updatedUsers = users.map((user) => {
-        if (user.name === onlineUser.name) {
-          user.balance = onlineUser.balance;
-        }
-        return user;
-      });
-
-      chrome.storage.local.set(
-        {
-          users: JSON.stringify(updatedUsers),
-          onlineUser: JSON.stringify(onlineUser),
-        },
-        () => {
-          // Show the success message
-          handleSuccessMessage(amount, platform, onlineUser.balance);
-          SubmitBtn.style.display = "none";
-          modalInput.style.display = "none";
-          errorMessage.style.display = "none";
-        }
-      );
-    });
-  });
-}
-
-function handleSuccessMessage(amount, platform, newBalance) {
-  const successPopup = document.querySelector(".success-popup");
-  const successMessage = document.querySelector("#successMessage");
-
-  // Set the success message content
-  successMessage.textContent = `Waxaad $${amount} u wareejisay ${platform}, Taariikhda: ${new Date().toLocaleString()}, Haraagaaga waa $${newBalance}.`;
-
-  successPopup.classList.add("show");
-}
-
-
-
 // Utility Functions
 function clearInputs() {
   inputs.forEach((input) => (input.value = ""));
   modalInput.value = "";
 }
 
-function getEnteredPIN() {
+function getenteredPin() {
   return Array.from(inputs)
     .map((input) => input.value)
     .join("");
@@ -441,7 +470,8 @@ window.onclick = function (event) {
     changeStep = 1;
     successPopup.classList.remove("show");
     resetModal();
-  }if (event.target === LogoutModal){
+  }
+  if (event.target === LogoutModal) {
     LogoutModal.style.display = "none";
-  } 
+  }
 };
