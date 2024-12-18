@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/app.js",
+    "vercel-build": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.13.0",
