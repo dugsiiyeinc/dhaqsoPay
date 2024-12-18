@@ -5,6 +5,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    text-decoration: none;
 
 }
 .container {
@@ -70,7 +71,7 @@
     position: relative;
     border: 1px solid #000;
     border-radius: 10px;
-    background: url('/web/assets/shiine2.jpg') center / cover no-repeat;
+    background: url('/web/assets/team/nasro.jpg') center / cover no-repeat;
     height: 650px;
 
 }
@@ -234,7 +235,11 @@
 .team-member h3 {
     font-size: 1.2rem;
     color: #555;
-    margin-bottom: 10px;
+   
+}
+.team-member p {
+    font-size: 1rem;
+   margin-bottom: 10px;
 }
 .team-member .member-info i {
     background-color: #fff;
@@ -410,7 +415,7 @@
         grid-template-columns: 1fr;
     }
     .images{
-        height: 700px;
+        height: 800px;
         order: 2;
     }
     .content {
@@ -478,6 +483,10 @@
     .team-container{
         grid-template-columns: 1fr;
         justify-content: center;
+    }
+    .images{
+        height: 550px;
+        order: 2;
     }
 
     #sp {
