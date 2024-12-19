@@ -71,7 +71,7 @@
     position: relative;
     border: 1px solid #000;
     border-radius: 10px;
-    background: url('/web/assets/team/nasro.jpg') center / cover no-repeat;
+    background: url('../assets/team/nasro.jpg') center / cover no-repeat;
     height: 650px;
 
 }
