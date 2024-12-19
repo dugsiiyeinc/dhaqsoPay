@@ -226,7 +226,7 @@
 /* start features section style */
 #features{
   width:100%;
-  margin-top: 10rem;
+  margin-top: 5rem;
 
 }
  .container .section-title{
@@ -401,13 +401,16 @@
 /*  end Why chooose us style */
 
 /* start cta section style */
- 
-.container .cta{
+.cta-section{
+  width:100vh;
+}
+.cta{
+  margin-top: 5rem;
   width:100%;
   height:100vh;
   background-color:#220661;
    display:flex;
-  gap:4rem;
+  gap:2rem;
   align-items:center;
   justify-content:center;
   border:2px solid #37c1f0;
@@ -446,14 +449,17 @@
   display:flex;
   flex-direction:column;
   gap:2rem;
+  padding-right: 10px;
  }
  .cta .cta-content h2{
   text-transform:uppercase;
   color:#f5f5f5;
+  font-size: 1.3rem;
+
  }
  .cta .cta-content p{
   color:#ddd;
-  font-size:1.5rem;
+  font-size:1.3rem;
  }
  .cta .cta-content a{
   width:200px;
@@ -604,7 +610,8 @@ color:#37c1f0;
     font-size: 1rem;
   }
   .hero-content-left h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
+    line-height:3.5rem ;
   }
   .hero-content-right{
     width: 100%;
@@ -668,7 +675,7 @@ color:#37c1f0;
       height:auto;
        
     }
-    .container .cta{
+     .cta{
       width:100%;
       height:auto;
       flex-direction:column;
