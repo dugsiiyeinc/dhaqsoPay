@@ -741,7 +741,9 @@ color:#37c1f0;
   flex-direction: column;
   gap: 1rem;
 }
-
+.foot-card .foot-text a{
+  color: #eff3f6;
+}
 .foot-card p {
   width: 80%;
   font-size: 1rem;
@@ -768,8 +770,11 @@ color:#37c1f0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  color: cadetblue;
   cursor: pointer;
+}
+
+.foot-text li a{
+  color: #E7E8FE;
 }
 
 .foot-text a:hover,
