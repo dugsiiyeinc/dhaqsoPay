@@ -522,7 +522,7 @@
   display:flex;
   /* align-items:center; */
   gap:2rem;
-  margin-block:10rem;
+  margin-block: 5rem;
   /* padding:40px 0; */
  }
 .faq-image-container{
@@ -599,6 +599,8 @@ color:#37c1f0;
   color:#fff;
   border-radius:50%;
 }
+
+
 
 @media (max-width: 768px) {
   .hero-content {
