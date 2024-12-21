@@ -25,10 +25,16 @@ img {
 }
 
 header {
-  height: 4rem;
+  width: 100%;
+  height: 4.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background-color: #eff3f6;
+  position: fixed;
+  top: 0;
+  z-index: 11111;
 }
 
 .menu {
@@ -37,6 +43,10 @@ header {
   align-items: center;
   padding: 20px;
   border-bottom: 0.6px solid rgb(0, 0, 0, 0.4);
+  /* background-color: #eff3f6;
+  position: fixed;
+  top: 0;
+  z-index: 11111; */
 }
 
 .logo img {
@@ -66,11 +76,11 @@ header {
 
 /* start hero section style */
 .hero-section {
-  margin-top: 2rem;   
+  margin-top: 6rem;   
   /* padding-block:20px ; */
   display: flex;
   justify-content: start;
-    align-items: center;
+  align-items: center;
 }
 .hero-content {
   height: 100%;
