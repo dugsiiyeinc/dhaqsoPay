@@ -1,9 +1,9 @@
 const authFields = document.querySelectorAll(".authFields");
-const UserPhoneNumber = document.querySelector("#UserPhoneNumber");
-const username = document.querySelector("#username");
+const number = document.querySelector("#number");
+const fullname = document.querySelector("#fullname");
 const selectProvider = document.querySelector("#selectProvider");
 const providerPrefix = document.querySelector("#providerPrefix");
-const PIN = document.querySelector("#PIN");
+const pin = document.querySelector("#pin");
 const authSwitch = document.querySelector("#authSwitch");
 const formGreting = document.querySelector("#formGreting");
 const formtitle = document.querySelector("#formtitle");
@@ -20,109 +20,153 @@ document.body.addEventListener("click", (e) => {
   switchAuthForm();
 });
 
-username.addEventListener("input", clearError);
+fullname.addEventListener("input", clearError);
 selectProvider.addEventListener("input", clearError);
-PIN.addEventListener("input", clearError);
-UserPhoneNumber.addEventListener("input", clearError);
+pin.addEventListener("input", clearError);
+number.addEventListener("input", clearError);
+
+const updatePrefix = (provider) => {
+  let prefix = "";
+
+  // Assign prefix based on provider
+  switch (provider) {
+    case "hormuud":
+      prefix = "61";
+      break;
+    case "somtel":
+      prefix = "62";
+      break;
+    case "telesom":
+      prefix = "63";
+      break;
+    case "golis":
+      prefix = "09";
+      break;
+    case "somnet":
+      prefix = "68";
+      break;
+    default:
+      prefix = "";
+      break;
+  }
+  providerPrefix.textContent = prefix;
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const defaultProvider = selectProvider.value;
+  updatePrefix(defaultProvider); 
+});
 
 selectProvider.addEventListener("change", () => {
-  const selectedtedProvider = selectProvider.value;
-  if (selectedtedProvider === "hormuud") {
-    providerPrefix.textContent = "61";
-  } else if (selectedtedProvider === "somtel") {
-    providerPrefix.textContent = "62";
-  } else if (selectedtedProvider === "telesom") {
-    providerPrefix.textContent = "63";
-  } else if (selectedtedProvider === "golis") {
-    providerPrefix.textContent = "09";
-  } else if (selectedtedProvider === "somnet") {
-    providerPrefix.textContent = "68";
-  } else {
-    showError("Please select a provider");
-    providerPrefix.textContent = "";
-    return;
+  const selectedProvider = selectProvider.value;
+  updatePrefix(selectedProvider);
+});
+
+
+pin.addEventListener("input", () => {
+
+  pin.value = pin.value.replace(/\D/g, "");
+
+  if (pin.value.length === 4) {
+    clearError();
   }
 });
 
-authForm.addEventListener("submit", (e) => {
+
+authForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   clearError();
 
-  const phoneNumber = `+252${providerPrefix.textContent}${UserPhoneNumber.value}`;
+  const phoneNumber = `+252${providerPrefix.textContent}${number.value}`;
   const user = {
-    userName: !isSignIn ? username.value : undefined,
-    userphoneNumber: phoneNumber,
-    PIN: PIN.value,
+    fullname: !isSignIn ? fullname.value : undefined,
+    number: phoneNumber,
+    pin: pin.value,
+    balance: 0,
   };
 
   if (isSignIn) {
     // Sign-in logic
-    if (UserPhoneNumber.value.trim() === "") {
+    if (number.value.trim() === "") {
       showError("Please enter your phone number");
       return;
     }
-    if (PIN.value.length !== 4) {
-      showError("Plese enter your PIN");
-      return;
-    }
-    chrome.storage.local.get("users", (result) => {
-      const users = result.users ? JSON.parse(result.users) : [];
-      const userExisting = users.find(
-        (user) =>
-          user.userphoneNumber === `+252${UserPhoneNumber.value}` &&
-          user.PIN === PIN.value
-      );
-      if (userExisting) {
-        chrome.storage.local.set(
-          { onlineUser: JSON.stringify(userExisting) },
-          () => {
-            window.location.href = "./dashboard.html";
-          }
-        );
-      } else {
-        showError("Invalid phone number or PIN");
-        return;
-      }
-    });
-  } else {
-    if (username.value.trim() === "") {
-      showError("Please enter your name");
-      return;
-    }
-    if (selectProvider.value === "") {
-      showError("Please select a provider");
-      return;
-    }
-    if (UserPhoneNumber.value.trim() === "") {
-      showError("Please enter your phone number");
-      return;
-    }
-    if (PIN.value.length !== 4) {
-      showError("PIN must be exactly 4 digits long");
+    if (pin.value.length !== 4) {
+      showError("Please enter your pin");
       return;
     }
 
-    chrome.storage.local.get("users", (result) => {
-      const users = result.users ? JSON.parse(result.users) : [];
-      const phoneExists = users.find(
-        (user) => user.userphoneNumber === phoneNumber
-      );
+    console.log(number.value);
 
-      if (phoneExists) {
-        showError("This phone number is already in use.");
-        return;
-      }
-      users.push(user);
-      chrome.storage.local.set({ users: JSON.stringify(users) }, () => {
-        console.log("User successfully registered");
-        showSuccess("Account created successfully!");
-        setTimeout(() => {
-          switchAuthForm();
-        }, 1000);
+    try {
+      // Check with the server if user is not found locally
+      const response = await fetch("http://localhost:8000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ number: `+252${number.value}`, pin: pin.value }),
       });
-    });
+      
+      const data = await response.json();
+      console.log('data:', data);
+      if (data.status == true) {
+        console.log(data.user);
+        saveUserAndRedirect(data.user);
+      } else {
+        showError(data.error);
+      }
+    } catch (error) {
+      showError(error);
+    }
+  } else {
+    // Sign-up logic
+    if (!validateFields()) return;
+
+    try {
+      const response = await fetch("http://localhost:8000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...user }),
+      });
+
+      const data = await response.json();
+
+      if (data.user) {
+        showSuccess("Account created successfully!");
+        setTimeout(switchAuthForm, 1000);
+      } else {
+        showError(data.error || "Error registering user.");
+      }
+    } catch (error) {
+      showError(error);
+    }
   }
 });
+
+function saveUserAndRedirect(user) {
+  chrome.storage.local.set({ onlineUser: JSON.stringify(user) }, () => {
+    window.location.href = "./dashboard.html";
+  });
+}
+
+function validateFields() {
+  if (fullname.value.trim() === "") {
+    showError("Please enter your name");
+    return false;
+  }
+  if (selectProvider.value === "") {
+    showError("Please select a provider");
+    return false;
+  }
+  if (number.value.trim() === "") {
+    showError("Please enter your phone number");
+    return false;
+  }
+  if (pin.value.length !== 4) {
+    showError("pin must be exactly 4 digits long");
+    return false;
+  }
+  return true;
+}
 
 function switchAuthForm() {
   isSignIn = !isSignIn;
@@ -146,9 +190,9 @@ function switchAuthForm() {
     authisignIN.classList.add("isSignIn");
     clearError();
   }
-  UserPhoneNumber.value = "";
-  PIN.value = "";
-  if (username) username.value = "";
+  number.value = "";
+  pin.value = "";
+  if (fullname) fullname.value = "";
   if (selectProvider) selectProvider.value = "";
 }
 
@@ -167,15 +211,15 @@ function clearError() {
   successMessage.textContent = "";
 }
 
-const togglePIN = document.querySelector("#togglePIN");
+const togglepin = document.querySelector("#togglepin");
 
-togglePIN.addEventListener("click", () => {
+togglepin.addEventListener("click", () => {
   
-  if (PIN.type === "password") {
-    PIN.type = "text";
-    togglePIN.src = "./icons/show.svg";
+  if (pin.type === "password") {
+    pin.type = "text";
+    togglepin.src = "./icons/show.svg";
   } else {
-    PIN.type = "password";
-    togglePIN.src = "./icons/Hide.svg";
+    pin.type = "password";
+    togglepin.src = "./icons/Hide.svg";
   }
 });

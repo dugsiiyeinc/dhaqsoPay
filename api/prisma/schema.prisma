@@ -13,7 +13,6 @@ model User {
   fullname  String                                           // Full name of the user
   balance   Float    @default(0.0)                            // Balance with default 0.0
   pin       String                                           // User's PIN
-  status    Boolean  @default(false)                          // Active or inactive status
   createdAt DateTime @default(now())                         // Timestamp of record creation
   updatedAt DateTime @updatedAt                              // Auto-updated timestamp
 }
