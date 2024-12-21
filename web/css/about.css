@@ -16,15 +16,14 @@
 
 
 /* *About us style */
-.about-us {
-   
+.about-us {  
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 3rem;
     gap: 0.5rem;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
 }
 .about-us h2 {
     font-size: 2.7rem;
@@ -71,9 +70,8 @@
     position: relative;
     border: 1px solid #000;
     border-radius: 10px;
-    background: url('/web/assets/team/nasro.jpg') center / cover no-repeat;
-    height: 650px;
-
+    background: url('../assets/Mockup\ 03.jpg') center / contain no-repeat;
+    /* height: 650px; */
 }
 .man-pic{
     border-radius: inherit;
@@ -89,14 +87,16 @@
 }
 .mobile-dev{
     width: 200px;
-    height: 400px;
+    /* height: 400px; */
     position: absolute;
     bottom: -20px;
     right: -80px;
 }
 .mobile-dev img{
     width: 100%;
-    height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 217, 217, 0.3);
+    /* height: 100%; */
 }
 
 .sub-content {
@@ -395,7 +395,7 @@
     }
     .mobile-dev {
         width: 200px;
-        height: 350px;
+        /* height: 350px; */
         bottom: -25px;
         right: -10px;
     }

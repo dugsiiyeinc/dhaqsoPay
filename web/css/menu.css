@@ -9,6 +9,7 @@
 
 body{
     font-family: "Space Grotesk", sans-serif;
+    background-color: #eff3f6;
 }
 
 img{
@@ -29,7 +30,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding:20px;
-    border-bottom: 1px solid #000;
+    border-bottom: 0.6px solid rgb(0, 0, 0, 0.4);
 }
 .logo img{
     width: 150px;
