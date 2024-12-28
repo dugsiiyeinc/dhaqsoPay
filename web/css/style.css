@@ -65,7 +65,7 @@ header {
   color: #222061;
 }
 
-.humbergur {
+.hamburger {
   display: none;
 }
 
@@ -184,22 +184,22 @@ header {
 } */
 /* end hero section style */
 
-/* start trusted-parteners section style */
-.trusted-parteners{
+/* start trusted-partners section style */
+.trusted-partners{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
 }
 
-.trusted-parteners h4{
+.trusted-partners h4{
     margin-top: 10rem;
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
 }
 
-.paretners-con{
+.partners-con{
     width: 100%;
     overflow: hidden; /* Hide overflow for smooth sliding */
     position: relative;
@@ -221,7 +221,7 @@ header {
   .partners-con:hover .slider {
     animation-play-state: paused; /* Pause on hover */
   }
-/* end trusted-parteners section style */
+/* end trusted-partners section style */
 
 
 /* *About us style  */
@@ -294,7 +294,7 @@ header {
   color: #555;
 }
 
-.boxs-content {
+.box-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
@@ -370,7 +370,7 @@ header {
   letter-spacing: 2px;
 }
 
-/* end about sectio styles */
+/* end about section styles */
 
 
 /* start features section style */
@@ -831,17 +831,17 @@ color:#37c1f0;
   background-color: #051b5e;
 }
 
-.footer .coppyright {
+.footer .copyright {
   padding-top: 1rem;
   text-align: center;
   
 }
-.footer .coppyright a {
+.footer .copyright a {
   /* color: rgb(255, 255, 227); */
   color: #37c1f0;
   cursor: pointer;
 }
-.footer .coppyright a:hover{
+.footer .copyright a:hover{
   color:cadetblue ;
 }
 
@@ -917,19 +917,19 @@ color:#37c1f0;
     .nav-links[data-visible="false"]{
         transform: translateY(-1000%);
     }
-    .humbergur{
+    .hamburger{
         display: block;
         position: absolute;
         right: 5%;
     }
-    .humbergur i{
+    .hamburger i{
         font-size: 1.8rem;
         color: #222061;
     }
-    .humbergur i[data-visible="true"]{
+    .hamburger i[data-visible="true"]{
         display: block;
     }
-    .humbergur i[data-visible="false"]{
+    .hamburger i[data-visible="false"]{
         display: none;
       }
   .hero-content {
@@ -954,7 +954,7 @@ color:#37c1f0;
     height: 600px;
   }
  
-  .trusted-parteners h4{
+  .trusted-partners h4{
     font-size: 1.5rem;
   }
   .slider img{
@@ -1014,16 +1014,12 @@ color:#37c1f0;
           font-size: 2rem;
         }
     
-        .about-raveli {
-          padding-inline: 10px;
-        }
-    
         .img-content {
           grid-template-columns: 1fr;
           gap: 4rem;
         }
     
-        .boxs-content {
+        .box-content {
           grid-template-columns: 1fr;
         }
     

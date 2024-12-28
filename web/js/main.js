@@ -1,11 +1,11 @@
 const navLinks =document.querySelector(".nav-links")
-const humbergur = document.querySelector(".humbergur")
+const hamburger = document.querySelector(".hamburger")
 const icons = document.querySelectorAll("i")
 
 
-humbergur && humbergur.addEventListener('click', function(event){
-    const  isvible = navLinks.getAttribute('data-visible');
-     if(isvible === "true"){
+hamburger && hamburger.addEventListener('click', function(event){
+    const  isVisible = navLinks.getAttribute('data-visible');
+     if(isVisible === "true"){
         navLinks.setAttribute('data-visible','false');
          icons[0].setAttribute('data-visible','true');
          icons[1].setAttribute('data-visible','false')
@@ -18,7 +18,7 @@ humbergur && humbergur.addEventListener('click', function(event){
  })
 
 
- //slider in parteners section
+ //slider in partners section
  const slider = document.querySelector('.slider');
  let slideWidth = slider.children[0].offsetWidth + 20; // Width + margin
 let autoSlideInterval;
@@ -193,61 +193,3 @@ function toggleAnswer(button) {
   button.classList.toggle("active");
 }
 
-
-
-        const handle = container.querySelector('#handle');
-        const lightImage = container.querySelector('.light-image');
-        const darkImage = container.querySelector('.dark-image');
-
-        let isDragg = false;
-
-        // darkOverlay.style.display = "none"
-        const updateMode = (x) => {
-            const rect = container.getBoundingClientRect();
-            let offsetX = Math.max(0, Math.min(x - rect.left, rect.width));
-            let percentage = (offsetX / rect.width) * 100;
-
-                  // Adjust the clip-path for light and dark images
-            lightImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-            darkImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-
-            // Move handle and update mode
-            // Move the slider
-            handle.style.left = `${percentage}%`;
-      };
-          // Hide overlay on first interaction
-          const hideOverlay = () => {
-           overlay.style.display = "none"
-           console.log(overlay);
-           
-          };
-
-        // Mouse events
-        container.addEventListener('mousedown', (e) => {
-            isDragg = true;
-            updateMode(e.clientX);
-           
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (isDragg) updateMode(e.clientX);
-
-        });
-
-        window.addEventListener('mouseup', () => {
-            isDragg = false;
-        });
-        // Touch events
-        container.addEventListener('touchstart', (e) => {
-            isDragg = true;
-            updateMode(e.touches[0].clientX)
-        });
-
-        container.addEventListener('touchmove', (e) => {
-            if (isDragg) updateMode(e.touches[0].clientX);
-        });
-
-        container.addEventListener('touchend', () => {
-            isDragg = false;
-            
-        });
