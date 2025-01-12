@@ -12,7 +12,7 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  background-color: #eff3f6;
+  background-color: #fff;
 }
 
 img {
@@ -26,12 +26,12 @@ img {
 
 header {
   width: 100%;
-  height: 4.3rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #eff3f6;
+  background-color: #fff;
   position: fixed;
   top: 0;
   z-index: 11111;
@@ -41,7 +41,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding-block: 15px;
   border-bottom: 0.6px solid rgb(0, 0, 0, 0.4);
 }
 
@@ -65,7 +65,7 @@ header {
   color: #222061;
 }
 
-.humbergur {
+.hamburger {
   display: none;
 }
 
@@ -169,37 +169,37 @@ header {
 } */
 .hero-content-right {
   width: 50%;
-  /* background-color: #222061; */
+  background: url("../assets/Mockup\ 03.jpg") center/cover no-repeat;
   border-radius: 10px;
-  /* height: 600px; */
+  height: 600px;
   display: flex;
   justify-content: left;
 
 }
 
-.hero-content-right img {
-  /* padding-top: 40px; */
+/* .hero-content-right img {
+  padding-top: 40px; 
   width: 100%;
-  /* height: 100%; */
-}
+  height: 100%;
+} */
 /* end hero section style */
 
-/* start trusted-parteners section style */
-.trusted-parteners{
+/* start trusted-partners section style */
+.trusted-partners{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
 }
 
-.trusted-parteners h4{
+.trusted-partners h4{
     margin-top: 10rem;
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
 }
 
-.paretners-con{
+.partners-con{
     width: 100%;
     overflow: hidden; /* Hide overflow for smooth sliding */
     position: relative;
@@ -221,7 +221,7 @@ header {
   .partners-con:hover .slider {
     animation-play-state: paused; /* Pause on hover */
   }
-/* end trusted-parteners section style */
+/* end trusted-partners section style */
 
 
 /* *About us style  */
@@ -240,13 +240,13 @@ header {
   position: relative;
   border: 1px solid #000;
   border-radius: 10px;
-  background: url('../assets/Mockup\ 03.jpg') center / contain no-repeat;
-  /* height: 650px; */
+  background: url('../assets/team/nasro.jpg') center /cover no-repeat;
+  height: 650px;
 }
 
 .man-pic {
   border-radius: inherit;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .star {
@@ -259,11 +259,11 @@ header {
 }
 
 .mobile-dev {
-  width: 200px;
-  /* height: 400px; */
+  width: 180px;
+  height: 280px;
   position: absolute;
   bottom: -20px;
-  right: -80px;
+  right: -90px;
 }
 
 .mobile-dev img {
@@ -294,7 +294,7 @@ header {
   color: #555;
 }
 
-.boxs-content {
+.box-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
@@ -370,7 +370,7 @@ header {
   letter-spacing: 2px;
 }
 
-/* end about sectio styles */
+/* end about section styles */
 
 
 /* start features section style */
@@ -557,7 +557,7 @@ header {
  .container .faq-section-container{
   width:100%;
   display:flex;
-  /* align-items:center; */
+  align-items:center;
   gap:2rem;
   margin-block: 5rem;
   /* padding:40px 0; */
@@ -578,6 +578,7 @@ header {
 }
 .faq-image img{
   width:100%;
+  border-radius: 10px;
 }
 .faqs {
   width: 100%;
@@ -830,22 +831,39 @@ color:#37c1f0;
   background-color: #051b5e;
 }
 
-.footer .coppyright {
+.footer .copyright {
   padding-top: 1rem;
+  text-align: center;
+  
 }
-.footer .coppyright
-a {
+.footer .copyright a {
   /* color: rgb(255, 255, 227); */
-  color: #5f9ea0;
+  color: #37c1f0;
   cursor: pointer;
 }
+.footer .copyright a:hover{
+  color:cadetblue ;
+}
 
-.footer .addition
-a:hover {
+.footer .addition a:hover {
   color: rgb(55, 193, 240);
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .hero-content{
+    gap: 1.5;
+  }
+  .hero-content-left{
+    width: 60%;
+  }
+  .hero-content-left h1{
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+  .hero-content-right{
+    width: 90%;
+    height: 500px;
+  }
   .img-content {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -899,19 +917,19 @@ a:hover {
     .nav-links[data-visible="false"]{
         transform: translateY(-1000%);
     }
-    .humbergur{
+    .hamburger{
         display: block;
         position: absolute;
         right: 5%;
     }
-    .humbergur i{
+    .hamburger i{
         font-size: 1.8rem;
         color: #222061;
     }
-    .humbergur i[data-visible="true"]{
+    .hamburger i[data-visible="true"]{
         display: block;
     }
-    .humbergur i[data-visible="false"]{
+    .hamburger i[data-visible="false"]{
         display: none;
       }
   .hero-content {
@@ -933,12 +951,10 @@ a:hover {
   }
   .hero-content-right{
     width: 100%;
-    height: 100%;
+    height: 600px;
   }
-  .hero-content-right img {
-    width: 100%;
-  }
-  .trusted-parteners h4{
+ 
+  .trusted-partners h4{
     font-size: 1.5rem;
   }
   .slider img{
@@ -998,16 +1014,12 @@ a:hover {
           font-size: 2rem;
         }
     
-        .about-raveli {
-          padding-inline: 10px;
-        }
-    
         .img-content {
           grid-template-columns: 1fr;
           gap: 4rem;
         }
     
-        .boxs-content {
+        .box-content {
           grid-template-columns: 1fr;
         }
     
@@ -1026,9 +1038,9 @@ a:hover {
         }
     
         .mobile-dev {
-          width: 120px;
-          height: 250px;
-          bottom: -15px;
+          width: 150px;
+          height: 220px;
+          bottom: -10px;
           right: -15px;
         }
     
@@ -1088,6 +1100,12 @@ a:hover {
    
 }
 @media (max-width:480px) {
+
+  .hero-content-right{
+    width: 100%;
+    height: 400px;
+  }
+
   .team-container {
     grid-template-columns: 1fr;
     justify-content: center;
@@ -1097,7 +1115,12 @@ a:hover {
     height: 550px;
     order: 2;
   }
-
+  .mobile-dev {
+    width: 110px;
+    height: 200px;
+    bottom: -40px;
+    right: -15px;
+  }
   #sp {
     width: 100%;
   }
